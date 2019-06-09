@@ -19,12 +19,12 @@
 |td21|td22|
 
 ---
-* Fruit
-  * Apple
-  * Banana
-1. Dairy
-  2. Milk
-  3. Cheese
+- Fruit
+  - Apple
+  - Banana
+* Dairy
+  * Milk
+  * Cheese
   
 ---
 

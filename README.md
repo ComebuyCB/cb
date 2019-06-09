@@ -49,6 +49,6 @@ And you?
 
 ---
 
-[Yahoo-Link](https://yahoo.com.tw)
+[Yahoo-Link](https://tw.yahoo.com/)
 
 ![Picture](52553578_780328862349139_3752231095056203776_n.jpg)

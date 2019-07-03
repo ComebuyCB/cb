@@ -1,8 +1,4 @@
-<html>
-<head></head>
-<body>
-<script>
-var a = `<!DOCTYPE html>
+<!DOCTYPE html>
 <%@ Page Language="VB" Debug="true" %>
 <html>
 <head>
@@ -17,10 +13,5 @@ var a = `<!DOCTYPE html>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-</body>
-</html>`
-
-document.getElementsByTag("body").value = a;
-</script>
 </body>
 </html>

@@ -222,8 +222,8 @@
 
 /*** position & show/hide ***/
 .p-absolute ,.absolute {position:absolute}
-.p-fixed ,fixed {position:fixed}
-.p-relative ,relative {position:relative}
+.p-fixed ,.fixed {position:fixed}
+.p-relative ,.relative {position:relative}
 .d-none ,.display-none {display:none} 
 .d-block ,.display-block {display:block}
 .v-hide ,.v-hidden {visibility: hidden}

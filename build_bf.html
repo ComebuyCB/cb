@@ -47,8 +47,8 @@
     txt += "/*** border-radius (0~100)(px) ***/<br>";
     for (let i=0; i<=100; i++){
         txt += `.br-${i},.br-t-${i},.br-l-${i},.br-tl-${i}{border-top-left-radius:${i}px!important} `;
-        txt += `.br-${i},.br-t-${i},.br-l-${i},.br-tr-${i}{border-top-right-radius:${i}px!important} `;
-        txt += `.br-${i},.br-b-${i},.br-r-${i},.br-bl-${i}{border-bottom-left-radius:${i}px!important} `;
+        txt += `.br-${i},.br-t-${i},.br-r-${i},.br-tr-${i}{border-top-right-radius:${i}px!important} `;
+        txt += `.br-${i},.br-b-${i},.br-l-${i},.br-bl-${i}{border-bottom-left-radius:${i}px!important} `;
         txt += `.br-${i},.br-b-${i},.br-r-${i},.br-br-${i}{border-bottom-right-radius:${i}px!important} `;
         txt += i%10 === 0 ? "<br>" : "";
     }

@@ -1,273 +1,386 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8"> <!--test in master-->
+	<meta charset="utf-8">
 
-<link rel="Shortcut Icon" type="image/x-icon" href="cb-logo.png">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link rel="stylesheet" href="bf.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<!-- shortcut -->
+	<link rel="Shortcut Icon" type="image/x-icon" href="cb-logo.png">
 
-<!-- jquery-confirm -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.js"></script>
-<base target="_blank">
+	<!-- jquery -->
+	<script src="src/plugins/jquery/jquery.js"></script>
 
-<style>
-	body {margin-left:40px;margin-bottom:80px;background-color:#122;color:lightgray}
-	a,span {font-size: 16px; line-height:2; color:skyblue}
-	a,span,p {white-space:nowrap}
-	p {font-size: 16px; line-height:2 ; color:deepskyblue; margin:0}
-	b {padding-left:1em}
-	d {padding-left:1rem}
-	.ccc:after{content: "("attr(href)")"}
-	.ee{background:#333}
-	.ee:hover{cursor:pointer;background-color:#555}
-	.divs{display: inline-table; padding: 0 15px;}
-</style>
+	<!-- bootstrap -->
+	<link rel="stylesheet" href="src/plugins/bootstrap/bootstrap.css">
+	<script src="src/plugins/bootstrap/popper.js"></script>
+	<script src="src/plugins/bootstrap/bootstrap.js"></script>
 
-<script>
-	window.addEventListener("load", resizeW)
-	window.addEventListener("resize", resizeW)
-	function resizeW(){
-		var x = document.body.clientWidth;
-		if ( x<768 ) { $('body .row').removeClass('bgc-0').addClass('bgc-2') }
-	    else { $('body .row').removeClass('bgc-2').addClass('bgc-0')  }
-	}
-</script>
+	<!-- cb -->
+	<link rel="stylesheet" href="src/css/cb.css">
+	<script src="src/js/cb.js"></script>
+
+	<!-- jquery-confirm -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+
+	<base target="_blank">
+	<style>
+		body {padding: 0 30px 60px 30px;background-color:#122;color:lightgray}
+		a,span {font-size: 16px; line-height:2; color:skyblue}
+		a,span,p {white-space:nowrap}
+		p {font-size: 16px; line-height:2 ; color:deepskyblue; margin:0}
+		b {padding-left:1em}
+		d {padding-left:1rem}
+		.ccc:after{content: "("attr(href)")"}
+		.ee{background:#333}
+		.ee:hover{cursor:pointer;background-color:#555}
+		.divs{display: inline-table; padding: 0 15px;}
+	</style>
 </head>
 
-<body id="fullHeight">
+<body id="fullHeightx">
 	<span id="pra"></span>
-<br>
-<!--******************************************************************************************************************************-->
-<div class="divs">
-<h3>HTML</h3>
-	<li><a href="https://www.w3schools.com/html/tryit.asp?filename=tryhtml_links_colors">:link :visited :hover :active</a></li>
-	<li><a href="https://www.w3schools.com/html/tryit.asp?filename=tryhtml_head_base" title="
-_blank - Opens the linked document in a new window or tab			
-_self - Opens the linked document in the same window/tab as it was clicked (this is default)			
-_parent - Opens the linked document in the parent frame			
-_top - Opens the linked document in the full body of the window">_blank _self _parent _top</a></li>
-	<li><a href="https://www.w3schools.com/html/tryit.asp?filename=tryhtml_images_map2">map - ( area shape - coords )</a></li>
-	<li><a href="https://www.w3schools.com/html/tryit.asp?filename=tryhtml_images_picture">picture - ( source media - srcset )</a></li>
-	<li><a href="https://www.w3schools.com/html/tryit.asp?filename=tryhtml_iframe_target">iframe target</a></li>
-	<li><a href="https://www.w3schools.com/tags/tryit.asp?filename=tryhtml5_global_draggable">可拉式物件 (draggable="true")</a></li>
-	<li><a href="https://www.w3schools.com/tags/tryit.asp?filename=tryhtml5_input_type_radio">input type="radio"</a></li>
-	<li><a href="https://www.w3schools.com/tags/tryit.asp?filename=tryhtml_col_test">col 和 colgroup (table排色好用)</a></li>
-	<li><a href="https://www.w3schools.com/tags/tag_frame.asp">←|→拉 終於找到這功能了 (不支援HTML5)</a></li>
-	<li><a href="https://www.w3schools.com/tags/tryit.asp?filename=tryhtml_optgroup">optgroup 下拉式選單群組</a></li>
-	<li><a href=""></a></li>
-<h3>API</h3>
-	<li><a href="https://www.w3schools.com/html/html5_geolocation.asp">存取現在位置</a></li>
-	<li><a href=""></a></li>
-</div>
 
-<!--*****************************************************************-->
-<div class="divs">
-<h3>CSS</h3>
-	<li><a href="https://www.w3schools.com/css/tryit.asp?filename=trycss_ex_images_center">圖片置中 Img center</a></li>
-	<li><a href="https://www.w3schools.com/cssref/tryit.asp?filename=trycss_dim_width_inputfocus">文方伸縮 type="text" 口 → |二二二|</a></li>
-	<li><a href="https://www.w3schools.com/cssref/tryit.asp?filename=trycss_anim_top">上下來回動~ animation </a></li>	
-	<li><a href="https://www.w3schools.com/css/tryit.asp?filename=trycss3_mediaqueries_ex4">把 href 取出! content:"(" attr( href ) ")";</a></li>
-	<li><a href="https://www.w3schools.com/bootstrap/bootstrap_affix.asp">偽Fixed bar，Affix!! (BS 4.0.0 沒了)</a></li>
-	<li><a href="https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_navbar_sticky">Sticky 完整教學</a></li>
-	<li><a href="https://www.w3schools.com/howto/howto_css_equal_height.asp">等高排列~ table-cell </a></li>
-	<li><a href="https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_snackbar">訊息小提示，不錯看</a></li>
-	<li><a href="https://www.w3schools.com/cssref/tryit.asp?filename=trycss3_selection">::selection 螢光筆</a></li>
-	<li><a href=""></a></li>
-<h3 class="hhh"> Bootstrap </h3>
-	<li><a href="https://www.w3schools.com/bootstrap/tryit.asp?filename=trybs_alerts_dismissible&stacked=h">Alerts</a></li>
-	<li><a href="https://www.w3schools.com/bootstrap/tryit.asp?filename=trybs_form_basic&stacked=h">E-mail</a></li>
-	<li><a href=""></a></li>
-</div>
-<!--*****************************************************************-->
-<div class="divs">
-<h3>JavaScript + Jquary</h3>
-	<li class="ee" onclick="jsScreen('c')"><span>JS螢幕寬高顯示用法</span></li>
-	<li><a href="https://www.w3schools.com/code/tryit.asp?filename=FMKSMUYQRLKO">下拉改變TopNav (*Edit)</a></li>
-	<li><a href="https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_contact_chips_close">this.parentElement.style.display='none' 關閉X</a></li>
-	<li><a href="http://www.the-art-of-web.com/javascript/validate-date/">日期格式判斷</a></li>
-	<li><a href="https://www.w3schools.com/jsref/dom_obj_all.asp"> HTML元素標籤</a></li>
-	<li><a href="https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_node_appendchild"> 創造元素、內容</a></li>
-	<li><a href="https://www.w3schools.com/jquery/jquery_filters.asp"> 製作 Search </a></li>
-	<li><a href=""></a></li>
-<h3> 隨意貼 </h3>
-	<li><a href="http://yisibl.github.io/cubic-bezier/">cubic-bezier 動畫產生器</a></li>
-	<li><a href="/build_bf.html">自製 VBcopyCSS</a></li>
-	<li><a href="/bf.css">自製 CSS</a></li>
-<h3> Learning!!! </h3>
-	<li><a href="https://www.w3schools.com/tags/tryit.asp?filename=tryhtml5_global_data">getAttribute</a></li>
-	<li><a href="https://pjchender.blogspot.tw/">PJCHENder 那些沒告訴你的小細節</a></li>
-	<li><a href="http://www.oxxostudio.tw/articles/201503/html5-input-range-style.html">改變 HTML5 range 樣式</a></li>
-	<li><a href="https://www.w3schools.com/code/tryit.asp?filename=FO8WITXOA4VF">JS取range值</a></li>
-	<li><a href=""></a></li>
-</div>
-
-<!--******************************************************************************************************************************-->
-
-<div class="divs">
-<h3>小知識 + 常忘語法</h3>
-	<p>&lt;meta http-equiv="refresh" content="30"&gt; <b>更新網頁 every 30s</b></p>
-	<p>&lt;link rel="shortcut Icon" type="image/x-icon" href=""&gt; <b>網站小圖示</b></p>	
-	<p>background-size:contain <b>長或寬填滿</b></p>
-	<p>background-size:cover <b>直到填滿 (會溢出)</b></p>
-	
-	<p class="ee" data-toggle="collapse" data-target="#sql">基本SQL語法</p>
-	<pre id="sql" class="collapse">
-	update TB set COL='VAL',COL='VAL' where~
-	insert into TB (COL,COL) values ('VAL','VAL') 
-	delete from TB where~ 
-	truncate table TB </pre>
-	
-	<p class="ee" data-toggle="collapse" data-target="#sel">CSS Selector[CSS選擇器]</p>
-  	<pre id="sel" class="collapse">
-	[target = _blank] 完全一樣
-	[title ~= flower] 單字一樣
-	[lang  |= en]	起始單字一樣，後面加 - 才可接字
-	[href  ^= "https"] 起始一樣
-	[href  $= ".pdf"] 結尾一樣
-	[href  *= "w3schools"] 搜到一樣
-	div   p|父.子|兒子p.孫子p.曾孫p...
-	div &gt; p|父.子|兒子p
-	div + p|父.父|排在div後面的下一位p
-	div ~ p|父.父|排在div後面的所有p </pre>
-	
-	<p class="ee" data-toggle="collapse" data-target="#vb">VB語言</p>
-	<pre id="vb" class="collapse">
-	&lt;script runat="server"&gt;
-	Public function rrq(vStr)
-	  return replace(request(vStr),"'","''")
-	End function
-	&lt;/script&gt;
-	'用來取url?後的敘述。如:XX.html?du=21
-	'那麼下 rrq('du') 即可獲取'21'這個值 </pre>
-	
-	<p class="ee" data-toggle="collapse" data-target="#hd">htmlHead</p>
-	<div id="hd" class="collapse bgc-w">
-		<iframe src="html.txt" width="100%" height="360px"></iframe>
-	</div>
-</div>
-
-<!--******************************************************************************************************************************-->
-
-<h3>bf.css examples:</h3>
-
-<div class="row" style="min-height:100px">
-	<div class="col-sm-6" id="demobf1">
-
-	</div>
-	<div class="col-sm-6 pb-100">
-		<p style="color:#E55">HTML code：</p> 
-		<div>＜div class="<button class="btn btn-danger p-0">值</button>"＞
-			<div class="pl-24">中文 English 12345</div>
-			 ＜/div＞
+	<div class="mx-n15">
+		<div class="divs">
+			<h3>HTML</h3>
+			<ul>
+				<li><a href="https://www.w3schools.com/html/tryit.asp?filename=tryhtml_links_colors">:link :visited :hover :active</a></li>
+				<li><a href="https://www.w3schools.com/html/tryit.asp?filename=tryhtml_head_base" title="
+			_blank - Opens the linked document in a new window or tab			
+			_self - Opens the linked document in the same window/tab as it was clicked (this is default)			
+			_parent - Opens the linked document in the parent frame			
+			_top - Opens the linked document in the full body of the window">_blank _self _parent _top</a></li>
+				<li><a href="https://www.w3schools.com/html/tryit.asp?filename=tryhtml_images_map2">map - ( area shape - coords )</a></li>
+				<li><a href="https://www.w3schools.com/html/tryit.asp?filename=tryhtml_images_picture">picture - ( source media - srcset )</a></li>
+				<li><a href="https://www.w3schools.com/html/tryit.asp?filename=tryhtml_iframe_target">iframe target</a></li>
+				<li><a href="https://www.w3schools.com/tags/tryit.asp?filename=tryhtml5_global_draggable">可拉式物件 (draggable="true")</a></li>
+				<li><a href="https://www.w3schools.com/tags/tryit.asp?filename=tryhtml5_input_type_radio">input type="radio"</a></li>
+				<li><a href="https://www.w3schools.com/tags/tryit.asp?filename=tryhtml_col_test">col 和 colgroup (table排色好用)</a></li>
+				<li><a href="https://www.w3schools.com/tags/tag_frame.asp">←|→拉 終於找到這功能了 (不支援HTML5)</a></li>
+				<li><a href="https://www.w3schools.com/tags/tryit.asp?filename=tryhtml_optgroup">optgroup 下拉式選單群組</a></li>
+				<li><a href=""></a></li>
+			</ul>
+			<h3>API</h3>
+			<ul>
+				<li><a href="https://www.w3schools.com/html/html5_geolocation.asp">存取現在位置</a></li>
+				<li><a href=""></a></li>
+			</ul>
 		</div>
-		<br>
-		<div class="b-a solid p-20">
-			<div id="div-bf1">中文 English 12345</div>
-		</div>
-	</div>
-</div>
-<hr>
-<div class="row">
-	<div class="col-sm-6" id="demobf2">
-		<div class="pb-12">
-			<p>鼠標樣式 cursor: (滑鼠移到文字上看auto與default差別)</p>
-			<button class="btn btn-primary btn-sm cur-auto">cur-auto</button>
-			<button class="btn btn-primary btn-sm cur-default">cur-default</button>
-			<button class="btn btn-primary btn-sm cur-cell">cur-cell</button>
-			<button class="btn btn-primary btn-sm cur-zoomin">cur-zoomin</button>
-			<button class="btn btn-primary btn-sm cur-zoomout">cur-zoomout</button>
-			<button class="btn btn-primary btn-sm cur-pointer">cur-pointer</button>
-			<button class="btn btn-primary btn-sm cur-not">cur-not</button>
+	
+		<div class="divs">
+			<h3>CSS</h3>
+			<ul>
+				<li><a href="https://www.w3schools.com/css/tryit.asp?filename=trycss_ex_images_center">圖片置中 Img center</a></li>
+				<li><a href="https://www.w3schools.com/cssref/tryit.asp?filename=trycss_dim_width_inputfocus">文方伸縮 type="text" 口 → |二二二|</a></li>
+				<li><a href="https://www.w3schools.com/cssref/tryit.asp?filename=trycss_anim_top">上下來回動~ animation </a></li>	
+				<li><a href="https://www.w3schools.com/css/tryit.asp?filename=trycss3_mediaqueries_ex4">把 href 取出! content:"(" attr( href ) ")";</a></li>
+				<li><a href="https://www.w3schools.com/bootstrap/bootstrap_affix.asp">偽Fixed bar，Affix!! (BS 4.0.0 沒了)</a></li>
+				<li><a href="https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_navbar_sticky">Sticky 完整教學</a></li>
+				<li><a href="https://www.w3schools.com/howto/howto_css_equal_height.asp">等高排列~ table-cell </a></li>
+				<li><a href="https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_snackbar">訊息小提示，不錯看</a></li>
+				<li><a href="https://www.w3schools.com/cssref/tryit.asp?filename=trycss3_selection">::selection 螢光筆</a></li>
+				<li><a href=""></a></li>
+			</ul>
+			<h3 class="hhh"> Bootstrap </h3>
+			<ul>
+				<li><a href="https://www.w3schools.com/bootstrap/tryit.asp?filename=trybs_alerts_dismissible&stacked=h">Alerts</a></li>
+				<li><a href="https://www.w3schools.com/bootstrap/tryit.asp?filename=trybs_form_basic&stacked=h">E-mail</a></li>
+				<li><a href=""></a></li>
+			</ul>
 		</div>
 
-	</div>
-	<div class="col-sm-6">
-		<p style="color:deepskyblue">HTML code：</p>
-		<div>＜div class="<button class="btn btn-primary p-0">值</button>" style="border:1px white dashed"＞
-			<div class="pl-24">中文 English 12345＜br＞</div>
-			<div class="pl-24">中文 English 12345</div>
-			 ＜/div＞
+		<div class="divs">
+			<h3>JavaScript + Jquary</h3>
+			<ul>
+				<li class="bgc-3" onclick="jsScreen('c')"><span>JS螢幕寬高顯示用法</span></li>
+				<li><a href="https://www.w3schools.com/code/tryit.asp?filename=FMKSMUYQRLKO">下拉改變TopNav (*Edit)</a></li>
+				<li><a href="https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_contact_chips_close">this.parentElement.style.display='none' 關閉X</a></li>
+				<li><a href="http://www.the-art-of-web.com/javascript/validate-date/">日期格式判斷</a></li>
+				<li><a href="https://www.w3schools.com/jsref/dom_obj_all.asp"> HTML元素標籤</a></li>
+				<li><a href="https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_node_appendchild"> 創造元素、內容</a></li>
+				<li><a href="https://www.w3schools.com/jquery/jquery_filters.asp"> 製作 Search </a></li>
+				<li><a href=""></a></li>
+			</ul>
+			<h3> 隨意貼 </h3>
+			<ul>
+				<li><a href="http://yisibl.github.io/cubic-bezier/">cubic-bezier 動畫產生器</a></li>
+				<li><a href="/build_bf.html">自製 VBcopyCSS</a></li>
+				<li><a href="/bf.css">自製 CSS</a></li>
+			</ul>
+			<h3> Learning!!! </h3>
+			<ul>
+				<li><a href="https://www.w3schools.com/tags/tryit.asp?filename=tryhtml5_global_data">getAttribute</a></li>
+				<li><a href="https://pjchender.blogspot.tw/">PJCHENder 那些沒告訴你的小細節</a></li>
+				<li><a href="http://www.oxxostudio.tw/articles/201503/html5-input-range-style.html">改變 HTML5 range 樣式</a></li>
+				<li><a href="https://www.w3schools.com/code/tryit.asp?filename=FO8WITXOA4VF">JS取range值</a></li>
+				<li><a href=""></a></li>
+			</ul>
 		</div>
-		<br>
-		<div class="b-a solid p-20">
-			<div id="div-bf2" style="border:1px dashed">中文 English 12345<br>中文 English 12345</div>
-		</div>
-	</div>
-</div>
 
-<script>
-$(document).ready(function(){
+		<div class="divs">
+			<h3>小知識 + 常忘語法</h3>
+			<div>
+				<p>&lt;meta http-equiv="refresh" content="30"&gt;<b>更新網頁 every 30s</b></p>
+				<p>&lt;link rel="shortcut Icon" type="image/x-icon" href=""&gt;<b>網站小圖示</b></p>	
+				<p>background-size:contain <b>長或寬填滿</b></p>
+				<p>background-size:cover <b>直到填滿 (會溢出)</b></p>
+				
+				<p class="bgc-3" data-toggle="collapse" data-target="#sql">基本SQL語法</p>
+				<pre id="sql" class="collapse">
+				update TB set COL='VAL',COL='VAL' where~
+				insert into TB (COL,COL) values ('VAL','VAL') 
+				delete from TB where~ 
+				truncate table TB </pre>
+				
+				<p class="bgc-3" data-toggle="collapse" data-target="#sel">CSS Selector[CSS選擇器]</p>
+				<pre id="sel" class="collapse">
+				[target = _blank] 完全一樣
+				[title ~= flower] 單字一樣
+				[lang  |= en]	起始單字一樣，後面加 - 才可接字
+				[href  ^= "https"] 起始一樣
+				[href  $= ".pdf"] 結尾一樣
+				[href  *= "w3schools"] 搜到一樣
+				div   p|父.子|兒子p.孫子p.曾孫p...
+				div &gt; p|父.子|兒子p
+				div + p|父.父|排在div後面的下一位p
+				div ~ p|父.父|排在div後面的所有p </pre>
+				
+				<p class="bgc-3" data-toggle="collapse" data-target="#vb">VB語言</p>
+				<pre id="vb" class="collapse">
+				&lt;script runat="server"&gt;
+				Public function rrq(vStr)
+				return replace(request(vStr),"'","''")
+				End function
+				&lt;/script&gt;
+				'用來取url?後的敘述。如:XX.html?du=21
+				'那麼下 rrq('du') 即可獲取'21'這個值 </pre>
+				
+				<p class="bgc-3" data-toggle="collapse" data-target="#hd">htmlHead</p>
+				<div id="hd" class="collapse bgc-w">
+					<iframe src="html.txt" width="100%" height="360px"></iframe>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--******************************************************************************************************************************-->
 	
-	var txtbf1 = ""
-	var bf1 = [
-			{"ttl":"中文字體 font-family:", "btn":["ff-cj86","ff-jo6","ff-1ul"]},
-			{"ttl":"字大小 font-size: 0~100px", "btn":["fs-0","fs-12","fs-24","fs-60","fs-100"]},
-			{"ttl":"文字顏色 color: #000~#FFF", "btn":["c-b","c-y","c-w","c-f","c-F","c-0"]},
-			{"ttl":"背景顏色 background-color: #000~#FFF", "btn":["bgc-b","bgc-y","bgc-w","bgc-f","bgc-F","bgc-0"]},
-			{"ttl":"透明度 opacity: 0 ~ 1", "btn":["op-0","op-20","op-60","op-100"]},
-			{"ttl":"文字裝飾 bold 、italic、text-decoration:", "btn":["text-b","text-i","text-u","text-o","text-s"]},
-			{"ttl":"Debug用邊界線: border:thin 'color' dashed", "btn":["b-r","b-g","b-b","b-y","b-w","b-o","b-p"]}
-		]
-		for (var i in bf1){
-			txtbf1 += '<div class="pb-12">'
-			txtbf1 += '<p>'+ bf1[i].ttl +'</p>\n'
-			for (var j in bf1[i].btn){
-				txtbf1 += '<button class="btn btn-danger btn-sm">'+ bf1[i].btn[j] +'</button>\n'
-			}
-			txtbf1 += '</div>'
+
+	<h3 class="mb-10">自製:</h3>
+	<div js-tab-group="main" class="mb-10">
+		<button class="js-tab btn btn-dark active" js-tab-target="#a">JS</button>
+		<button class="js-tab btn btn-dark" js-tab-target="#b">CSS</button>
+		<button class="js-tab btn btn-dark" js-tab-target="#c">Plugins</button>
+	</div>
+	<div js-tab-group="main" class="mb-10">
+		<div id="a" class="js-tab-content" style="display: none;" js-tab-group="codepen">
+			<button class="js-tab btn btn-success active" js-tab-target="#a1">避免button 短時間內按兩次</button>
+			<button class="js-tab btn btn-success" js-tab-target="#a2">進度條</button>
+		</div>
+		<div id="b" class="js-tab-content" style="display: none;" js-tab-group="codepen">
+			<button class="js-tab btn btn-success" js-tab-target="#b1">img src="svg" to svg</button>
+			<button class="js-tab btn btn-success" js-tab-target="#b2">search input in array</button>
+		</div>
+	</div>
+	<div id="iframeContent" js-tab-group="codepen" style="height: 800px;">
+		<iframe id="a1" class="js-tab-content" style="width:100%; height:100%; display: none;" src="https://codepen.io/bvpqygqy/pen/bGdpbZx"></iframe>
+		<iframe id="a2" class="js-tab-content" style="width:100%; height:100%; display: none;" src="https://codepen.io/bvpqygqy/pen/jObbbqa"></iframe>
+		<iframe id="b1" class="js-tab-content" style="width:100%; height:100%; display: none;" src="https://codepen.io/bvpqygqy/pen/dyYoVjE"></iframe>
+		<iframe id="b2" class="js-tab-content" style="width:100%; height:100%; display: none;" src="https://codepen.io/bvpqygqy/pen/WNeVoJK"></iframe>
+	</div>
+
+	<script>
+		tab();
+		$('#iframeContent').css('height', window.screen.availHeight - 200 );
+	</script>
+
+	<h3>bf.css examples:</h3>
+
+	<div class="row" style="min-height:100px">
+		<div class="col-sm-6" id="demobf1">
+
+		</div>
+		<div class="col-sm-6 pb-100">
+			<p style="color:#E55">HTML code：</p> 
+			<div>＜div class="<button class="btn btn-danger p-0">值</button>"＞
+				<div class="pl-24">中文 English 12345</div>
+				＜/div＞
+			</div>
+			<br>
+			<div class="b-a solid p-20">
+				<div id="div-bf1">中文 English 12345</div>
+			</div>
+		</div>
+	</div>
+	<hr>
+	<div class="row">
+		<div class="col-sm-6" id="demobf2">
+			<div class="pb-12">
+				<p>鼠標樣式 cursor: (滑鼠移到文字上看auto與default差別)</p>
+				<button class="btn btn-primary btn-sm cur-auto">cur-auto</button>
+				<button class="btn btn-primary btn-sm cur-default">cur-default</button>
+				<button class="btn btn-primary btn-sm cur-cell">cur-cell</button>
+				<button class="btn btn-primary btn-sm cur-zoomin">cur-zoomin</button>
+				<button class="btn btn-primary btn-sm cur-zoomout">cur-zoomout</button>
+				<button class="btn btn-primary btn-sm cur-pointer">cur-pointer</button>
+				<button class="btn btn-primary btn-sm cur-not">cur-not</button>
+			</div>
+
+		</div>
+		<div class="col-sm-6">
+			<p style="color:deepskyblue">HTML code：</p>
+			<div>＜div class="<button class="btn btn-primary p-0">值</button>" style="border:1px white dashed"＞
+				<div class="pl-24">中文 English 12345＜br＞</div>
+				<div class="pl-24">中文 English 12345</div>
+				＜/div＞
+			</div>
+			<br>
+			<div class="b-a solid p-20">
+				<div id="div-bf2" style="border:1px dashed">中文 English 12345<br>中文 English 12345</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		$(function(){
+			var txtbf1 = ""
+			var bf1 = [
+					{"ttl":"中文字體 font-family:", "btn":["ff-cj86","ff-jo6","ff-1ul"]},
+					{"ttl":"字大小 font-size: 0~100px", "btn":["fs-0","fs-12","fs-24","fs-60","fs-100"]},
+					{"ttl":"文字顏色 color: #000~#FFF", "btn":["c-b","c-y","c-w","c-f","c-F","c-0"]},
+					{"ttl":"背景顏色 background-color: #000~#FFF", "btn":["bgc-b","bgc-y","bgc-w","bgc-f","bgc-F","bgc-0"]},
+					{"ttl":"透明度 opacity: 0 ~ 1", "btn":["op-0","op-20","op-60","op-100"]},
+					{"ttl":"文字裝飾 bold 、italic、text-decoration:", "btn":["text-b","text-i","text-u","text-o","text-s"]},
+					{"ttl":"Debug用邊界線: border:thin 'color' dashed", "btn":["b-r","b-g","b-b","b-y","b-w","b-o","b-p"]}
+				]
+				for (var i in bf1){
+					txtbf1 += '<div class="pb-12">'
+					txtbf1 += '<p>'+ bf1[i].ttl +'</p>\n'
+					for (var j in bf1[i].btn){
+						txtbf1 += '<button class="btn btn-danger btn-sm">'+ bf1[i].btn[j] +'</button>\n'
+					}
+					txtbf1 += '</div>'
+				}
+			$('#demobf1').append(txtbf1)
+
+			
+			var txtbf2 = ""
+			var bf2 = [
+					{"ttl":"padding: 0~100px; (px=padding-left&right)", "btn":["p-20","p-60","pt-60","pb-60","py-60","pl-60","pr-60","px-60"]},
+					{"ttl":"margin: 0~100px; (my=margin-top&bottom)", "btn":["m-20","m-60","mt-60","mb-60","my-60","ml-60","mr-60","mx-60"]},
+					{"ttl":"margin負值 : -0~-100px;", "btn":["m-n20","m-n60","mt-n60","mb-n60","my-n60","ml-n60","mr-n60","mx-n60"]},
+					{"ttl":"float: & text-align:", "btn":["f-l","f-r","f-n","ta-l","ta-r","ta-c","ta-j"]},
+					{"ttl":"字寬距 letter-spacing: 0~100px", "btn":["ls-0","ls-4","ls-16","ls-100"]},
+					{"ttl":"字寬距負值 letter-spacing: -0~-100px", "btn":["ls-n0","ls-n4","ls-n8","ls-n100"]},
+					{"ttl":"字行高 line-height: 0~100px", "btn":["lh-0","lh-10","lh-25","lh-100"]}
+				]
+				for (var i in bf2){
+					txtbf2 += '<div class="pb-12">'
+					txtbf2 += '<p>'+ bf2[i].ttl +'</p>\n'
+					for (var j in bf2[i].btn){
+						txtbf2 += '<button class="btn btn-primary btn-sm">'+ bf2[i].btn[j] +'</button>\n'
+					}
+					txtbf2 += '</div>'
+				}
+			$('#demobf2').append(txtbf2)
+
+
+			$("#demobf1 .btn").click(function(){
+				txt = $(this).text();
+				$('#div-bf1').removeAttr("class")
+				$('#div-bf1').addClass(txt);
+			});
+			$("#demobf2 .btn").click(function(){
+				txt = $(this).text();
+				$('#div-bf2').removeAttr("class")
+				$('#div-bf2').addClass(txt);
+			});
+		});
+	</script>
+	<script>
+		$('body').on('mousemove', function(){
+			myF();
+		})
+		function myF() {
+			var x = event.clientX;
+			var y = event.clientY;
+			var str = `
+				亂數20~100: ${(Math.random()*(100-20+1)+20).toFixed(5)};
+				<d></d>X,Y座標: ${x}, ${y}
+			`
+			$('#pra').html( str );
 		}
-	$('#demobf1').append(txtbf1)
 
-	
-	var txtbf2 = ""
-	var bf2 = [
-			{"ttl":"padding: 0~100px; (px=padding-left&right)", "btn":["p-20","p-60","pt-60","pb-60","py-60","pl-60","pr-60","px-60"]},
-			{"ttl":"margin: 0~100px; (my=margin-top&bottom)", "btn":["m-20","m-60","mt-60","mb-60","my-60","ml-60","mr-60","mx-60"]},
-			{"ttl":"margin負值 : -0~-100px;", "btn":["m-n20","m-n60","mt-n60","mb-n60","my-n60","ml-n60","mr-n60","mx-n60"]},
-			{"ttl":"float: & text-align:", "btn":["f-l","f-r","f-n","ta-l","ta-r","ta-c","ta-j"]},
-			{"ttl":"字寬距 letter-spacing: 0~100px", "btn":["ls-0","ls-4","ls-16","ls-100"]},
-			{"ttl":"字寬距負值 letter-spacing: -0~-100px", "btn":["ls-n0","ls-n4","ls-n8","ls-n100"]},
-			{"ttl":"字行高 line-height: 0~100px", "btn":["lh-0","lh-10","lh-25","lh-100"]}
-		]
-		for (var i in bf2){
-			txtbf2 += '<div class="pb-12">'
-			txtbf2 += '<p>'+ bf2[i].ttl +'</p>\n'
-			for (var j in bf2[i].btn){
-				txtbf2 += '<button class="btn btn-primary btn-sm">'+ bf2[i].btn[j] +'</button>\n'
+		function jsScreen(v){
+			if (v=="a"){
+				// 正常情況，換行請用\n
+				var s = "";
+				s += "document.\n";
+				s += " 網頁可見區域寬(body.clientWidth)："+ document.body.clientWidth +"\n";
+				s += " 網頁可見區域高(body.clientHeight)："+ document.body.clientHeight +"\n";
+				s += " 網頁可見區域寬(body.offsetWidth)："+ document.body.offsetWidth + " (包括邊線和捲軸的寬)\n";
+				s += " 網頁可見區域高(body.offsetHeight)："+ document.body.offsetHeight + " (包括邊線的寬)\n";
+				s += " 網頁正文全文寬(body.scrollWidth)："+ document.body.scrollWidth +"\n";
+				s += " 網頁正文全文高(body.scrollHeight)："+ document.body.scrollHeight +"\n";
+				s += " 網頁被卷去的高(ff)(body.scrollTop)："+ document.body.scrollTop +"\n";
+				s += " 網頁被卷去的高(ie)(documentElement.scrollTop)："+ document.documentElement.scrollTop +"\n";
+				s += " 網頁被卷去的左(body.scrollLeft)："+ document.body.scrollLeft +"\n";
+				s += "window.\n";
+				s += " 網頁正文部分上(screenTop)："+ window.screenTop +"\n";
+				s += " 網頁正文部分左(screenLeft)："+ window.screenLeft +"\n";
+				s += " 螢幕解析度的高(screen.height)："+ window.screen.height +"\n";
+				s += " 螢幕解析度的寬(screen.width)："+ window.screen.width +"\n";
+				s += " 螢幕可用工作區高度(screen.availHeight)："+ window.screen.availHeight +"\n";
+				s += " 螢幕可用工作區寬度(screen.availWidth)："+ window.screen.availWidth +"\n";
+				s += " 你的螢幕設置是(screen.colorDepth)："+ window.screen.colorDepth +" 位彩色\n";
+				s += " 你的螢幕設置(screen.deviceXDPI)："+ window.screen.deviceXDPI +" 像素/英寸\n";
+				s += " 你的螢幕是(screen.deviceXDPI)："+ window.screen.pixelDepth +" 吋"
+				s += " URL(location.href)： "+ window.location.href +"\n";
+				s += " Domain Name(location.hostname)： "+ window.location.hostname +"\n";
+				s += " Path & Filename(location.pathname)： "+ window.location.pathname +"\n";
+				s += " Protocol(location.protocol)： "+ window.location.protocol +"\n";
+				s += " Loads A New Document(location.assign)： "+ window.location.assign +"\n";
+				alert(s);
+
+			}else if(v=="c"){
+				// 載入jquery.comfirm時，換行請用<br>
+				var t= "";
+				t += "***document.***<br>";
+				t += " 網頁可見區域寬(body.clientWidth)："+ document.body.clientWidth +"<br>";
+				t += " 網頁可見區域高(body.clientHeight)："+ document.body.clientHeight +"<br>";
+				t += " 網頁可見區域寬(body.offsetWidth)："+ document.body.offsetWidth + " (包括邊線和捲軸的寬)<br>";
+				t += " 網頁可見區域高(body.offsetHeight)："+ document.body.offsetHeight + " (包括邊線的寬)<br>";
+				t += " 網頁正文全文寬(body.scrollWidth)："+ document.body.scrollWidth +"<br>";
+				t += " 網頁正文全文高(body.scrollHeight)："+ document.body.scrollHeight +"<br>";
+				t += " 網頁被卷去的高(ff)(body.scrollTop)："+ document.body.scrollTop +"<br>";
+				t += " 網頁被卷去的高(ie)(documentElement.scrollTop)："+ document.documentElement.scrollTop +"<br>";
+				t += " 網頁被卷去的左(body.scrollLeft)："+ document.body.scrollLeft +"<br>";
+				t += "***window.***<br>";
+				t += " 網頁正文部分上(screenTop)："+ window.screenTop +"<br>";
+				t += " 網頁正文部分左(screenLeft)："+ window.screenLeft +"<br>";
+				t += " 螢幕解析度的高(screen.height)："+ window.screen.height +"<br>";
+				t += " 螢幕解析度的寬(screen.width)："+ window.screen.width +"<br>";
+				t += " 螢幕可用工作區高度(screen.availHeight)："+ window.screen.availHeight +"<br>";
+				t += " 螢幕可用工作區寬度(screen.availWidth)："+ window.screen.availWidth +"<br>";
+				t += " 你的螢幕設置是(screen.colorDepth)："+ window.screen.colorDepth +" 位彩色<br>";
+				t += " 你的螢幕設置(screen.deviceXDPI)："+ window.screen.deviceXDPI +" 像素/英寸<br>";
+				t += " 你的螢幕是(screen.deviceXDPI)："+ window.screen.pixelDepth +" 吋<br>";
+				t += "***window.location.***<br>";
+				t += " URL(href)： "+ window.location.href +"<br>";
+				t += " Protocol(protocol)： "+ window.location.protocol +"<br>";	
+				t += " Domain Name(hostname)： "+ window.location.hostname +"<br>";
+				t += " Path & Filename(pathname)： "+ window.location.pathname +"<br>";
+				t += " Loads A New Document(assign)： "+ window.location.assign +"<br>";
+
+				/* 參考: https://craftpip.github.io/jquery-confirm */
+				$.dialog({
+					title:'JS螢幕顯示用法',
+					content: t,
+					draggable: true,
+					columnClass: '',
+					boxWidth: '80%',
+					theme: 'dark',
+				})
 			}
-			txtbf2 += '</div>'
 		}
-	$('#demobf2').append(txtbf2)
-
-
-	$("#demobf1 .btn").click(function(){
-		txt = $(this).text();
-		$('#div-bf1').removeAttr("class")
-		$('#div-bf1').addClass(txt);
-	});
-	$("#demobf2 .btn").click(function(){
-		txt = $(this).text();
-		$('#div-bf2').removeAttr("class")
-		$('#div-bf2').addClass(txt);
-	});
-});
-</script>
-
-<script src="bf.js"></script>
-<script>
-	/* 取 20到100 亂數 ，toFixed(x)是取小數點後x位 */
-	document.getElementsByTagName("body")[0].addEventListener("mousemove", myF);
-	function myF() {
-	    document.getElementById("pra").innerHTML = "<d></d> 亂數20~100:" + (Math.random()*(100-20+1)+20).toFixed(5);
-	    var x = event.clientX;
-	    var y = event.clientY;
-	    document.getElementById("pra").innerHTML+= "<d></d> X,Y座標:" + x + "," + y;
-	}
-</script>
+	</script>
 </body>
 </html>

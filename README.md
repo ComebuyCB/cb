@@ -51,4 +51,4 @@ And you?
 
 [Yahoo-Link](https://tw.yahoo.com/)
 
-![Picture](game.png)
+![Picture](src/img/game.png)

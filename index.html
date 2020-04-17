@@ -14,17 +14,20 @@
 	<script src="src/plugins/bootstrap/popper.js"></script>
 	<script src="src/plugins/bootstrap/bootstrap.js"></script>
 
-	<!-- cb -->
-	<link rel="stylesheet" href="src/css/cb.css">
-	<script src="src/js/cb.js"></script>
+    <!-- main_simplify -->
+	<link rel="stylesheet" href="src/css/main_simplify.css">
+	<script src="src/js/main_simplify.js"></script>
 
 	<!-- jquery-confirm -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+
+	<!-- web style -->
+	<link rel="stylesheet" href="src/css/cb.css">
+	<script src="src/js/cb.js"></script>
 
 	<base target="_blank">
 	<style>
-		body {padding: 0 30px 60px 30px;background-color:#122;color:lightgray}
 		a,span {font-size: 16px; line-height:2; color:skyblue}
 		a,span,p {white-space:nowrap}
 		p {font-size: 16px; line-height:2 ; color:deepskyblue; margin:0}
@@ -33,212 +36,67 @@
 		.ccc:after{content: "("attr(href)")"}
 		.ee{background:#333}
 		.ee:hover{cursor:pointer;background-color:#555}
-		.divs{display: inline-table; padding: 0 15px;}
 	</style>
 </head>
 
-<body id="fullHeightx">
-	<span id="pra"></span>
+<body>
+	<div id="container">
+		<span id="pra"></span>
 
-	<div class="mx-n15">
-		<div class="divs">
-			<h3>HTML</h3>
-			<ul>
-				<li><a href="https://www.w3schools.com/html/tryit.asp?filename=tryhtml_links_colors">:link :visited :hover :active</a></li>
-				<li><a href="https://www.w3schools.com/html/tryit.asp?filename=tryhtml_head_base" title="
-			_blank - Opens the linked document in a new window or tab			
-			_self - Opens the linked document in the same window/tab as it was clicked (this is default)			
-			_parent - Opens the linked document in the parent frame			
-			_top - Opens the linked document in the full body of the window">_blank _self _parent _top</a></li>
-				<li><a href="https://www.w3schools.com/html/tryit.asp?filename=tryhtml_images_map2">map - ( area shape - coords )</a></li>
-				<li><a href="https://www.w3schools.com/html/tryit.asp?filename=tryhtml_images_picture">picture - ( source media - srcset )</a></li>
-				<li><a href="https://www.w3schools.com/html/tryit.asp?filename=tryhtml_iframe_target">iframe target</a></li>
-				<li><a href="https://www.w3schools.com/tags/tryit.asp?filename=tryhtml5_global_draggable">可拉式物件 (draggable="true")</a></li>
-				<li><a href="https://www.w3schools.com/tags/tryit.asp?filename=tryhtml5_input_type_radio">input type="radio"</a></li>
-				<li><a href="https://www.w3schools.com/tags/tryit.asp?filename=tryhtml_col_test">col 和 colgroup (table排色好用)</a></li>
-				<li><a href="https://www.w3schools.com/tags/tag_frame.asp">←|→拉 終於找到這功能了 (不支援HTML5)</a></li>
-				<li><a href="https://www.w3schools.com/tags/tryit.asp?filename=tryhtml_optgroup">optgroup 下拉式選單群組</a></li>
-				<li><a href=""></a></li>
-			</ul>
-			<h3>API</h3>
-			<ul>
-				<li><a href="https://www.w3schools.com/html/html5_geolocation.asp">存取現在位置</a></li>
-				<li><a href=""></a></li>
-			</ul>
-		</div>
-	
-		<div class="divs">
-			<h3>CSS</h3>
-			<ul>
-				<li><a href="https://www.w3schools.com/css/tryit.asp?filename=trycss_ex_images_center">圖片置中 Img center</a></li>
-				<li><a href="https://www.w3schools.com/cssref/tryit.asp?filename=trycss_dim_width_inputfocus">文方伸縮 type="text" 口 → |二二二|</a></li>
-				<li><a href="https://www.w3schools.com/cssref/tryit.asp?filename=trycss_anim_top">上下來回動~ animation </a></li>	
-				<li><a href="https://www.w3schools.com/css/tryit.asp?filename=trycss3_mediaqueries_ex4">把 href 取出! content:"(" attr( href ) ")";</a></li>
-				<li><a href="https://www.w3schools.com/bootstrap/bootstrap_affix.asp">偽Fixed bar，Affix!! (BS 4.0.0 沒了)</a></li>
-				<li><a href="https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_navbar_sticky">Sticky 完整教學</a></li>
-				<li><a href="https://www.w3schools.com/howto/howto_css_equal_height.asp">等高排列~ table-cell </a></li>
-				<li><a href="https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_snackbar">訊息小提示，不錯看</a></li>
-				<li><a href="https://www.w3schools.com/cssref/tryit.asp?filename=trycss3_selection">::selection 螢光筆</a></li>
-				<li><a href=""></a></li>
-			</ul>
-			<h3 class="hhh"> Bootstrap </h3>
-			<ul>
-				<li><a href="https://www.w3schools.com/bootstrap/tryit.asp?filename=trybs_alerts_dismissible&stacked=h">Alerts</a></li>
-				<li><a href="https://www.w3schools.com/bootstrap/tryit.asp?filename=trybs_form_basic&stacked=h">E-mail</a></li>
-				<li><a href=""></a></li>
-			</ul>
+		<div class="mb-30">
+			<!-- knowledgeTab 不好用 暫時關閉TAB -->
+			<div id="knowledgeTab" js-tab-group="knowledge" class="mb-10 d-none"></div>
+			<div id="knowledgeContent" js-tab-group="knowledge" class="mb-10 row"></div>
 		</div>
 
-		<div class="divs">
-			<h3>JavaScript + Jquary</h3>
-			<ul>
-				<li class="bgc-3" onclick="jsScreen('c')"><span>JS螢幕寬高顯示用法</span></li>
-				<li><a href="https://www.w3schools.com/code/tryit.asp?filename=FMKSMUYQRLKO">下拉改變TopNav (*Edit)</a></li>
-				<li><a href="https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_contact_chips_close">this.parentElement.style.display='none' 關閉X</a></li>
-				<li><a href="http://www.the-art-of-web.com/javascript/validate-date/">日期格式判斷</a></li>
-				<li><a href="https://www.w3schools.com/jsref/dom_obj_all.asp"> HTML元素標籤</a></li>
-				<li><a href="https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_node_appendchild"> 創造元素、內容</a></li>
-				<li><a href="https://www.w3schools.com/jquery/jquery_filters.asp"> 製作 Search </a></li>
-				<li><a href=""></a></li>
-			</ul>
-			<h3> 隨意貼 </h3>
-			<ul>
-				<li><a href="http://yisibl.github.io/cubic-bezier/">cubic-bezier 動畫產生器</a></li>
-				<li><a href="/build_bf.html">自製 VBcopyCSS</a></li>
-				<li><a href="/bf.css">自製 CSS</a></li>
-			</ul>
-			<h3> Learning!!! </h3>
-			<ul>
-				<li><a href="https://www.w3schools.com/tags/tryit.asp?filename=tryhtml5_global_data">getAttribute</a></li>
-				<li><a href="https://pjchender.blogspot.tw/">PJCHENder 那些沒告訴你的小細節</a></li>
-				<li><a href="http://www.oxxostudio.tw/articles/201503/html5-input-range-style.html">改變 HTML5 range 樣式</a></li>
-				<li><a href="https://www.w3schools.com/code/tryit.asp?filename=FO8WITXOA4VF">JS取range值</a></li>
-				<li><a href=""></a></li>
-			</ul>
-		</div>
+		<h3>bf.css examples:</h3>
 
-		<div class="divs">
-			<h3>小知識 + 常忘語法</h3>
-			<div>
-				<p>&lt;meta http-equiv="refresh" content="30"&gt;<b>更新網頁 every 30s</b></p>
-				<p>&lt;link rel="shortcut Icon" type="image/x-icon" href=""&gt;<b>網站小圖示</b></p>	
-				<p>background-size:contain <b>長或寬填滿</b></p>
-				<p>background-size:cover <b>直到填滿 (會溢出)</b></p>
-				
-				<p class="bgc-3" data-toggle="collapse" data-target="#sql">基本SQL語法</p>
-				<pre id="sql" class="collapse">
-				update TB set COL='VAL',COL='VAL' where~
-				insert into TB (COL,COL) values ('VAL','VAL') 
-				delete from TB where~ 
-				truncate table TB </pre>
-				
-				<p class="bgc-3" data-toggle="collapse" data-target="#sel">CSS Selector[CSS選擇器]</p>
-				<pre id="sel" class="collapse">
-				[target = _blank] 完全一樣
-				[title ~= flower] 單字一樣
-				[lang  |= en]	起始單字一樣，後面加 - 才可接字
-				[href  ^= "https"] 起始一樣
-				[href  $= ".pdf"] 結尾一樣
-				[href  *= "w3schools"] 搜到一樣
-				div   p|父.子|兒子p.孫子p.曾孫p...
-				div &gt; p|父.子|兒子p
-				div + p|父.父|排在div後面的下一位p
-				div ~ p|父.父|排在div後面的所有p </pre>
-				
-				<p class="bgc-3" data-toggle="collapse" data-target="#vb">VB語言</p>
-				<pre id="vb" class="collapse">
-				&lt;script runat="server"&gt;
-				Public function rrq(vStr)
-				return replace(request(vStr),"'","''")
-				End function
-				&lt;/script&gt;
-				'用來取url?後的敘述。如:XX.html?du=21
-				'那麼下 rrq('du') 即可獲取'21'這個值 </pre>
-				
-				<p class="bgc-3" data-toggle="collapse" data-target="#hd">htmlHead</p>
-				<div id="hd" class="collapse bgc-w">
-					<iframe src="html.txt" width="100%" height="360px"></iframe>
+		<div class="row" style="min-height:100px">
+			<div class="col-sm-6" id="demobf1">
+
+			</div>
+			<div class="col-sm-6 pb-100">
+				<p style="color:#E55">HTML code：</p> 
+				<div>＜div class="<button class="btn btn-danger p-0">值</button>"＞
+					<div class="pl-24">中文 English 12345</div>
+					＜/div＞
+				</div>
+				<br>
+				<div class="b-a solid p-20">
+					<div id="div-bf1">中文 English 12345</div>
+				</div>
+			</div>
+		</div>
+		<hr>
+		<div class="row">
+			<div class="col-sm-6" id="demobf2">
+				<div class="pb-12">
+					<p>鼠標樣式 cursor: (滑鼠移到文字上看auto與default差別)</p>
+					<button class="btn btn-primary btn-sm cur-auto">cur-auto</button>
+					<button class="btn btn-primary btn-sm cur-default">cur-default</button>
+					<button class="btn btn-primary btn-sm cur-cell">cur-cell</button>
+					<button class="btn btn-primary btn-sm cur-zoomin">cur-zoomin</button>
+					<button class="btn btn-primary btn-sm cur-zoomout">cur-zoomout</button>
+					<button class="btn btn-primary btn-sm cur-pointer">cur-pointer</button>
+					<button class="btn btn-primary btn-sm cur-not">cur-not</button>
+				</div>
+
+			</div>
+			<div class="col-sm-6">
+				<p style="color:deepskyblue">HTML code：</p>
+				<div>＜div class="<button class="btn btn-primary p-0">值</button>" style="border:1px white dashed"＞
+					<div class="pl-24">中文 English 12345＜br＞</div>
+					<div class="pl-24">中文 English 12345</div>
+					＜/div＞
+				</div>
+				<br>
+				<div class="b-a solid p-20">
+					<div id="div-bf2" style="border:1px dashed">中文 English 12345<br>中文 English 12345</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<!--******************************************************************************************************************************-->
-	
 
-	<h3 class="mb-10">自製:</h3>
-	<div js-tab-group="main" class="mb-10">
-		<button class="js-tab btn btn-dark active" js-tab-target="#a">JS</button>
-		<button class="js-tab btn btn-dark" js-tab-target="#b">CSS</button>
-		<button class="js-tab btn btn-dark" js-tab-target="#c">Plugins</button>
-	</div>
-	<div js-tab-group="main" class="mb-10">
-		<div id="a" class="js-tab-content" style="display: none;" js-tab-group="codepen">
-			<button class="js-tab btn btn-success active" js-tab-target="#a1">避免button 短時間內按兩次</button>
-			<button class="js-tab btn btn-success" js-tab-target="#a2">進度條</button>
-		</div>
-		<div id="b" class="js-tab-content" style="display: none;" js-tab-group="codepen">
-			<button class="js-tab btn btn-success" js-tab-target="#b1">img src="svg" to svg</button>
-			<button class="js-tab btn btn-success" js-tab-target="#b2">search input in array</button>
-		</div>
-	</div>
-	<div id="iframeContent" js-tab-group="codepen" style="height: 800px;">
-		<iframe id="a1" class="js-tab-content" style="width:100%; height:100%; display: none;" src="https://codepen.io/bvpqygqy/pen/bGdpbZx"></iframe>
-		<iframe id="a2" class="js-tab-content" style="width:100%; height:100%; display: none;" src="https://codepen.io/bvpqygqy/pen/jObbbqa"></iframe>
-		<iframe id="b1" class="js-tab-content" style="width:100%; height:100%; display: none;" src="https://codepen.io/bvpqygqy/pen/dyYoVjE"></iframe>
-		<iframe id="b2" class="js-tab-content" style="width:100%; height:100%; display: none;" src="https://codepen.io/bvpqygqy/pen/WNeVoJK"></iframe>
-	</div>
-
-	<script>
-		tab();
-		$('#iframeContent').css('height', window.screen.availHeight - 200 );
-	</script>
-
-	<h3>bf.css examples:</h3>
-
-	<div class="row" style="min-height:100px">
-		<div class="col-sm-6" id="demobf1">
-
-		</div>
-		<div class="col-sm-6 pb-100">
-			<p style="color:#E55">HTML code：</p> 
-			<div>＜div class="<button class="btn btn-danger p-0">值</button>"＞
-				<div class="pl-24">中文 English 12345</div>
-				＜/div＞
-			</div>
-			<br>
-			<div class="b-a solid p-20">
-				<div id="div-bf1">中文 English 12345</div>
-			</div>
-		</div>
-	</div>
-	<hr>
-	<div class="row">
-		<div class="col-sm-6" id="demobf2">
-			<div class="pb-12">
-				<p>鼠標樣式 cursor: (滑鼠移到文字上看auto與default差別)</p>
-				<button class="btn btn-primary btn-sm cur-auto">cur-auto</button>
-				<button class="btn btn-primary btn-sm cur-default">cur-default</button>
-				<button class="btn btn-primary btn-sm cur-cell">cur-cell</button>
-				<button class="btn btn-primary btn-sm cur-zoomin">cur-zoomin</button>
-				<button class="btn btn-primary btn-sm cur-zoomout">cur-zoomout</button>
-				<button class="btn btn-primary btn-sm cur-pointer">cur-pointer</button>
-				<button class="btn btn-primary btn-sm cur-not">cur-not</button>
-			</div>
-
-		</div>
-		<div class="col-sm-6">
-			<p style="color:deepskyblue">HTML code：</p>
-			<div>＜div class="<button class="btn btn-primary p-0">值</button>" style="border:1px white dashed"＞
-				<div class="pl-24">中文 English 12345＜br＞</div>
-				<div class="pl-24">中文 English 12345</div>
-				＜/div＞
-			</div>
-			<br>
-			<div class="b-a solid p-20">
-				<div id="div-bf2" style="border:1px dashed">中文 English 12345<br>中文 English 12345</div>
-			</div>
-		</div>
-	</div>
 	<script>
 		$(function(){
 			var txtbf1 = ""
@@ -261,7 +119,6 @@
 				}
 			$('#demobf1').append(txtbf1)
 
-			
 			var txtbf2 = ""
 			var bf2 = [
 					{"ttl":"padding: 0~100px; (px=padding-left&right)", "btn":["p-20","p-60","pt-60","pb-60","py-60","pl-60","pr-60","px-60"]},
@@ -381,6 +238,200 @@
 				})
 			}
 		}
+
+		function pattern_Ajax_Data(){
+			let data = [
+				{
+					title: 'HTML',
+					content: [
+						{
+							value: ':link :visited :hover :active',
+							href: 'https://www.w3schools.com/html/tryit.asp?filename=tryhtml_links_colors',
+						},
+						{
+							value: '_blank _self _parent _top',
+							href: 'https://www.w3schools.com/html/tryit.asp?filename=tryhtml_head_base',
+						},
+						{
+							value: 'map - ( area shape - coords )',
+							href: 'https://www.w3schools.com/html/tryit.asp?filename=tryhtml_images_map2',
+						},
+						{
+							value: 'picture - ( source media - srcset )',
+							href: 'https://www.w3schools.com/html/tryit.asp?filename=tryhtml_images_picture',
+						},
+						{
+							value: 'iframe target',
+							href: 'https://www.w3schools.com/html/tryit.asp?filename=tryhtml_iframe_target',
+						},
+						{
+							value: '可拉式物件 (draggable="true")',
+							href: 'https://www.w3schools.com/html/tryit.asp?filename=tryhtml5_global_draggable',
+						},
+						{
+							value: 'input type="radio"',
+							href: 'https://www.w3schools.com/html/tryit.asp?filename=tryhtml5_input_type_radio',
+						},
+						{
+							value: 'col 和 colgroup (table排色好用)',
+							href: 'https://www.w3schools.com/html/tryit.asp?filename=tryhtml_col_test',
+						},
+						{
+							value: '←|→拉 終於找到這功能了 (不支援HTML5)',
+							href: 'https://www.w3schools.com/tags/tag_frame.asp',
+						},
+						{
+							value: 'optgroup 下拉式選單群組',
+							href: 'https://www.w3schools.com/html/tryit.asp?filename=tag_frame',
+						},
+					]
+				},
+				{
+					title: 'CSS',
+					content: [
+						{
+							value: '圖片置中 Img center',
+							href: 'https://www.w3schools.com/css/tryit.asp?filename=trycss_ex_images_center',
+						},
+						{
+							value: '文方伸縮 type="text" 口 → |二二二|',
+							href: 'https://www.w3schools.com/cssref/tryit.asp?filename=trycss_dim_width_inputfocus',
+						},
+						{
+							value: '上下來回動~ animation',
+							href: 'https://www.w3schools.com/cssref/tryit.asp?filename=trycss_anim_top',
+						},
+						{
+							value: '把 href 取出! content:"(" attr( href ) ")";',
+							href: 'https://www.w3schools.com/css/tryit.asp?filename=trycss3_mediaqueries_ex4',
+						},
+						{
+							value: 'Sticky 完整教學',
+							href: 'https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_navbar_sticky',
+						},
+						{
+							value: '等高排列~ table-cell',
+							href: 'https://www.w3schools.com/howto/howto_css_equal_height.asp',
+						},
+						{
+							value: '訊息小提示，不錯看',
+							href: 'https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_snackbar',
+						},
+						{
+							value: '::selection 螢光筆',
+							href: 'https://www.w3schools.com/cssref/tryit.asp?filename=trycss3_selection',
+						},
+					]
+				},			
+				{
+					title: 'JS',
+					content: [
+						{
+							value: '存取現在位置',
+							href: 'https://www.w3schools.com/html/html5_geolocation.asp',
+						},
+						{
+							value: '下拉改變TopNav (*Edit)',
+							href: 'https://www.w3schools.com/code/tryit.asp?filename=FMKSMUYQRLKO',
+						},
+						{
+							value: 'this.parentElement.style.display="none"',
+							href: 'https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_contact_chips_close',
+						},
+						{
+							value: '日期格式判斷',
+							href: 'http://www.the-art-of-web.com/javascript/validate-date/',
+						},
+						{
+							value: 'HTML元素標籤',
+							href: 'https://www.w3schools.com/jsref/dom_obj_all.asp',
+						},
+						{
+							value: '創造元素、內容',
+							href: 'https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_node_appendchild',
+						},
+						{
+							value: '製作 Search',
+							href: 'https://www.w3schools.com/jquery/jquery_filters.asp',
+						},
+					]
+				},
+				{
+					title: 'Learn',
+					content: [
+						{
+							value: 'getAttribute',
+							href: 'https://www.w3schools.com/tags/tryit.asp?filename=tryhtml5_global_data',
+						},
+						{
+							value: 'PJCHENder 那些沒告訴你的小細節',
+							href: 'https://pjchender.blogspot.tw/',
+						},
+						{
+							value: '改變 HTML5 range 樣式',
+							href: 'http://www.oxxostudio.tw/articles/201503/html5-input-range-style.html',
+						},
+						{
+							value: 'JS取range值',
+							href: 'https://www.w3schools.com/code/tryit.asp?filename=FO8WITXOA4VF',
+						}
+					]
+				},
+				{
+					title: 'Others',
+					content: [
+						{
+							value: 'cubic-bezier 動畫產生器',
+							href: 'http://yisibl.github.io/cubic-bezier/#.17,.67,.83,.67',
+						}
+					]
+				},
+				{
+					title: 'My Notes',
+					content: [
+						{
+							value: '小知識 + 常忘語法',
+							href: 'https://comebuycb.github.io/cb/view/my_notes.html',
+						},
+						{
+							value: '自製工具',
+							href: 'https://comebuycb.github.io/cb/view/my_tools.html',
+						},
+					]
+				},
+			]
+			return data;
+		}
+
+		function layout_Tab_Button(dataObj){
+			let str = ""
+			$.each( dataObj, function(i,v){
+				str +=`<button class="js-tab btn btn-dark btn-lg mr-4 ${ i==0 ? 'active':''}" js-tab-target="#knowledge_${v.title}" style="min-width: 100px">${v.title}</button>`
+			})
+			return str
+		}
+		$('#knowledgeTab').html( layout_Tab_Button( pattern_Ajax_Data() ) );
+
+
+		function layout_Tab_Content(dataObj){
+			let str = ""
+			$.each( dataObj, function(i1,v1){
+				str +=`<div id="knowledge_${v1.title}" class="js-tab-content col">`
+				str +=	`<h3>${v1.title}</h3>`
+				str += 	`<ul>`
+				$.each( v1.content, function(i2,v2){
+					str += `<li><a href="${v2.href}">${v2.value}</a></li>`
+				})
+				str += 	`</ul>`
+				str += `</div>`
+			})
+			return str
+		}
+		$('#knowledgeContent').html( layout_Tab_Content( pattern_Ajax_Data() ) );
+
+		$(function(){
+			// tab('mouseover');
+		})
 	</script>
 </body>
 </html>

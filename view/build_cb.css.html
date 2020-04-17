@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+	<!-- shortcut -->
+	<link rel="Shortcut Icon" type="image/x-icon" href="cb-logo.png">
+
+	<!-- jquery -->
+	<script src="../src/plugins/jquery/jquery.js"></script>
+
+	<!-- bootstrap -->
+	<link rel="stylesheet" href="../src/plugins/bootstrap/bootstrap.css">
+	<script src="../src/plugins/bootstrap/popper.js"></script>
+	<script src="../src/plugins/bootstrap/bootstrap.js"></script>
+
+    <!-- main_simplify -->
+	<link rel="stylesheet" href="../src/css/main_simplify.css">
+	<script src="../src/js/main_simplify.js"></script>
+
+	<!-- web style -->
+	<link rel="stylesheet" href="../src/css/cb.css">
+	<script src="../src/js/cb.js"></script>
+</head>
+<body>
+    <div id="container" class="px-10 pb-30">
+        <div id="output" class="fs-14 lh-11"></div>
+    </div>
+
+    <script>
+        let txt = "";
+
+        //margin (0~100)(px)
+        txt += "/*** margin (0~100)(px) ***/<br>"
+            txt += `.my-auto,.m-auto{margin-top:auto; margin-bottom:auto!important} `;
+            txt += `.mx-auto,.m-auto{margin-left:auto; margin-right:auto!important} `;
+        for (let i=0; i<=100; i++){
+            txt += `.mt-${i},.my-${i},.m-${i}{margin-top:${i}px!important} `;
+            txt += `.mb-${i},.my-${i},.m-${i}{margin-bottom:${i}px!important} `;
+            txt += `.mr-${i},.mx-${i},.m-${i}{margin-right:${i}px!important} `;
+            txt += `.ml-${i},.mx-${i},.m-${i}{margin-left:${i}px!important} `;
+            txt += i%10 === 0 ? "<br>" : "";
+        }   
+        txt += "<hr>";
+
+        //padding (0~100)(px)
+        txt += "/*** padding (0~100)(px) ***/<br>";
+        for (let i=0; i<=100; i++){
+            txt += `.pt-${i},.py-${i},.p-${i}{padding-top:${i}px!important} `;
+            txt += `.pb-${i},.py-${i},.p-${i}{padding-bottom:${i}px!important} `;
+            txt += `.pr-${i},.px-${i},.p-${i}{padding-right:${i}px!important} `;
+            txt += `.pl-${i},.px-${i},.p-${i}{padding-left:${i}px!important} `;
+            txt += i%10 === 0 ? "<br>" : "";
+        }
+        txt += "<hr>";
+
+        //width & height (0~100)(%)
+        txt += "/*** width & height (0~100)(%) ***/<br>";
+            txt += `.w-auto{width:auto} .h-auto{height:auto}`;
+        for (let i=0; i<=100; i++){
+            txt += `.w-${i}{width:${i}%!important} `;
+            txt += `.h-${i}{height:${i}%!important} `;
+            txt += i%10 === 0 ? "<br>" : "";
+        }
+        txt += "<hr>";
+
+        //border-radius (0~100)(px)
+        txt += "/*** border-radius (0~100)(px) ***/<br>";
+        for (let i=0; i<=100; i++){
+            txt += `.br-${i},.br-t-${i},.br-l-${i},.br-tl-${i}{border-top-left-radius:${i}px!important} `;
+            txt += `.br-${i},.br-t-${i},.br-r-${i},.br-tr-${i}{border-top-right-radius:${i}px!important} `;
+            txt += `.br-${i},.br-b-${i},.br-l-${i},.br-bl-${i}{border-bottom-left-radius:${i}px!important} `;
+            txt += `.br-${i},.br-b-${i},.br-r-${i},.br-br-${i}{border-bottom-right-radius:${i}px!important} `;
+            txt += i%10 === 0 ? "<br>" : "";
+        }
+        txt += "<hr>";
+
+        //font-size (0~100)(px) 
+        txt += "/*** font-size (0~100)(px) ***/<br>";
+        for (let i=0; i<=100; i++){
+            txt += `.fs-${i}{font-size:${i}px!important} `;
+            txt += i%10 === 0 ? "<br>" : "";
+        }
+        txt += "<hr>";
+
+        //line-height (0~100)(*0.1)
+        txt += "/*** line-height (0~100)(*0.1) ***/<br>";
+        for (let i=0; i<=100; i++){
+            txt += `.lh-${i}{line-height:${i/10}!important} `;
+            txt += i%10 === 0 ? "<br>" : "";
+        }
+        txt += "<hr>";
+
+        //opacity (0~100[+5])(*0.01)
+        txt += "/***  opacity (0~100 (+5))(*0.01) ***/<br>";
+        for (let i=0; i<=100; i=i+5){
+            txt += `op-${i}{opacity:${i/100}!important} `;
+            txt += i%25 === 0 ? "<br>" : "";
+        }
+        txt += "<hr>";
+
+        //黑白背景+半透明
+        txt += "/*** 黑白背景+半透明 (0~100 (+5))(*0.01) ***/<br>";
+        for (let i=0; i<=100; i=i+5){
+            txt += `.bgc-b-op-${i}{background-color:rgba(0,0,0,${i/100})!important} `;
+            txt += `.bgc-w-op-${i}{background-color:rgba(255,255,255,${i/100})!important} `;
+            txt += i%20 === 0 ? "<br>" : "";
+        }
+        txt += "<hr>";
+
+        //font-size (0.5~5.0)(rem)
+        txt += "/*** font-size (0.5~5.0)(rem) ***/<br>";
+        for (let i=1; i<=50; i++){
+            txt += `.fs-${i<10?'0'+i:i}r{font-size: ${(i*0.1).toFixed(1)}rem} `;
+            txt += i%10 === 0 ? "<br>" : "";
+        }
+        txt += "<hr>";
+
+    /* RWD */
+
+        const sc = [
+            {name:'',min:'',max:''},
+            {name:'-sm',min:'576px',max:'575.9px'},
+            {name:'-md',min:'768px',max:'767.9px'},
+            {name:'-lg',min:'992px',max:'991.9px'},
+            {name:'-xl',min:'1200px',max:'1199.9px'},
+        ]
+        
+        //等分
+        sc.forEach( (e)=>{
+            txt += '@media(min-width:' + e.min + '){<br>'
+                txt += '[class*="_equal-"]>*:nth-child(n){clear:none;}<br>'
+            for (let i=1; i<=16; i++){
+                txt += `._equal${e.name}-${i}>*{width:calc(100% / ${i});clear:left;} `
+                txt += i%2 === 0 ? "<br>" : "";
+            }
+            txt += '}<br>';
+        })
+
+
+        document.getElementById("output").innerHTML = txt;
+
+    </script>
+</body>
+</html>

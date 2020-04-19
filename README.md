@@ -1,3 +1,9 @@
+[Home-Link](https://comebuycb.github.io/cb/)
+
+![Picture](src/img/game.png)
+
+---
+
 # H1
 ## H2
 ### H3
@@ -46,9 +52,3 @@ Hello!
   I'm Ben.
 And you?
 ```
-
----
-
-[Yahoo-Link](https://tw.yahoo.com/)
-
-![Picture](src/img/game.png)

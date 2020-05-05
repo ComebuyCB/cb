@@ -62,10 +62,12 @@
             let grp = $(this).closest('[js-tab-group]').eq(0).attr('js-tab-group'); // group名稱
             let tg = $(this).attr('js-tab-target'); // 目標內容名稱
             
-            $('[js-tab-group='+grp+']').find('.js-tab').removeClass('active'); // 群組內的TAB取消active
+            $('[js-tab-group='+grp+']').children('.js-tab').removeClass('active'); // 群組內的TAB取消active (下一層)
+            $('[js-tab-group='+grp+']').find(':not([js-tab-group])').find('.js-tab').removeClass('active'); // 群組內的TAB取消active (下下層後)
             $(this).addClass('active'); // 按下的TAB active
 
-            $('[js-tab-group='+grp+']').find('.js-tab-content').removeClass('active').hide(); // 群組內的內容取消active & hide()
+            $('[js-tab-group='+grp+']').children('.js-tab-content').removeClass('active').hide(); // 群組內的內容取消active & hide(); (下一層)
+            $('[js-tab-group='+grp+']').find(':not([js-tab-group])').find('.js-tab-content').removeClass('active').hide(); // 群組內的內容取消active & hide(); (下下層後)
             $(tg).addClass('active').show(); // 目標內容active & show()
         });
     }

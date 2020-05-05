@@ -19,20 +19,26 @@
 
 	<!-- web style -->
 	<link rel="stylesheet" href="../src/css/cb.css">
-	<script src="../src/js/cb.js"></script>
+    <script src="../src/js/cb.js"></script>
+    
+    <style>
+        #main_tab .js-tab.active::after{
+            content:" ▼";
+        }
+    </style>
 </head>
 <body>
     <div id="container">
         <div id="tabs">
             <h3 class="mb-10">自製:</h3>
-            <div js-tab-group="main">
+            <div id="main_tab" js-tab-group="main">
                 <div class="d-inline-block pt-10">
-                    <button class="js-tab btn btn-dark active" js-tab-target="#a">JS</button>
+                    <button class="js-tab btn btn-dark active" js-tab-target="#a">Javascript</button>
                     <button class="js-tab btn btn-dark" js-tab-target="#b">CSS</button>
                     <button class="js-tab btn btn-dark" js-tab-target="#c">Plugins</button>
                 </div>
             </div>
-            <div js-tab-group="main" class="py-10">
+            <div js-tab-group="main" class="py-10" style="min-height: 58px;">
                 <div id="a" class="js-tab-content" js-tab-group="codepen">
                     <button class="js-tab btn btn-dark active" js-tab-target="#a1">避免button 短時間內按兩次</button>
                     <button class="js-tab btn btn-dark" js-tab-target="#a2">進度條</button>
@@ -54,8 +60,8 @@
     <script>
         $(function(){
             tab();
-            let $('#tabs').innerHeight();
-            $('#iframeContent').css('height', window.screen.availHeight - 200 );
+            let tabH = $('#tabs').innerHeight();
+            $('#iframeContent').css('height', window.screen.availHeight - tabH - 120 );
         })
     </script>
 </body>

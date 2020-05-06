@@ -23,46 +23,179 @@
     
     <style>
         #main_tab .js-tab.active::after{
-            content:" ▼";
+            content:" ▾";
+        }
+
+        .btn{
+            transition: 0.01s;
+        }
+
+        .ifBtn{
+            display: inline-block;
+            position: relative;
+            height: 50px; 
+            width: 455px; 
+            overflow: hidden;
+            border: 1px rgba(99,99,99,.1) solid;
+        }
+        .ifBtn:not(.active):hover{
+            border: 1px white solid;
+            cursor: pointer;
+        }
+        .ifBtn::after{
+            content: "";
+            position: absolute;
+            top:0; 
+            left: 0; 
+            right: 0; 
+            bottom: 0;
+            z-index: 10;
+        }
+        .ifBtn > iframe{
+            height: 120px; 
+            width: 700px;
+            border: none;
+        }
+        .ifBtn > .closeBtn{
+            display: none;
+        }
+        .ifBtn.active{
+            height: 800px; 
+            width: 100%;
+            overflow: unset;
+            border: 1px white solid;
+        }
+        .ifBtn.active::after{
+            content: "";
+            position: static;
+        }
+        .ifBtn.active > iframe{
+            height: 100%; 
+            width: 100%;
+        }
+        .ifBtn.active > .closeBtn{
+            display: block;
+            position: absolute;
+            left: 50%;
+            top: 0;
+            transform: translate(-50%,-50%);
+            border: 2px white solid;
+            border-radius: 100px;
+            padding: 10px 12px;
+            font-size: 20px;
+            line-height: 1;
+        }
+        .ifBtn.loading > iframe{
+            position: absolute!important;
+            right: 0;
+            bottom: 0;
+            opacity: 0.1;
+        }
+        .ifBtn.loading > .ldTxt{
+            font-weight: bold;
+        }
+        .ifBtn:not(.loading) > .ldTxt{
+            display: none;
         }
     </style>
 </head>
 <body>
     <div id="container">
-        <div id="tabs">
-            <h3 class="mb-10">自製:</h3>
-            <div id="main_tab" js-tab-group="main">
-                <div class="d-inline-block pt-10">
-                    <button class="js-tab btn btn-dark active" js-tab-target="#a">Javascript</button>
-                    <button class="js-tab btn btn-dark" js-tab-target="#b">CSS</button>
-                    <button class="js-tab btn btn-dark" js-tab-target="#c">Plugins</button>
-                </div>
-            </div>
-            <div js-tab-group="main" class="py-10" style="min-height: 58px;">
-                <div id="a" class="js-tab-content" js-tab-group="codepen">
-                    <button class="js-tab btn btn-dark active" js-tab-target="#a1">避免button 短時間內按兩次</button>
-                    <button class="js-tab btn btn-dark" js-tab-target="#a2">進度條</button>
-                </div>
-                <div id="b" class="js-tab-content" js-tab-group="codepen">
-                    <button class="js-tab btn btn-dark" js-tab-target="#b1">img src="svg" to svg</button>
-                    <button class="js-tab btn btn-dark" js-tab-target="#b2">search input in array</button>
-                </div>
-            </div>
-        </div>
-        <div id="iframeContent" js-tab-group="codepen" style="height: 800px;">
-            <iframe id="a1" class="js-tab-content" style="width:100%; height:100%;" src="https://codepen.io/bvpqygqy/pen/bGdpbZx"></iframe>
-            <iframe id="a2" class="js-tab-content" style="width:100%; height:100%;" src="https://codepen.io/bvpqygqy/pen/jObbbqa"></iframe>
-            <iframe id="b1" class="js-tab-content" style="width:100%; height:100%;" src="https://codepen.io/bvpqygqy/pen/dyYoVjE"></iframe>
-            <iframe id="b2" class="js-tab-content" style="width:100%; height:100%;" src="https://codepen.io/bvpqygqy/pen/WNeVoJK"></iframe>
-        </div>
-    </div>
+        <fieldset style="border:none; border-top: 1px white solid; text-align: center;">
+            <legend class="px-10" style="width: unset;">My CodePens</legend>
+        </fieldset>
 
+        <div id="tabs"></div>
+    </div>
     <script>
         $(function(){
+            console.log( window.screen.availHeight - $('fieldset').eq(0).height() - $('footer').eq(0).height() - 30 )
+            $('#tabs').css('min-height', window.screen.availHeight - $('fieldset').eq(0).height() - $('footer').eq(0).height() - 30 );
+
+            function layoutTabs(jsons){
+                let tabBtn = function(){
+                    let txt = "";
+                    $.each( jsons, function(i,e){
+                        let first = (i === 0) ? 'active' : ''; 
+                        txt += `<button class="js-tab mr-4 btn btn-dark ${first}" js-tab-target="#tab_${i}">${e.title}</button>`
+                    })
+                    return txt;
+                }();
+               
+                let tabCont = function(){
+                    let txt = ""
+                    $.each( jsons, function(i,e){
+                        let txt2 = "";
+                        $.each( e.content, function(i2,e2){
+                            txt2 += `
+                                <div class="col-md-6 col-lg-4 col-xl-3 ifBtn loading">
+                                    <div class="ldTxt abs-5">Loading...</div>
+                                    <div class="closeBtn btn btn-dark">✘</div>
+                                    <iframe onload="$(this).parent('.ifBtn').removeClass('loading')" src="${e2}"></iframe>
+                                </div>
+                            `
+                        })
+                        txt += `<div id="tab_${i}" class="js-tab-content w-100 mt-10 row no-gutters">${txt2}</div>`
+                    })
+                    return txt;
+                }();
+    
+                let layouts = `
+                    <div id="main_tab" js-tab-group="main">
+                        ${tabBtn}
+                    </div>
+                    <div js-tab-group="main">
+                        ${tabCont}
+                    </div>
+                `
+
+                $('#tabs').html(layouts);
+            }
+
+
+            let jsons = [
+                {
+                    title: 'javascript',
+                    content: [
+                        'https://codepen.io/bvpqygqy/pen/bGdpbZx',
+                        'https://codepen.io/bvpqygqy/pen/jObbbqa',
+                        'https://codepen.io/bvpqygqy/pen/dyYoVjE',
+                        'https://codepen.io/bvpqygqy/pen/WNeVoJK',
+                    ]
+                },
+                {
+                    title: 'CSS',
+                    content: [
+                        'https://codepen.io/bvpqygqy/pen/JjjGVRQ',
+                    ]
+                },
+                {
+                    title: 'Plugins',
+                    content: [
+                        'https://codepen.io/bvpqygqy/pen/xxxaEJZ',
+                    ]
+                },
+                {
+                    title: 'Teach',
+                    content: [
+                        'https://codepen.io/bvpqygqy/pen/VwvjdWW',
+                        'https://codepen.io/bvpqygqy/pen/LYEVoGo',
+                    ]
+                }
+            ]
+            layoutTabs(jsons);
             tab();
-            let tabH = $('#tabs').innerHeight();
-            $('#iframeContent').css('height', window.screen.availHeight - tabH - 120 );
+
+            $('.ifBtn').on('click',function(){
+                $('.ifBtn').removeClass('active');
+                $(this).addClass('active');
+            })
+
+            $('.ifBtn > .closeBtn, .js-tab').on('click',function(){
+                setTimeout( () => $('.ifBtn').removeClass('active') ,0)
+            })
         })
+        
     </script>
 </body>
 </html>

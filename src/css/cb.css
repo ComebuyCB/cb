@@ -13,13 +13,3 @@ footer{
     background-color:#111;
     color:lightgray;
 }
-
-@media (min-width: 1600px) {
-    #container {
-        padding: 0 30px 30px 30px;
-    }
-
-    footer{
-        padding: 10px 30px;
-    }
-}

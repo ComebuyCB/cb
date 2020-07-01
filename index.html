@@ -26,21 +26,21 @@
 	<link rel="stylesheet" href="src/css/cb.css">
 	<script src="src/js/cb.js"></script>
 
-	<base target="_blank">
+	<!-- <base target="_blank"> -->
 	<style>
-		a,span {font-size: 16px; line-height:2; color:skyblue}
+		html, body{ min-height: 100%; background-color: #000;}
+		a,span {font-size: 16px; line-height: 2; color:skyblue}
 		a,span,p {white-space:nowrap}
-		p {font-size: 16px; line-height:2 ; color:deepskyblue; margin:0}
-		b {padding-left:1em}
-		d {padding-left:1rem}
+		p {font-size: 16px; line-height: 2; color:deepskyblue; margin:0}
 		.ccc:after{content: "("attr(href)")"}
-		.ee{background:#333}
-		.ee:hover{cursor:pointer;background-color:#555}
 	</style>
 </head>
 
 <body>
 	<div id="container">
+
+		
+
 		<span id="pra"></span>
 
 		<div class="mb-30">
@@ -48,110 +48,8 @@
 			<div id="knowledgeTab" js-tab-group="knowledge" class="mb-10 d-none"></div>
 			<div id="knowledgeContent" js-tab-group="knowledge" class="mb-10 row"></div>
 		</div>
-
-		<h3>bf.css examples:</h3>
-
-		<div class="row" style="min-height:100px">
-			<div class="col-sm-6" id="demobf1">
-
-			</div>
-			<div class="col-sm-6 pb-100">
-				<p style="color:#E55">HTML code：</p> 
-				<div>＜div class="<button class="btn btn-danger p-0">值</button>"＞
-					<div class="pl-24">中文 English 12345</div>
-					＜/div＞
-				</div>
-				<br>
-				<div class="b-a solid p-20">
-					<div id="div-bf1">中文 English 12345</div>
-				</div>
-			</div>
-		</div>
-		<hr>
-		<div class="row">
-			<div class="col-sm-6" id="demobf2">
-				<div class="pb-12">
-					<p>鼠標樣式 cursor: (滑鼠移到文字上看auto與default差別)</p>
-					<button class="btn btn-primary btn-sm cur-auto">cur-auto</button>
-					<button class="btn btn-primary btn-sm cur-default">cur-default</button>
-					<button class="btn btn-primary btn-sm cur-cell">cur-cell</button>
-					<button class="btn btn-primary btn-sm cur-zoomin">cur-zoomin</button>
-					<button class="btn btn-primary btn-sm cur-zoomout">cur-zoomout</button>
-					<button class="btn btn-primary btn-sm cur-pointer">cur-pointer</button>
-					<button class="btn btn-primary btn-sm cur-not">cur-not</button>
-				</div>
-
-			</div>
-			<div class="col-sm-6">
-				<p style="color:deepskyblue">HTML code：</p>
-				<div>＜div class="<button class="btn btn-primary p-0">值</button>" style="border:1px white dashed"＞
-					<div class="pl-24">中文 English 12345＜br＞</div>
-					<div class="pl-24">中文 English 12345</div>
-					＜/div＞
-				</div>
-				<br>
-				<div class="b-a solid p-20">
-					<div id="div-bf2" style="border:1px dashed">中文 English 12345<br>中文 English 12345</div>
-				</div>
-			</div>
-		</div>
 	</div>
 
-	<script>
-		$(function(){
-			var txtbf1 = ""
-			var bf1 = [
-					{"ttl":"中文字體 font-family:", "btn":["ff-cj86","ff-jo6","ff-1ul"]},
-					{"ttl":"字大小 font-size: 0~100px", "btn":["fs-0","fs-12","fs-24","fs-60","fs-100"]},
-					{"ttl":"文字顏色 color: #000~#FFF", "btn":["c-b","c-y","c-w","c-f","c-F","c-0"]},
-					{"ttl":"背景顏色 background-color: #000~#FFF", "btn":["bgc-b","bgc-y","bgc-w","bgc-f","bgc-F","bgc-0"]},
-					{"ttl":"透明度 opacity: 0 ~ 1", "btn":["op-0","op-20","op-60","op-100"]},
-					{"ttl":"文字裝飾 bold 、italic、text-decoration:", "btn":["text-b","text-i","text-u","text-o","text-s"]},
-					{"ttl":"Debug用邊界線: border:thin 'color' dashed", "btn":["b-r","b-g","b-b","b-y","b-w","b-o","b-p"]}
-				]
-				for (var i in bf1){
-					txtbf1 += '<div class="pb-12">'
-					txtbf1 += '<p>'+ bf1[i].ttl +'</p>\n'
-					for (var j in bf1[i].btn){
-						txtbf1 += '<button class="btn btn-danger btn-sm">'+ bf1[i].btn[j] +'</button>\n'
-					}
-					txtbf1 += '</div>'
-				}
-			$('#demobf1').append(txtbf1)
-
-			var txtbf2 = ""
-			var bf2 = [
-					{"ttl":"padding: 0~100px; (px=padding-left&right)", "btn":["p-20","p-60","pt-60","pb-60","py-60","pl-60","pr-60","px-60"]},
-					{"ttl":"margin: 0~100px; (my=margin-top&bottom)", "btn":["m-20","m-60","mt-60","mb-60","my-60","ml-60","mr-60","mx-60"]},
-					{"ttl":"margin負值 : -0~-100px;", "btn":["m-n20","m-n60","mt-n60","mb-n60","my-n60","ml-n60","mr-n60","mx-n60"]},
-					{"ttl":"float: & text-align:", "btn":["f-l","f-r","f-n","ta-l","ta-r","ta-c","ta-j"]},
-					{"ttl":"字寬距 letter-spacing: 0~100px", "btn":["ls-0","ls-4","ls-16","ls-100"]},
-					{"ttl":"字寬距負值 letter-spacing: -0~-100px", "btn":["ls-n0","ls-n4","ls-n8","ls-n100"]},
-					{"ttl":"字行高 line-height: 0~100px", "btn":["lh-0","lh-10","lh-25","lh-100"]}
-				]
-				for (var i in bf2){
-					txtbf2 += '<div class="pb-12">'
-					txtbf2 += '<p>'+ bf2[i].ttl +'</p>\n'
-					for (var j in bf2[i].btn){
-						txtbf2 += '<button class="btn btn-primary btn-sm">'+ bf2[i].btn[j] +'</button>\n'
-					}
-					txtbf2 += '</div>'
-				}
-			$('#demobf2').append(txtbf2)
-
-
-			$("#demobf1 .btn").click(function(){
-				txt = $(this).text();
-				$('#div-bf1').removeAttr("class")
-				$('#div-bf1').addClass(txt);
-			});
-			$("#demobf2 .btn").click(function(){
-				txt = $(this).text();
-				$('#div-bf2').removeAttr("class")
-				$('#div-bf2').addClass(txt);
-			});
-		});
-	</script>
 	<script>
 		$('body').on('mousemove', function(){
 			myF();
@@ -196,7 +94,6 @@
 				s += " Protocol(location.protocol)： "+ window.location.protocol +"\n";
 				s += " Loads A New Document(location.assign)： "+ window.location.assign +"\n";
 				alert(s);
-
 			}else if(v=="c"){
 				// 載入jquery.comfirm時，換行請用<br>
 				var t= "";
@@ -265,24 +162,8 @@
 							href: 'https://www.w3schools.com/html/tryit.asp?filename=tryhtml_iframe_target',
 						},
 						{
-							value: '可拉式物件 (draggable="true")',
-							href: 'https://www.w3schools.com/html/tryit.asp?filename=tryhtml5_global_draggable',
-						},
-						{
-							value: 'input type="radio"',
-							href: 'https://www.w3schools.com/html/tryit.asp?filename=tryhtml5_input_type_radio',
-						},
-						{
-							value: 'col 和 colgroup (table排色好用)',
-							href: 'https://www.w3schools.com/html/tryit.asp?filename=tryhtml_col_test',
-						},
-						{
 							value: '←|→拉 終於找到這功能了 (不支援HTML5)',
 							href: 'https://www.w3schools.com/tags/tag_frame.asp',
-						},
-						{
-							value: 'optgroup 下拉式選單群組',
-							href: 'https://www.w3schools.com/html/tryit.asp?filename=tag_frame',
 						},
 					]
 				},
@@ -290,16 +171,8 @@
 					title: 'CSS',
 					content: [
 						{
-							value: '圖片置中 Img center',
-							href: 'https://www.w3schools.com/css/tryit.asp?filename=trycss_ex_images_center',
-						},
-						{
 							value: '文方伸縮 type="text" 口 → |二二二|',
 							href: 'https://www.w3schools.com/cssref/tryit.asp?filename=trycss_dim_width_inputfocus',
-						},
-						{
-							value: '上下來回動~ animation',
-							href: 'https://www.w3schools.com/cssref/tryit.asp?filename=trycss_anim_top',
 						},
 						{
 							value: '把 href 取出! content:"(" attr( href ) ")";',
@@ -331,14 +204,6 @@
 							href: 'https://www.w3schools.com/html/html5_geolocation.asp',
 						},
 						{
-							value: '下拉改變TopNav (*Edit)',
-							href: 'https://www.w3schools.com/code/tryit.asp?filename=FMKSMUYQRLKO',
-						},
-						{
-							value: 'this.parentElement.style.display="none"',
-							href: 'https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_contact_chips_close',
-						},
-						{
 							value: '日期格式判斷',
 							href: 'http://www.the-art-of-web.com/javascript/validate-date/',
 						},
@@ -351,7 +216,7 @@
 							href: 'https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_node_appendchild',
 						},
 						{
-							value: '製作 Search',
+							value: '製作 Filter Table',
 							href: 'https://www.w3schools.com/jquery/jquery_filters.asp',
 						},
 					]
@@ -359,10 +224,6 @@
 				{
 					title: 'Learn',
 					content: [
-						{
-							value: 'getAttribute',
-							href: 'https://www.w3schools.com/tags/tryit.asp?filename=tryhtml5_global_data',
-						},
 						{
 							value: 'PJCHENder 那些沒告訴你的小細節',
 							href: 'https://pjchender.blogspot.tw/',
@@ -406,7 +267,7 @@
 		function layout_Tab_Button(dataObj){
 			let str = ""
 			$.each( dataObj, function(i,v){
-				str +=`<button class="js-tab btn btn-dark btn-lg mr-4 ${ i==0 ? 'active':''}" js-tab-target="#knowledge_${v.title}" style="min-width: 100px">${v.title}</button>`
+				str += `<button class="js-tab btn btn-dark btn-lg mr-4 ${ i==0 ? 'active':''}" js-tab-target="#knowledge_${v.title}" style="min-width: 100px">${v.title}</button>`
 			})
 			return str
 		}
@@ -414,24 +275,28 @@
 
 
 		function layout_Tab_Content(dataObj){
-			let str = ""
+			let str = "";
+
 			$.each( dataObj, function(i1,v1){
-				str +=`<div id="knowledge_${v1.title}" class="js-tab-content col">`
-				str +=	`<h3>${v1.title}</h3>`
-				str += 	`<ul>`
+
+				let alist = "";
 				$.each( v1.content, function(i2,v2){
-					str += `<li><a href="${v2.href}">${v2.value}</a></li>`
+					alist += `
+						<li><a href="${v2.href}">${v2.value}</a></li>
+					`
 				})
-				str += 	`</ul>`
-				str += `</div>`
+
+				str += `
+					<div id="knowledge_${v1.title}" class="js-tab-content col">
+						<h3>${v1.title}</h3>
+						<ul class="pl-20">${alist}</ul>
+					</div>
+				`
 			})
-			return str
+
+			return str;
 		}
 		$('#knowledgeContent').html( layout_Tab_Content( pattern_Ajax_Data() ) );
-
-		$(function(){
-			// tab('mouseover');
-		})
 	</script>
 </body>
 </html>

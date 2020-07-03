@@ -1,4 +1,4 @@
-/** 2020-01-10 編輯。
+/** 2020-07-01 編輯。
  * 這份CSS主要用在簡化常使用的style碼，以及常用到的功能。
  *
  * // 使margin左右各佔15px
@@ -35,32 +35,25 @@
 
 
 /*** cursor ***/
-.cur-auto{cursor:auto}
-.cur-cell{cursor:cell}
-.cur-default{cursor:default}
-.cur-pointer,.pointer{cursor:pointer}
-.cur-not,.cur-not-allowed{cursor:not-allowed}
-.cur-none{cursor:none}
-.cur-zoom-in{cursor:zoom-in}
-.cur-zoom-out{cursor:zoom-out}
+.pointer { cursor: pointer !important;}
 
 
 /*** display ***/
-.d-n,.d-none,.display-none{display:none !important}
-.d-b,.d-block,.display-block{display:block !important}
-.d-ib,.d-inline-block,.display-inline-block{display:inline-block !important}
-.d-t,.d-table,.display-table{display:table !important}
-.d-it,.d-inline-table,.display-inline-table{display:inline-table !important}
-.d-tr,.d-table-row,.display-table-row{display:table-row !important}
-.d-tc,.d-table-cell,.display-table-cell{display:table-cell !important}
-.d-f,.d-flex.display-flex{display:flex !important}
-.d-if,.d-inline-flex.display-inline-flex{display:inline-flex !important}
+.d-n, .d-none { display: none !important;}
+.d-b, .d-block { display: block !important;}
+.d-ib,.d-inline-block { display: inline-block !important;}
+.d-t, .d-table { display: table !important;}
+.d-it,.d-inline-table { display: inline-table !important;}
+.d-tr,.d-table-row { display: table-row !important;}
+.d-tc,.d-table-cell { display: table-cell !important;}
+.d-f, .d-flex { display: flex !important;}
+.d-if,.d-inline-flex { display: inline-flex !important;}
 
 
 /*** float ***/
-.f-l,.float-left{float:left!important} 
-.f-r,.float-right{float:right!important} 
-.f-n,.float-none{float:none!important}
+.f-l { float: left !important;} 
+.f-r { float: right !important;} 
+.f-n { float: none !important;}
 
 
 /*** opacity (0~100) ***/
@@ -70,61 +63,60 @@
 
 
 /*** overflow ***/
-.of-a{overflow:auto}.of-s{overflow:scroll}.of-h{overflow:hidden}.of-v{overflow:visible}
-.of-x-a{overflow-x:auto}.of-x-s{overflow-x:scroll}.of-x-h{overflow-x:hidden}.of-x-v{overflow-x:visible}
-.of-y-a{overflow-y:auto}.of-y-s{overflow-y:scroll}.of-y-h{overflow-y:hidden}.of-y-v{overflow-y:visible}
+.of-a{overflow:auto} .of-s{overflow:scroll} .of-h{overflow:hidden} .of-v{overflow:visible} 
+.of-x-a{overflow-x:auto} .of-x-s{overflow-x:scroll} .of-x-h{overflow-x:hidden} .of-x-v{overflow-x:visible} 
+.of-y-a{overflow-y:auto} .of-y-s{overflow-y:scroll} .of-y-h{overflow-y:hidden} .of-y-v{overflow-y:visible}
 
 
 /*** position ***/
-.p-relative,.relative{position:relative!important}
-.p-absolute,.absolute{position:absolute!important}
-.p-fixed,.fixed{position:fixed!important}
+.p-relative, .relative { position: relative !important;}
+.p-absolute, .absolute { position: absolute !important;}
+.p-fixed, .fixed { position: fixed !important;}
+.p-sticky, .sticky { position: sticky!important;}
 
 
 /*** text-(XXX) (文字樣式) ***/
-.text-unstyled{font-weight:normal;font-style:normal;text-decoration:none}
-.td-n{text-decoration:none}
-.fw-b,.text-b,.text-bold{font-weight:bold}
-.fs-i,.text-i,.text-italic{font-style:italic}
-.td-u,.text-u,.text-underline{text-decoration:underline}
-.td-o,.text-o,.text-overline{text-decoration:overline}
-.td-lt,.text-x,.text-line-through{text-decoration:line-through}
-.tt-c,.text-capitalize{text-transform:capitalize!important}
-.tt-l,.text-lowercase{text-transform:lowercase!important}
-.tt-u,.text-uppercase{text-transform:uppercase!important}
+.text-n, .text-unstyled { font-weight: normal; font-style: normal; text-decoration: none;}
+.td-n { text-decoration: none !important;}
+.fw-b, .text-b, .bold { font-weight: bold !important;}
+.fs-i, .text-i, .italic { font-style: italic !important;}
+.td-u, .text-u, .underline { text-decoration: underline !important;}
+.td-o, .text-o, .overline { text-decoration: overline !important;}
+.td-lt, .text-lt, .line-through { text-decoration: line-through !important;}
+.tt-c, .text-cap, .capitalize { text-transform: capitalize !important;}
+.tt-l, .text-low, .lowercase { text-transform: lowercase !important;}
+.tt-u, .text-up, .uppercase { text-transform: uppercase !important;}
 
 
 /*** text-(XXX) (文字排版) ***/
-.ta-c,.text-c,.text-center{text-align:center}
-.ta-l,.text-l,.text-left{text-align:left}
-.ta-r,.text-r,.text-right{text-align:right}
-.ta-j,.text-j,.text-justify{text-align:justify}
-.ws-w,.text-wrap{white-space: normal}
-.ws-n,.text-nowrap{white-space: nowrap}
+.ta-c, .text-c { text-align: center;}
+.ta-l, .text-l { text-align: left;}
+.ta-r, .text-r { text-align: right;}
+.ta-j, .text-j { text-align: justify;}
 
 
 /*** vertical-align ***/
-.va-bl,.va-baseline{vertical-align:baseline}
-.va-sb,.va-sub{vertical-align:sub}
-.va-sp,.va-super{vertical-align:super}
-.va-t,.va-tp,.va-top{vertical-align:top}
-.va-m,.va-md,.va-middle{vertical-align:middle}
-.va-b,.va-bt,.va-bottom{vertical-align:bottom}
-.va-tt,.va-text-top{vertical-align:text-top}
-.va-tb,.va-text-bottom{vertical-align:text-bottom}
+.va-bl, .va-baseline { vertical-align: baseline;}
+.va-sb, .va-sub { vertical-align: sub;}
+.va-sp, .va-super { vertical-align: super;}
+.va-t, .va-tp, .va-top { vertical-align: top;}
+.va-m, .va-md, .va-middle { vertical-align: middle;}
+.va-b, .va-bt, .va-bottom { vertical-align: bottom;}
+.va-tt, .va-text-top { vertical-align: text-top;}
+.va-tb, .va-text-bottom { vertical-align: text-bottom;}
 
 
 /*** visibility ***/
-.v-h,.v-hidden{visibility:hidden}
-.v-v,.v-visible{visibility:visible}
+.v-h { visibility: hidden;}
+.v-v { visibility: visible;}
 
 
 /*** white-space ***/
-.ws-w,.ws-normal,.ws-wrap{white-space: normal}
-.ws-n,.ws-nowrap{white-space: nowrap}
-.ws-p,.ws-pre{white-space: pre}
-.ws-pw,.ws-pre-wrap{white-space: pre-wrap}
-.ws-pl,.ws-pre-line{white-space: pre-line}
+.ws-w, .ws-normal, .ws-wrap { white-space: normal;}
+.ws-n, .ws-nowrap { white-space: nowrap;}
+.ws-p, .ws-pre { white-space: pre;}
+.ws-pw, .ws-pre-wrap { white-space: pre-wrap;}
+.ws-pl, .ws-pre-line { white-space: pre-line;}
 
 
 /*** word-break ***/
@@ -146,27 +138,13 @@
 .fs-91{font-size:91px!important} .fs-92{font-size:92px!important} .fs-93{font-size:93px!important} .fs-94{font-size:94px!important} .fs-95{font-size:95px!important} .fs-96{font-size:96px!important} .fs-97{font-size:97px!important} .fs-98{font-size:98px!important} .fs-99{font-size:99px!important} .fs-100{font-size:100px!important} 
 
 
-/*** font-size (0.5~5.0)(rem) ***/
-.fs-01r{font-size: 0.1rem!important} .fs-02r{font-size: 0.2rem!important} .fs-03r{font-size: 0.3rem!important} .fs-04r{font-size: 0.4rem!important} .fs-05r{font-size: 0.5rem!important} .fs-06r{font-size: 0.6rem!important} .fs-07r{font-size: 0.7rem!important} .fs-08r{font-size: 0.8rem!important} .fs-09r{font-size: 0.9rem!important} .fs-10r{font-size: 1.0rem!important}
-.fs-11r{font-size: 1.1rem!important} .fs-12r{font-size: 1.2rem!important} .fs-13r{font-size: 1.3rem!important} .fs-14r{font-size: 1.4rem!important} .fs-15r{font-size: 1.5rem!important} .fs-16r{font-size: 1.6rem!important} .fs-17r{font-size: 1.7rem!important} .fs-18r{font-size: 1.8rem!important} .fs-19r{font-size: 1.9rem!important} .fs-20r{font-size: 2.0rem!important}
-.fs-21r{font-size: 2.1rem!important} .fs-22r{font-size: 2.2rem!important} .fs-23r{font-size: 2.3rem!important} .fs-24r{font-size: 2.4rem!important} .fs-25r{font-size: 2.5rem!important} .fs-26r{font-size: 2.6rem!important} .fs-27r{font-size: 2.7rem!important} .fs-28r{font-size: 2.8rem!important} .fs-29r{font-size: 2.9rem!important} .fs-30r{font-size: 3.0rem!important}
-.fs-31r{font-size: 3.1rem!important} .fs-32r{font-size: 3.2rem!important} .fs-33r{font-size: 3.3rem!important} .fs-34r{font-size: 3.4rem!important} .fs-35r{font-size: 3.5rem!important} .fs-36r{font-size: 3.6rem!important} .fs-37r{font-size: 3.7rem!important} .fs-38r{font-size: 3.8rem!important} .fs-39r{font-size: 3.9rem!important} .fs-40r{font-size: 4.0rem!important}
-.fs-41r{font-size: 4.1rem!important} .fs-42r{font-size: 4.2rem!important} .fs-43r{font-size: 4.3rem!important} .fs-44r{font-size: 4.4rem!important} .fs-45r{font-size: 4.5rem!important} .fs-46r{font-size: 4.6rem!important} .fs-47r{font-size: 4.7rem!important} .fs-48r{font-size: 4.8rem!important} .fs-49r{font-size: 4.9rem!important} .fs-50r{font-size: 5.0rem!important}
-
-
-/*** line-height (0~100)(*0.1) ***/
+/*** line-height (0~50)(*0.1) ***/
 .lh-0{line-height:0!important} 
 .lh-01{line-height:0.1!important} .lh-02{line-height:0.2!important} .lh-03{line-height:0.3!important} .lh-04{line-height:0.4!important} .lh-05{line-height:0.5!important} .lh-06{line-height:0.6!important} .lh-07{line-height:0.7!important} .lh-08{line-height:0.8!important} .lh-09{line-height:0.9!important} .lh-10{line-height:1!important} 
 .lh-11{line-height:1.1!important} .lh-12{line-height:1.2!important} .lh-13{line-height:1.3!important} .lh-14{line-height:1.4!important} .lh-15{line-height:1.5!important} .lh-16{line-height:1.6!important} .lh-17{line-height:1.7!important} .lh-18{line-height:1.8!important} .lh-19{line-height:1.9!important} .lh-20{line-height:2!important} 
 .lh-21{line-height:2.1!important} .lh-22{line-height:2.2!important} .lh-23{line-height:2.3!important} .lh-24{line-height:2.4!important} .lh-25{line-height:2.5!important} .lh-26{line-height:2.6!important} .lh-27{line-height:2.7!important} .lh-28{line-height:2.8!important} .lh-29{line-height:2.9!important} .lh-30{line-height:3!important} 
 .lh-31{line-height:3.1!important} .lh-32{line-height:3.2!important} .lh-33{line-height:3.3!important} .lh-34{line-height:3.4!important} .lh-35{line-height:3.5!important} .lh-36{line-height:3.6!important} .lh-37{line-height:3.7!important} .lh-38{line-height:3.8!important} .lh-39{line-height:3.9!important} .lh-40{line-height:4!important} 
 .lh-41{line-height:4.1!important} .lh-42{line-height:4.2!important} .lh-43{line-height:4.3!important} .lh-44{line-height:4.4!important} .lh-45{line-height:4.5!important} .lh-46{line-height:4.6!important} .lh-47{line-height:4.7!important} .lh-48{line-height:4.8!important} .lh-49{line-height:4.9!important} .lh-50{line-height:5!important} 
-.lh-51{line-height:5.1!important} .lh-52{line-height:5.2!important} .lh-53{line-height:5.3!important} .lh-54{line-height:5.4!important} .lh-55{line-height:5.5!important} .lh-56{line-height:5.6!important} .lh-57{line-height:5.7!important} .lh-58{line-height:5.8!important} .lh-59{line-height:5.9!important} .lh-60{line-height:6!important} 
-.lh-61{line-height:6.1!important} .lh-62{line-height:6.2!important} .lh-63{line-height:6.3!important} .lh-64{line-height:6.4!important} .lh-65{line-height:6.5!important} .lh-66{line-height:6.6!important} .lh-67{line-height:6.7!important} .lh-68{line-height:6.8!important} .lh-69{line-height:6.9!important} .lh-70{line-height:7!important} 
-.lh-71{line-height:7.1!important} .lh-72{line-height:7.2!important} .lh-73{line-height:7.3!important} .lh-74{line-height:7.4!important} .lh-75{line-height:7.5!important} .lh-76{line-height:7.6!important} .lh-77{line-height:7.7!important} .lh-78{line-height:7.8!important} .lh-79{line-height:7.9!important} .lh-80{line-height:8!important} 
-.lh-81{line-height:8.1!important} .lh-82{line-height:8.2!important} .lh-83{line-height:8.3!important} .lh-84{line-height:8.4!important} .lh-85{line-height:8.5!important} .lh-86{line-height:8.6!important} .lh-87{line-height:8.7!important} .lh-88{line-height:8.8!important} .lh-89{line-height:8.9!important} .lh-90{line-height:9!important} 
-.lh-91{line-height:9.1!important} .lh-92{line-height:9.2!important} .lh-93{line-height:9.3!important} .lh-94{line-height:9.4!important} .lh-95{line-height:9.5!important} .lh-96{line-height:9.6!important} .lh-97{line-height:9.7!important} .lh-98{line-height:9.8!important} .lh-99{line-height:9.9!important} .lh-100{line-height:10!important} 
-
 
 
 /*** ---------  排版類 0~100 --------- ***/
@@ -307,32 +285,28 @@
 
 
 /*** --------- 自訂功能 --------- ***/
-/*** 絕對&視窗位置 數字鍵盤1~9表示其位置 (1-9) ***/
-.abs-1{position:absolute!important;left:0;bottom:0}
-.abs-2{position:absolute!important;left:50%;bottom:0;transform:translate(-50%,0%);-ms-transform:translate(-50%,0%)}
-.abs-3{position:absolute!important;right:0;bottom:0}
-.abs-4{position:absolute!important;top:50%;left:0%;transform:translate(0%,-50%);-ms-transform:translate(-0%,-50%)}
-.abs-5{position:absolute!important;top:50%;left:50%;transform:translate(-50%,-50%);-ms-transform:translate(-50%,-50%)}
-.abs-6{position:absolute!important;top:50%;right:0%;transform:translate(0%,-50%);-ms-transform:translate(0%,-50%)}
-.abs-7{position:absolute!important;left:0;top:0}
-.abs-8{position:absolute!important;left:50%;top:0;transform:translate(-50%,0%);-ms-transform:translate(-50%,0%)}
-.abs-9{position:absolute!important;right:0;top:0}
-.abs-full{position:absolute!important;left:0;right:0;top:0;bottom:0}
-.fixed-1{position:fixed!important;left:0;bottom:0}
-.fixed-2{position:fixed!important;left:50%;bottom:0;transform:translate(-50%,0%);-ms-transform:translate(-50%,0%)}
-.fixed-3{position:fixed!important;right:0;bottom:0}
-.fixed-4{position:fixed!important;top:50%;left:0%;transform:translate(0%,-50%);-ms-transform:translate(-0%,-50%)}
-.fixed-5{position:fixed!important;top:50%;left:50%;transform:translate(-50%,-50%);-ms-transform:translate(-50%,-50%)}
-.fixed-6{position:fixed!important;top:50%;right:0%;transform:translate(0%,-50%);-ms-transform:translate(0%,-50%)}
-.fixed-7{position:fixed!important;left:0;top:0}
-.fixed-8{position:fixed!important;left:50%;top:0;transform:translate(-50%,0%);-ms-transform:translate(-50%,0%)}
-.fixed-9{position:fixed!important;right:0;top:0}
-.fixed-full{position:fixed!important;left:0;right:0;top:0;bottom:0}
+/*** 位置 數字鍵盤1~9表示其位置 (1-9) ***/
+.pos-1 { left:0; bottom:0;}
+.pos-2 { left:50%; bottom:0; transform:translate(-50%,0%);}
+.pos-3 { right:0; bottom:0;}
+.pos-4 { left:0; top:50%; transform:translate(0%,-50%);}
+.pos-5 { left:50%; top:50%; transform:translate(-50%,-50%);}
+.pos-6 { right:0; top:50%; transform:translate(0%,-50%);}
+.pos-7 { left:0; top:0;}
+.pos-8 { left:50%; top:0; transform:translate(-50%,0%);}
+.pos-9 { right:0; top:0;}
+
+.pos-t { left:0; right:0; top:0;}
+.pos-b { left:0; right:0; bottom:0;}
+.pos-l { left:0; top:0; bottom:0;}
+.pos-r { right:0; top:0; bottom:0;}
+
+.pos-full { left:0; right:0; top:0; bottom:0; }
 
 
 /*** 排版類 ***/
-.flex-centers{ display: flex; align-items: center; justify-content: center;}
-.flex-centers-y{ display: flex; align-items: center;}
+.flex-centers { display: flex; align-items: center; justify-content: center;}
+.flex-centers-y { display: flex; align-items: center;}
 
 
 /*** 文字類 ***/

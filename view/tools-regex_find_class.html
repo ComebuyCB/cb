@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+</head>
+<style>
+    body {background-color: #f5f5f5; line-height: 1.5; padding: 0 15px; font-family: "微軟正黑體"; }
+    .inpVal { background-color: rgba(255,255,0,.4);}
+    .inpVal.x { background-color: rgba(99,99,99,.4);}
+    .slc { user-select: all; margin-bottom: 10px; text-indent: 1em;}
+    .p-start { text-indent: 1em; }
+    .mb-15 { margin-bottom: 15px; }
+</style>
+
+<body>
+
+    <h3>用正規表達式找尋想要的class</h3>
+    
+    <input id="input" name="aa" style="font-size:18px" placeholder="輸入要找的class">
+
+    <div id="output" style="margin-top:10px;">
+        <b>* 純 class:</b>
+        <div class="slc">class\s*=\s*["']([^"']*\s+)?<span class="inpVal"></span>(\s+[^"']*)?["']</div>
+        <b>* 純 jquery：</b>
+        <div class="slc">\(\s*["']\s*[\.]?([^"']*[^\w-])?<span class="inpVal"></span>([^\w-][^"']*)?\s*["']\s*\)</div>
+        <b>* class + jquery:</b>
+        <div class="slc">class\s*=\s*["']([^"']*\s+)?<span class="inpVal"></span>(\s+[^"']*)?["']|\(\s*["']\s*[\.]?([^"']*[^\w-])?<span class="inpVal"></span>([^\w-][^"']*)?\s*["']\s*\)</div>
+    </div>
+
+    <hr class="mb-15">
+
+    <div style="margin-top: 10px; color:#333">
+        <div style="margin-bottom:10px;"><b>匹配範例：</b></div>
+        <b>* class:</b>
+        <div class="p-start">能匹配：class="<span class="inpVal"></span>" | class="<span class="inpVal"></span> xxx" | class="xxx <span class="inpVal"></span>" | class="xxx <span class="inpVal"></span> yyy" | class  =  "  <span class="inpVal"></span>  "</div>
+        <div class="p-start mb-15">不匹配：class="__<span class="inpVal x"></span>" | class="<span class="inpVal x"></span>__" | class="x" type="<span class="inpVal x"></span>"</div>
+        <b>* jquery:</b>
+        <div class="p-start">能匹配：("<span class="inpVal"></span>") | (".<span class="inpVal"></span>") | (  "  <span class="inpVal"></span>  "  ) | ("{<span class="inpVal"></span>},[<span class="inpVal"></span>],<span class="inpVal"></span>") | ("xxx+.<span class="inpVal"></span>>yyy")</div>
+        <div class="p-start">不匹配：(".__<span class="inpVal x"></span>") | (".<span class="inpVal x"></span>__")</div>
+    </div>
+
+    <hr class="mb-15">
+
+    <div>可至： <a href="https://regex101.com/r/XQGc5Q/2">https://regex101.com</a> 試試</div>
+    <div>正規表達式： <a href="https://wiki.jikexueyuan.com/project/python-crawler-guide/images/04.png">圖片連結</a></div>
+
+    <script>
+        $('#input').on('keyup',()=>{
+            let str = $('#input').val();
+            if (str !== ''){ 
+                $('.inpVal').text( $('#input').val() );
+            }else{
+                $('.inpVal').text( $('#input').attr('placeholder') );
+            }
+        })
+
+        $(function(){
+            $('#input').focus();
+            $('.inpVal').text( $('#input').attr('placeholder') );
+        })
+    </script>
+</body>
+</html>

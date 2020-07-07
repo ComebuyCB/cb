@@ -1,155 +1,186 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
+    <meta charset="utf-8">
+	
 
-	<!-- shortcut -->
-	<link rel="Shortcut Icon" type="image/x-icon" href="cb-logo.png">
+    <!-- shortcut -->
+    <link rel="Shortcut Icon" type="image/x-icon" href="../src/img/cb-logo.png">
 
-	<!-- jquery -->
-	<script src="../src/plugins/jquery/jquery.js"></script>
+    <!-- jquery -->
+    <script src="../src/plugins/jquery/jquery.js"></script>
 
-	<!-- bootstrap -->
-	<link rel="stylesheet" href="../src/plugins/bootstrap/bootstrap.css">
-	<script src="../src/plugins/bootstrap/popper.js"></script>
-	<script src="../src/plugins/bootstrap/bootstrap.js"></script>
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="../src/plugins/bootstrap/bootstrap.css">
+    <script src="../src/plugins/bootstrap/popper.js"></script>
+    <script src="../src/plugins/bootstrap/bootstrap.js"></script>
 
     <!-- main_simplify -->
-	<link rel="stylesheet" href="../src/css/main_simplify.css">
-	<script src="../src/js/main_simplify.js"></script>
+    <link rel="stylesheet" href="../src/css/main_simplify.css">
+    <script src="../src/js/main_simplify.js"></script>
 
-	<!-- jquery-confirm -->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+    <!-- jquery-confirm -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
-
-	<!-- web style -->
-	<link rel="stylesheet" href="../src/css/cb.css">
+    
+    <!-- web style -->
+    <link rel="stylesheet" href="../src/css/cb.css">
 	<script src="../src/js/cb.js"></script>
+	
 </head>
 <body>
 
 	<style>
-		.section { padding: 30px 15px; border-bottom: 4px double #666; }
+		#wrap { margin: auto; max-width: 1200px;}
+		.section { padding: 30px 15px 30px 3rem; border-bottom: 4px double #666; }
 		.section > * { margin-bottom: 10px; }
-		.title { font-weight: bold; margin-bottom: 1em; }
+		.title { font-weight: bold; margin: 0 0 1em -1em; }
 
-		#ch_1_box { overflow: auto; height: 300px; width: 300px; font-size: 40px; border: 30px solid MidnightBlue; padding: 30px; resize: both;}
-		#ch_1_box.no_scrollbar::-webkit-scrollbar { width: 0px; height: 0px; }
+		#ch_2_box { overflow: auto; width: 700px; height: 400px; border: 50px solid #320; background-color: #030; padding: 50px; resize: both;}
+		#ch_2_box::-webkit-scrollbar { width: 30px; height: 30px; background-color: #ccc; }
+		#ch_2_box::-webkit-scrollbar-thumb { background: #999; border: 2px solid #ccc; }
+		#ch_2_box.no_scrollbar::-webkit-scrollbar { width: 0px; height: 0px; }
+		#ch_2_box > .ch_2_boxchild{ width: 600px; height: 300px; background-color: #114; color: #003; font-size: 56px; display: inline-flex; align-items: center; justify-content: center;}
+
+		.ch_2_box_container { position: relative; display: inline-block;}
+		.ch_2_box_container .rulerX { position: absolute; text-align: center; }
+		.ch_2_box_container .rulerY { position: absolute; text-align: center; }
 
 		.box { display: inline-flex; justify-content: center; align-items: center; border: 30px solid MidnightBlue; padding: 30px; margin-right: 10px; text-align: center; }
-		#box1 { width: 200px; height: 200px; background-color: #050; }
-		#box2 { width: 200px; height: 200px; background-color: #500; }
-		.table_w { margin-bottom: 30px; white-space: nowrap; max-width: 900px; color:#ccc; }
+		#ch_3-box1 { width: 200px; height: 200px; background-color: #050; }
+		#ch_3-box2 { width: 200px; height: 200px; background-color: #500; }
+		.table_w { margin-bottom: 30px; white-space: nowrap; color:#ccc; width: 0; }
 	</style>
 
-	<div id="ch_1" class="section">
-		<h2 class="title">1. 螢幕寬高一覽</h2>
+	<div id="wrap">
 
-		<table id="ch_1_table1" class="table table_w">
-			<thead>
-				<tr>
-					<th>說明</th>
-					<th>事件</th>
-					<th>數值</th>
-				</tr>
-			</thead>
-			<tbody>
-			</tbody>
-		</table>
+		<div id="ch_1" class="section">
+			<h2 class="title">1. 螢幕寬高一覽</h2>
 
-		<div id="ch_1_box">
-			<div class="bgc-3 d-inline-block">
-				<button class="btn btn-info btn-lg" onclick="$('#ch_1_box').toggleClass('no_scrollbar');">toggle scrollbar</button><br>
-				Element.Element<br>
-				Element.Element<br>
-				Element.Element
+			<table id="ch_1_table" class="table table_w" border="1">
+				<thead>
+					<tr>
+						<th>說明</th>
+						<th>事件</th>
+						<th>數值</th>
+					</tr>
+				</thead>
+				<tbody>
+				</tbody>
+			</table>
+		</div>
+
+		<div id="ch_2" class="section">
+			<h2 class="title">2. 元素寬高一覽</h2>
+			
+			<div class="ch_2_box_container">
+				<div id="ch_2_offsetWidth" class="rulerX pos-8" style="transform: translate(-50%,-100%)"></div>
+				<div id="ch_2_offsetHeight" class="rulerY pos-4" style="transform: translate(-100%,-50%) rotate(180deg); writing-mode: vertical-rl;"></div>
+
+				<div id="ch_2_clientWidth" class="rulerX pos-8" style="top: 50px;"></div>
+				<div id="ch_2_clientHeight" class="rulerY pos-4" style="transform: translate(0%,-50%) rotate(180deg); writing-mode: vertical-rl; left: 50px;"></div>
+
+				<div id="ch_2_scroll" class="absolute pos-5"></div>
+
+				<div class="absolute pos-7 c-5">border:50px</div>
+				<div class="absolute pos-7 c-5" style="top: 50px; left: 50px;">padding:50px</div>
+
+				<div id="ch_2_box">
+					<div class="ch_2_boxchild">
+						content (600,300)
+					</div>
+				</div>
+				<button class="btn btn-dark btn-md absolute pos-2 mb-4" onclick="$('#ch_2_box').toggleClass('no_scrollbar');">click me to toggle scrollbar</button>
 			</div>
+
+
+			<table id="ch_2_table" class="table table_w">
+				<thead>
+					<tr>
+						<th>主題</th>
+						<th>說明</th>
+						<th>事件</th>
+						<th>數值</th>
+					</tr>
+				</thead>
+				<tbody>
+				</tbody>
+			</table>
+
+			<div>
+				* 踩坑注意: <br>
+				1. scrollHeight - offsetHeight = scrollTop。<br>
+				2. clientHeight 不會計算 scrollbar。<br>
+			</div>
+
 		</div>
 
-		<table id="ch_1_table2" class="table table_w">
-			<thead>
-				<tr>
-					<th>說明</th>
-					<th>事件</th>
-					<th>數值</th>
-				</tr>
-			</thead>
-			<tbody>
-			</tbody>
-		</table>
+		<div id="ch_3" class="section">
+			<h2 class="title">3. 鼠標位置一覽</h2>
 
-		<div>
-			* 踩坑注意: <br>
-			1. scrollHeight - offsetHeight = scrollTop。<br>
-			2. clientWidth 不會計算scrollbar 。<br>
-		</div>
-
-	</div>
-
-
-	<div id="ch_2" class="section">
-		<h2 class="title">2. 鼠標位置一覽</h2>
-
-		<div class="d-flex">
-			<div id="box1" class="box">
-				<div>200px</div>
+			<div class="d-flex">
+				<div id="ch_3-box1" class="box">
+					<div>200px</div>
+				</div>
+				
+				<div id="ch_3-box2" class="box">
+					<iframe style="width: 100%; height: 100%;" src="nothing.html"></iframe>
+				</div>
 			</div>
 			
-			<div id="box2" class="box">
-				<iframe style="width: 100%; height: 100%;" src="nothing.html"></iframe>
+			<table id="ch_3-table" class="table table_w">
+				<thead>
+					<tr>
+						<th>說明</th>
+						<th>事件</th>
+						<th>window <button onclick="$(this).toggleClass('hover_console');">cl</button><br>mouseover</th>
+						<th>window click</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>裝置螢幕</td>
+						<td>event.screen (X,Y)</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>視窗可視</td>
+						<td>event.client (X,Y)</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>頁面捲動</td>
+						<td>event.page (X,Y)</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>內容元素</td>
+						<td>event.offset (X,Y)</td>
+						<td></td>
+						<td></td>
+					</tr>
+				</tbody>
+			</table>
+
+			<div>
+				* 踩坑注意: <br>
+				1. 使用offset時，會從padding開始計算，起始border會為負值。<br>
+				2. 使用iframe時，不會將其iframe計算進去。<br>
 			</div>
 		</div>
-		
-		<table id="ch_2-table" class="table table_w">
-			<thead>
-				<tr>
-					<th>說明</th>
-					<th>事件</th>
-					<th>window <button onclick="$(this).toggleClass('hover_console');">cl</button><br>mouseover</th>
-					<th>window click</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>裝置螢幕</td>
-					<td>event.screen (X,Y)</td>
-					<td></td>
-					<td></td>
-				</tr>
-				<tr>
-					<td>視窗可視</td>
-					<td>event.client (X,Y)</td>
-					<td></td>
-					<td></td>
-				</tr>
-				<tr>
-					<td>頁面捲動</td>
-					<td>event.page (X,Y)</td>
-					<td></td>
-					<td></td>
-				</tr>
-				<tr>
-					<td>內容元素</td>
-					<td>event.offset (X,Y)</td>
-					<td></td>
-					<td></td>
-				</tr>
-			</tbody>
-		</table>
-
-		<div>
-			* 踩坑注意: <br>
-			1. 使用offset時，會從padding開始計算，起始border會為負值。<br>
-			2. 使用iframe時，不會將其iframe計算進去。<br>
-		</div>
 	</div>
-
 
 	<script>
 		$(function(){
 			ch_1_fn();
 			ch_2_fn();
+			ch_3_fn();
+			ch_4_fn();
 		})
+
 		function ch_1_fn(){
 			$(window).on('resize scroll load', function(){
 				let arr = [
@@ -196,30 +227,47 @@
 					</tr>`
 					
 				})
-				$('#ch_1_table1 tbody').html(tbody_content);
+				$('#ch_1_table tbody').html(tbody_content);
 			})
+		}
 
-
-			let element_div = $('#ch_1_box');
+		function ch_2_fn(){
+			let element_div = $('#ch_2_box');
 			$(element_div).on('mousedown mousemove mouseleave scroll load', function(){
+
+				$('#ch_2_offsetWidth').text( 'offset - ' + $(element_div).get(0).offsetWidth );
+				$('#ch_2_offsetHeight').text( 'offset - ' + $(element_div).get(0).offsetHeight );
+
+				$('#ch_2_clientWidth').text( 'client - ' + $(element_div).get(0).clientWidth );
+				$('#ch_2_clientHeight').text( 'client - ' + $(element_div).get(0).clientHeight );
+
+				$('#ch_2_scroll').html( `
+					scroll size - (${$(element_div).get(0).scrollWidth},${$(element_div).get(0).scrollHeight})<br>
+					scroll scrolled - (${$(element_div).get(0).scrollLeft},${$(element_div).get(0).scrollTop})
+					`);
+
 				let arr = [
 					{
-						"desc": '元素可視範圍 | 元素的padding區域 (寬,高)',
-						"element.clientWidth" : $(element_div).get(0).clientWidth,
-						"element.clientHeight" : $(element_div).get(0).clientHeight,
-					},
-					{
-						"desc": '元素可視範圍 | 元素區域 (寬,高)',
+						"title": 'offset',
+						"desc": '元素區域 (含border之下) (寬,高)',
 						"element.offsetWidth" : $(element_div).get(0).offsetWidth,
 						"element.offsetHeight" : $(element_div).get(0).offsetHeight,
 					},
 					{
-						"desc": '元素可視範圍 | 元素捲動 (寬,高)',
+						"title": 'client',
+						"desc": '元素區域 (含padding之下) (寬,高)',
+						"element.clientWidth" : $(element_div).get(0).clientWidth,
+						"element.clientHeight" : $(element_div).get(0).clientHeight,
+					},
+					{
+						"title": 'scroll',
+						"desc": '元素捲動 (寬,高)',
 						"element.scrollWidth" : $(element_div).get(0).scrollWidth,
 						"element.scrollHeight" : $(element_div).get(0).scrollHeight,
 					},
 					{
-						"desc": '元素可視範圍 | 元素被卷去 (左,上)',
+						"title": 'scroll',
+						"desc": '元素被卷去 (左,上)',
 						"element.scrollLeft" : $(element_div).get(0).scrollLeft,
 						"element.scrollTop" : $(element_div).get(0).scrollTop,
 					},
@@ -228,13 +276,14 @@
 				let tbody_content = "";
 				$.each( arr, function( idx, obj ){
 
-					let td1 = obj['desc'];
-					let td2 = "";
+					let td1 = obj['title'];
+					let td2 = obj['desc'];
 					let td3 = "";
-					$.each( obj, function( key, val, aa ){
-						if ( key !== 'desc' ){
-							td2 += `${key}, `
-							td3 += `${val}, `
+					let td4 = "";
+					$.each( obj, function( key, val ){
+						if ( key.indexOf('element') > -1 ){
+							td3 += `${key}, `
+							td4 += `${val}, `
 						}
 					})
 
@@ -243,14 +292,15 @@
 						<td>${td1}</td>
 						<td>${td2}</td>
 						<td>${td3}</td>
+						<td>${td4}</td>
 					</tr>`
-					
 				})
-				$('#ch_1_table2 tbody').html(tbody_content);
+				
+				$('#ch_2_table tbody').html(tbody_content);
 			})
 		}
 
-		function ch_2_fn(){
+		function ch_3_fn(){
 			let eventsArr = function(event){
 				return [
 					event.screenX + ',' + event.screenY,
@@ -261,7 +311,7 @@
 			}
 
 			let changeEventStatus = function( eventArr, which_td ){
-				$.each( $('#ch_2-table').children('tbody').children('tr'), function( idx, ele ){
+				$.each( $('#ch_3-table').children('tbody').children('tr'), function( idx, ele ){
 					$( ele ).children('td').eq( which_td ).html( eventArr[idx] );
 				})
 			}
@@ -272,7 +322,7 @@
 				changeEventStatus( evtArr, 2 );
 
 				// 關掉console.log
-				if ( $('#ch_2-table').find('button').hasClass('hover_console') ){
+				if ( $('#ch_3-table').find('button').hasClass('hover_console') ){
 					console.log( 'window.mousemover event', event );
 				}else{
 					return;
@@ -286,6 +336,10 @@
 				
 				console.log( 'window_click', event );
 			})
+		}
+
+		function ch_4_fn(){
+
 		}
 	</script>
 </body>

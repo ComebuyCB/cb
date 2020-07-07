@@ -4,8 +4,8 @@
  * // 使margin左右各佔15px
  * .mx-15 { margin-left: 15px; margin-right: 15px; } 
  *
- * // 使用absoulte讓畫面置中：
- * .abs-5 { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); -ms-transform: translate(-50%,-50%); }
+ * // 使位置置中：( 需搭配position: absolute/fixed 等 )
+ * .pos-5 { top: 50%; left: 50%; transform: translate(-50%,-50%); -ms-transform: translate(-50%,-50%); }
  *
  * // 讓多餘的字以 ... 表示：
  * .dadada, .text-more { white-space: nowrap!important; overflow: hidden!important; text-overflow: ellipsis!important; }
@@ -69,10 +69,11 @@
 
 
 /*** position ***/
+.p-static, .static { position: static !important;}
 .p-relative, .relative { position: relative !important;}
 .p-absolute, .absolute { position: absolute !important;}
 .p-fixed, .fixed { position: fixed !important;}
-.p-sticky, .sticky { position: sticky!important;}
+.p-sticky, .sticky { position: sticky !important;}
 
 
 /*** text-(XXX) (文字樣式) ***/
@@ -89,19 +90,19 @@
 
 
 /*** text-(XXX) (文字排版) ***/
-.ta-c, .text-c { text-align: center;}
-.ta-l, .text-l { text-align: left;}
-.ta-r, .text-r { text-align: right;}
-.ta-j, .text-j { text-align: justify;}
+.ta-c, .text-c { text-align: center !important;}
+.ta-l, .text-l { text-align: left !important;}
+.ta-r, .text-r { text-align: right !important;}
+.ta-j, .text-j { text-align: justify !important;}
 
 
 /*** vertical-align ***/
 .va-bl, .va-baseline { vertical-align: baseline;}
 .va-sb, .va-sub { vertical-align: sub;}
 .va-sp, .va-super { vertical-align: super;}
-.va-t, .va-tp, .va-top { vertical-align: top;}
-.va-m, .va-md, .va-middle { vertical-align: middle;}
-.va-b, .va-bt, .va-bottom { vertical-align: bottom;}
+.va-t,  .va-top { vertical-align: top;}
+.va-m,  .va-middle { vertical-align: middle;}
+.va-b,  .va-bottom { vertical-align: bottom;}
 .va-tt, .va-text-top { vertical-align: text-top;}
 .va-tb, .va-text-bottom { vertical-align: text-bottom;}
 
@@ -112,8 +113,8 @@
 
 
 /*** white-space ***/
-.ws-w, .ws-normal, .ws-wrap { white-space: normal;}
-.ws-n, .ws-nowrap { white-space: nowrap;}
+.ws-w, .ws-normal, .text-wrap { white-space: normal;}
+.ws-n, .ws-nowrap, .text-nowrap { white-space: nowrap;}
 .ws-p, .ws-pre { white-space: pre;}
 .ws-pw, .ws-pre-wrap { white-space: pre-wrap;}
 .ws-pl, .ws-pre-line { white-space: pre-line;}
@@ -312,40 +313,35 @@
 /*** 文字類 ***/
 .p-start {text-indent: 2em} /* 第一行字空兩格 */
 .quotes {quotes:"\2039" "\203A"} /* 會以 < > 包住字 */
-.text-more,.dadada{white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important} /* 超出範圍的字以 ... 表示 */
-.text-active-u:active {text-decoration: underline}
+.text-more, .dadada { white-space: nowrap !important; overflow: hidden !important; text-overflow: ellipsis !important;} /* 超出範圍的字以 ... 表示 */
+.text-active-u:active { text-decoration: underline;}
 
 
 /*** 不給予樣式： <ul> & <li> & <a>  ***/
-.ul-unstyled,.ol-unstyled{list-style-type:none;padding-left:0;margin:0;}
-.li-unstyled{list-style-type:none}
-.a-unstyled{text-decoration:none}
-.a-unstyled:hover{text-decoration:none}
+.ul-unstyled, .ol-unstyled { list-style-type: none; padding-left: 0; margin: 0;}
+.li-unstyled { list-style-type: none;}
+.a-unstyled { text-decoration: none;}
+.a-unstyled:hover { text-decoration: none;}
 
 
 /*** 使用者不可選取 ***/
-.user-n{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}
-.user-np{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;cursor:pointer}
+.user-n { -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none;}
+.user-np { -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; cursor: pointer;}
 
 
 /*** 等比例容器  ***/
-.aspect-ratio-16-9{position:relative;width:100%;padding-top:56.25%}
-.aspect-ratio-16-10,.aspect-ratio-8-5{position:relative;width:100%;padding-top:62.5%}
-.aspect-ratio-3-2{position:relative;width:100%;padding-top:66.66%}
-.aspect-ratio-4-3{position:relative;width:100%;padding-top:75%}
-.aspect-ratio-1-1{position:relative;width:100%;padding-top:100%}
-.aspect-ratio-content{position:absolute;top:0;left:0;bottom:0;right:0} /* 等同.absolute-full */
+.aspect-ratio-16-9, .ar-16-9 { position: relative; width: 100%; padding-top: 56.25%;}
+.aspect-ratio-16-10, .ar-16-10,
+.aspect-ratio-8-5, .ar-8-5 { position: relative; width: 100%; padding-top: 62.5%;}
+.aspect-ratio-3-2, .ar-3-2 { position: relative; width: 100%; padding-top: 66.66%;}
+.aspect-ratio-4-3, .ar-4-3 { position: relative; width: 100%; padding-top: 75%;}
+.aspect-ratio-1-1, .ar-1-1 { position: relative; width: 100%; padding-top: 100%;}
+.aspect-ratio-content, .ar-cont { position: absolute; top: 0; left: 0; bottom: 0; right: 0;} /* 等同.abs .pos-full */
     /* 用法範例:
-        <div class="aspect-ratio-3-2">
-            <div class="aspect-ratio-content"> </div>
+        <div class="ar-3-2">
+            <div class="ar-cont"></div>
         </div>
     */
-
-
-/*** 子層改變類 ***/
-.ch_d-ib > *{display: inline-block;}
-.ch_va-m > *,.ch_va-md > *{vertical-align: middle;}
-
 
 /*** debug 用的工具 ***/
 .b-a{border:thin aqua dashed}
@@ -361,39 +357,45 @@
 .b-9{border:thin #999 dashed}
 
 
+/*** 子層改變類 ***/
+.ch_d-ib > * { display: inline-block;}
+.ch_va-m > * { vertical-align: middle;}
+
+
 /*** --------- 仿寫Bootstrap (不與之衝突) --------- ***/
 /*** _row & _col ***/
-._row:before,._row:after,._rows:before,._rows:after{content:" ";display:table;clear:both;}
-._rows > *{position:relative;float:left;} /* _rows的子元素直接搭配 w-X 使用 */
-._col-1,._col-2,._col-3,._col-4,._col-5,._col-6,._col-7,._col-8,._col-9,._col-10,._col-11,._col-12{position:relative;float:left;}
-._col-12 {width: 100%;}
-._col-11 {width: 91.66666667%;}
-._col-10 {width: 83.33333333%;}
-._col-9 {width: 75%;}
-._col-8 {width: 66.66666667%;}
-._col-7 {width: 58.33333333%;}
-._col-6 {width: 50%;}
-._col-5 {width: 41.66666667%;}
-._col-4 {width: 33.33333333%;}
-._col-3 {width: 25%;}
-._col-2 {width: 16.66666667%;}
-._col-1 {width: 8.33333333%;}
+._row:before,._row:after, 
+._rows:before,._rows:after { content:" "; display:table; clear:both;}
+._rows > * { position: relative; float: left;} /* _rows的子元素直接搭配 w-X 使用 */
+._col-1,._col-2,._col-3,._col-4,._col-5,._col-6,._col-7,._col-8,._col-9,._col-10,._col-11,._col-12 { position:relative; float:left;}
+._col-12 { width: 100%;}
+._col-11 { width: 91.66666667%;}
+._col-10 { width: 83.33333333%;}
+._col-9 { width: 75%;}
+._col-8 { width: 66.66666667%;}
+._col-7 { width: 58.33333333%;}
+._col-6 { width: 50%;}
+._col-5 { width: 41.66666667%;}
+._col-4 { width: 33.33333333%;}
+._col-3 { width: 25%;}
+._col-2 { width: 16.66666667%;}
+._col-1 { width: 8.33333333%;}
 
 
 /*** f-row & f-col (flex) ***/
-.f-row{display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap}
-.f-col-1,.f-col-2,.f-col-3,.f-col-4,.f-col-5,.f-col-6,.f-col-7,.f-col-8,.f-col-9,.f-col-10,.f-col-11,.f-col-12,.f-col{position:relative;width:100%;}
-.f-col{-ms-flex-preferred-size:0;flex-basis:0;-ms-flex-positive:1;flex-grow:1;max-width:100%}
-.f-col-auto{-ms-flex:0 0 auto;flex:0 0 auto;width:auto;max-width:none}
-.f-col-1{-ms-flex:0 0 8.333333%;flex:0 0 8.333333%;max-width:8.333333%}
-.f-col-2{-ms-flex:0 0 16.666667%;flex:0 0 16.666667%;max-width:16.666667%}
-.f-col-3{-ms-flex:0 0 25%; flex:0 0 25%;max-width:25%}
-.f-col-4{-ms-flex:0 0 33.333333%;flex:0 0 33.333333%;max-width:33.333333%}
-.f-col-5{-ms-flex:0 0 41.666667%;flex:0 0 41.666667%;max-width:41.666667%}
-.f-col-6{-ms-flex:0 0 50%; flex:0 0 50%;max-width:50%}
-.f-col-7{-ms-flex:0 0 58.333333%;flex:0 0 58.333333%;max-width:58.333333%}
-.f-col-8{-ms-flex:0 0 66.666667%;flex:0 0 66.666667%;max-width:66.666667%}
-.f-col-9{-ms-flex:0 0 75%; flex:0 0 75%;max-width:75%}
-.f-col-10{-ms-flex:0 0 83.333333%;flex:0 0 83.333333%;max-width:83.333333%}
-.f-col-11{-ms-flex:0 0 91.666667%;flex:0 0 91.666667%;max-width:91.666667%}
-.f-col-12{-ms-flex:0 0 100%;flex:0 0 100%;max-width:100%}
+.f-row { display: -ms-flexbox; display: flex; -ms-flex-wrap: wrap; flex-wrap: wrap;}
+.f-col-1,.f-col-2,.f-col-3,.f-col-4,.f-col-5,.f-col-6,.f-col-7,.f-col-8,.f-col-9,.f-col-10,.f-col-11,.f-col-12,.f-col { position: relative; width: 100%;}
+.f-col{ -ms-flex-preferred-size: 0; flex-basis: 0; -ms-flex-positive: 1; flex-grow: 1; max-width: 100%;}
+.f-col-auto { -ms-flex:0 0 auto; flex: 0 0 auto; width: auto; max-width: none;}
+.f-col-1 { -ms-flex: 0 0 8.333333%; flex: 0 0 8.333333%; max-width: 8.333333%;}
+.f-col-2 { -ms-flex: 0 0 16.666667%; flex: 0 0 16.666667%; max-width: 16.666667%;}
+.f-col-3 { -ms-flex: 0 0 25%; flex: 0 0 25%; max-width: 25%;}
+.f-col-4 { -ms-flex: 0 0 33.333333%; flex:0 0 33.333333%; max-width: 33.333333%;}
+.f-col-5 { -ms-flex: 0 0 41.666667%; flex:0 0 41.666667%; max-width: 41.666667%;}
+.f-col-6 { -ms-flex: 0 0 50%; flex: 0 0 50%; max-width:50%;}
+.f-col-7 { -ms-flex: 0 0 58.333333%; flex:0 0 58.333333%; max-width: 58.333333%;}
+.f-col-8 { -ms-flex: 0 0 66.666667%; flex:0 0 66.666667%; max-width: 66.666667%;}
+.f-col-9 { -ms-flex: 0 0 75%; flex: 0 0 75%; max-width:75%;}
+.f-col-10{ -ms-flex: 0 0 83.333333%; flex: 0 0 83.333333%; max-width: 83.333333%;}
+.f-col-11{ -ms-flex: 0 0 91.666667%; flex: 0 0 91.666667%; max-width: 91.666667%;}
+.f-col-12{ -ms-flex: 0 0 100%; flex: 0 0 100%; max-width:100%;}

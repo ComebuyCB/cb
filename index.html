@@ -22,6 +22,10 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
 
+	<!-- jquery-table -->
+	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
+	<script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+
 	<!-- web style -->
 	<link rel="stylesheet" href="src/css/cb.css">
 	<script src="src/js/cb.js"></script>
@@ -32,6 +36,14 @@
 		a,span,p {white-space:nowrap}
 		p {font-size: 16px; line-height: 2; color:deepskyblue; margin:0}
 		.ccc:after{content: "("attr(href)")"}
+
+		/* 改套件 jquery-table */
+		table.dataTable tbody tr{ background-color: #222}
+		.dataTables_wrapper .dataTables_length, 
+		.dataTables_wrapper .dataTables_filter, 
+		.dataTables_wrapper .dataTables_info, 
+		.dataTables_wrapper .dataTables_processing, 
+		.dataTables_wrapper .dataTables_paginate { color: #ddd;}
 	</style>
 </head>
 
@@ -41,20 +53,41 @@
 		<span id="pra"></span>
 
 		<div class="mb-30">
-			<!-- knowledgeTab 不好用 暫時關閉TAB -->
-			<div id="knowledgeTab" js-tab-group="knowledge" class="mb-10 d-none"></div>
 			<div id="knowledgeContent" js-tab-group="knowledge" class="mb-10 row"></div>
 		</div>
+
+		<table id="asd" class="" style="width:100%">
+			<thead>
+				<tr>
+					<th>連結</th>
+					<th>tag</th>
+				</tr>
+			</thead>
+			<tbody id="dataTabletbody">
+				
+			</tbody>
+		</table>
 	</div>
 
 	<script>
 		$(function(){
-			jsScreen('c');
+			// jsScreen('c');
+
+			$('#dataTabletbody').html( layout_dataTable_Content( pattern_Ajax_Data() ) )
+    		$('#asd').DataTable({
+				"pageLength": 100,
+				"order": [[ 1, "asc" ]]
+			});
+
 		})
+
+
 
 		$('body').on('mousemove', function(){
 			myF();
 		})
+
+
 		function myF() {
 			var x = event.clientX;
 			var y = event.clientY;
@@ -64,6 +97,28 @@
 			`
 			$('#pra').html( str );
 		}
+
+
+
+		function layout_dataTable_Content(dataObj){
+			let str = "";
+
+			$.each( dataObj, function(i1,v1){
+				$.each( v1.content, function(i2,v2){
+					str += `
+						<tr>
+							<td><a href="${v2.href}">${v2.value}</a></td>
+							<td>${v2.tag}</td>
+						</tr>
+					`
+				})
+			})
+
+			return str;
+		}
+
+
+
 
 		function jsScreen(){
 			// 載入jquery.comfirm時，換行請用<br>
@@ -106,6 +161,7 @@
 			})
 		}
 
+
 		function pattern_Ajax_Data(){
 			let data = [
 				{
@@ -114,55 +170,67 @@
 						{
 							value: ':link :visited :hover :active',
 							href: 'https://www.w3schools.com/html/tryit.asp?filename=tryhtml_links_colors',
+							tag: 'html',
 						},
 						{
 							value: '_blank _self _parent _top',
 							href: 'https://www.w3schools.com/html/tryit.asp?filename=tryhtml_head_base',
+							tag: 'html',
 						},
 						{
 							value: 'map - ( area shape - coords )',
 							href: 'https://www.w3schools.com/html/tryit.asp?filename=tryhtml_images_map2',
+							tag: 'html',
 						},
 						{
 							value: 'picture - ( source media - srcset )',
 							href: 'https://www.w3schools.com/html/tryit.asp?filename=tryhtml_images_picture',
+							tag: 'html',
 						},
 						{
 							value: 'iframe target',
 							href: 'https://www.w3schools.com/html/tryit.asp?filename=tryhtml_iframe_target',
+							tag: 'html',
 						},
 						{
 							value: '←|→拉 終於找到這功能了 (不支援HTML5)',
 							href: 'https://www.w3schools.com/tags/tag_frame.asp',
+							tag: 'html',
 						},
 					]
 				},
 				{
-					title: 'CSS',
+					title: 'css',
 					content: [
 						{
 							value: '文方伸縮 type="text" 口 → |二二二|',
 							href: 'https://www.w3schools.com/cssref/tryit.asp?filename=trycss_dim_width_inputfocus',
+							tag: 'css',
 						},
 						{
 							value: '把 href 取出! content:"(" attr( href ) ")";',
 							href: 'https://www.w3schools.com/css/tryit.asp?filename=trycss3_mediaqueries_ex4',
+							tag: 'css',
 						},
 						{
 							value: 'Sticky 完整教學',
 							href: 'https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_navbar_sticky',
+							tag: 'css',
 						},
 						{
 							value: '等高排列~ table-cell',
 							href: 'https://www.w3schools.com/howto/howto_css_equal_height.asp',
+							tag: 'css',
 						},
 						{
 							value: '訊息小提示，不錯看',
 							href: 'https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_snackbar',
+							tag: 'css',
 						},
 						{
 							value: '::selection 螢光筆',
 							href: 'https://www.w3schools.com/cssref/tryit.asp?filename=trycss3_selection',
+							tag: 'css',
 						},
 					]
 				},			
@@ -172,22 +240,27 @@
 						{
 							value: '存取現在位置',
 							href: 'https://www.w3schools.com/html/html5_geolocation.asp',
+							tag: 'js',
 						},
 						{
 							value: '日期格式判斷',
 							href: 'http://www.the-art-of-web.com/javascript/validate-date/',
+							tag: 'js',
 						},
 						{
 							value: 'HTML元素標籤',
 							href: 'https://www.w3schools.com/jsref/dom_obj_all.asp',
+							tag: 'js',
 						},
 						{
 							value: '創造元素、內容',
 							href: 'https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_node_appendchild',
+							tag: 'js',
 						},
 						{
 							value: '製作 Filter Table',
 							href: 'https://www.w3schools.com/jquery/jquery_filters.asp',
+							tag: 'js',
 						},
 					]
 				},
@@ -197,14 +270,17 @@
 						{
 							value: 'PJCHENder 那些沒告訴你的小細節',
 							href: 'https://pjchender.blogspot.tw/',
+							tag: 'html css js other',
 						},
 						{
 							value: '改變 HTML5 range 樣式',
 							href: 'http://www.oxxostudio.tw/articles/201503/html5-input-range-style.html',
+							tag: 'css',
 						},
 						{
 							value: 'JS取range值',
 							href: 'https://www.w3schools.com/code/tryit.asp?filename=FO8WITXOA4VF',
+							tag: 'js',
 						}
 					]
 				},
@@ -214,14 +290,17 @@
 						{
 							value: '用正規表達式找尋想要的class',
 							href: 'view/tools-regex_find_class.html',
+							tag: 'tool',
 						},
 						{
 							value: '貝茲曲線 transition: 1s cubic-bezier(...)',
 							href: 'http://yisibl.github.io/cubic-bezier',
+							tag: 'tool',
 						},
 						{
 							value: 'My codePens',
 							href: 'view/my_tools.html',
+							tag: 'tool',
 						},
 					]
 				},
@@ -231,37 +310,33 @@
 						{
 							value: 'JS 螢幕',
 							href: 'view/js_screen_Info.html',
+							tag: 'tool js',
 						},
 						{
 							value: '前端常忘語法',
 							href: 'https://hackmd.io/z5DP_vkyTC-TMWoZpB6U7Q',
+							tag: 'js html css',
 						},
 						{
-							value: 'CSS筆記',
+							value: 'css筆記',
 							href: 'https://hackmd.io/wBujYPoSQE--zrRr7sJM3w',
+							tag: 'cb css',
 						},
 						{
 							value: 'SQL筆記',
 							href: 'https://hackmd.io/C0Go2T2IRT6ZMGHZ8v7WiA',
+							tag: 'cb sql',
 						},
 						{
 							value: 'RWD筆記',
 							href: 'https://hackmd.io/_3TpADaKTiS-65lCR-ErAw',
+							tag: 'cb css',
 						},
 					]
 				},
 			]
 			return data;
 		}
-
-		function layout_Tab_Button(dataObj){
-			let str = ""
-			$.each( dataObj, function(i,v){
-				str += `<button class="js-tab btn btn-dark btn-lg mr-4 ${ i==0 ? 'active':''}" js-tab-target="#knowledge_${v.title}" style="min-width: 100px">${v.title}</button>`
-			})
-			return str
-		}
-		$('#knowledgeTab').html( layout_Tab_Button( pattern_Ajax_Data() ) );
 
 		function layout_Tab_Content(dataObj){
 			let str = "";

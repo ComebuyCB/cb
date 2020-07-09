@@ -36,6 +36,7 @@
 		a,span,p {white-space:nowrap}
 		p {font-size: 16px; line-height: 2; color:deepskyblue; margin:0}
 		.ccc:after{content: "("attr(href)")"}
+		.dataTables_wrapper { min-height: 620px; min-width: 900px; width: 0;}
 
 		/* 改套件 jquery-table */
 		table.dataTable tbody tr{ background-color: #222}
@@ -55,6 +56,8 @@
 		<div class="mb-30">
 			<div id="knowledgeContent" js-tab-group="knowledge" class="mb-10 row"></div>
 		</div>
+
+		<hr class="bc-e">
 
 		<table id="asd" class="" style="width:100%">
 			<thead>
@@ -143,12 +146,7 @@
 			t += " 你的螢幕設置是(screen.colorDepth)："+ window.screen.colorDepth +" 位彩色<br>";
 			t += " 你的螢幕設置(screen.deviceXDPI)："+ window.screen.deviceXDPI +" 像素/英寸<br>";
 			t += " 你的螢幕是(screen.deviceXDPI)："+ window.screen.pixelDepth +" 吋<br>";
-			t += "***window.location.***<br>";
-			t += " URL(href)： "+ window.location.href +"<br>";
-			t += " Protocol(protocol)： "+ window.location.protocol +"<br>";	
-			t += " Domain Name(hostname)： "+ window.location.hostname +"<br>";
-			t += " Path & Filename(pathname)： "+ window.location.pathname +"<br>";
-			t += " Loads A New Document(assign)： "+ window.location.assign +"<br>";
+
 
 			/* 參考: https://craftpip.github.io/jquery-confirm */
 			$.dialog({
@@ -318,7 +316,7 @@
 							tag: 'js html css',
 						},
 						{
-							value: 'css筆記',
+							value: 'CSS筆記',
 							href: 'https://hackmd.io/wBujYPoSQE--zrRr7sJM3w',
 							tag: 'cb css',
 						},

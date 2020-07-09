@@ -31,7 +31,12 @@
 <body>
 
 	<style>
-		#wrap { margin: auto; max-width: 1200px;}
+		html{ scroll-behavior: smooth; }
+		#wrap { margin: auto; max-width: 1200px; position: relative;}
+		#wrap::after { content: ""; display: block; height: 300px;}
+		@media (min-width: 1200px){ #quick_Tab_Block { position: fixed; margin-right: calc( ( 100% - 1200px ) / 2 )} }
+
+
 		.section { padding: 30px 15px 30px 3rem; border-bottom: 4px double #666; }
 		.section > * { margin-bottom: 10px; }
 		.title { font-weight: bold; margin: 0 0 1em -1em; }
@@ -53,6 +58,8 @@
 	</style>
 
 	<div id="wrap">
+
+		<div id="quick_Tab_Block" class="fixed pos-9"></div>
 
 		<div id="ch_1" class="section">
 			<h2 class="title">1. 螢幕寬高一覽</h2>
@@ -171,15 +178,42 @@
 				2. 使用iframe時，不會將其iframe計算進去。<br>
 			</div>
 		</div>
+
+		<div id="ch_4" class="section">
+			<h2 class="title">4. 瀏覽器URL資訊一覽</h2>
+
+			<table id="ch_4-table" class="table table_w">
+				<thead>
+					<tr>
+						<th>事件</th>
+						<th>輸出</th>
+					</tr>
+				</thead>
+				<tbody></tbody>
+			</table>
+		</div>
+
 	</div>
 
 	<script>
 		$(function(){
+			quick_Tab_Block();
 			ch_1_fn();
 			ch_2_fn();
 			ch_3_fn();
 			ch_4_fn();
 		})
+
+		function quick_Tab_Block(){
+			let tab_layout = '<ul class="bgc-2 pl-25 pr-10">';
+			$.each( $('.section > .title'), function(idx,ele){
+				tab_layout += `<li> <a href="#ch_${idx+1}" style="color: #2BF"> ${$(ele).text()} </a> </li>`;
+			})
+			tab_layout += '</ul>';
+
+			$('#quick_Tab_Block').html( tab_layout );
+		}
+
 
 		function ch_1_fn(){
 			$(window).on('resize scroll load', function(){
@@ -195,12 +229,12 @@
 						"window.screen.availHeight": window.screen.availHeight,
 					},
 					{
-						"desc": '網頁正文部分 (左,上)',
+						"desc": '網頁正文區域 (左,上)',
 						"window.screenLeft": window.screenLeft,
 						"window.screenTop": window.screenTop,
 					},
 					{
-						"desc": '網頁正文部分 (左,上)',
+						"desc": '網頁正文被卷去 (左,上)',
 						"window.pageXOffset": window.pageXOffset,
 						"window.pageYOffset": window.pageYOffset,
 					},
@@ -301,7 +335,7 @@
 		}
 
 		function ch_3_fn(){
-			let eventsArr = function(event){
+			function eventsArr(event){
 				return [
 					event.screenX + ',' + event.screenY,
 					event.clientX + ',' + event.clientY,
@@ -310,16 +344,15 @@
 				];
 			}
 
-			let changeEventStatus = function( eventArr, which_td ){
-				$.each( $('#ch_3-table').children('tbody').children('tr'), function( idx, ele ){
+			function changeEventStatus( eventArr, which_td ){
+				$.each( $('#ch_3-table > tbody > tr'), function( idx, ele ){
 					$( ele ).children('td').eq( which_td ).html( eventArr[idx] );
 				})
 			}
 
 			// window.mousemove
 			$(window).on('mousemove load',function(event){
-				let evtArr = eventsArr(event);
-				changeEventStatus( evtArr, 2 );
+				changeEventStatus( eventsArr(event), 2 );
 
 				// 關掉console.log
 				if ( $('#ch_3-table').find('button').hasClass('hover_console') ){
@@ -331,8 +364,7 @@
 
 			//window.click
 			$(window).on('click load',function(event){
-				let evtArr = eventsArr(event);
-				changeEventStatus( evtArr, 3 );
+				changeEventStatus( eventsArr(event), 3 );
 				
 				console.log( 'window_click', event );
 			})
@@ -340,6 +372,28 @@
 
 		function ch_4_fn(){
 
+			let arr = {
+				"window.location.href": window.location.href,
+				"window.location.origin": window.location.origin,
+				"window.location.pathname": window.location.pathname,
+				"window.location.hash": window.location.hash,
+				"window.location.protocol": window.location.protocol,
+				"window.location.host": window.location.host,
+				"window.location.hostname": window.location.hostname,
+				"window.location.port": window.location.port,
+			}
+			
+			let tbody_content = "";
+			$.each( arr, function(key,val){
+				tbody_content += `
+					<tr>
+						<td>${key}</td>
+						<td>${val}</td>
+					</tr>
+				`
+			})
+
+			$('#ch_4-table > tbody').html(tbody_content);
 		}
 	</script>
 </body>

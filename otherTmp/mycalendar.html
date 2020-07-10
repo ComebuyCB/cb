@@ -1,0 +1,125 @@
+<html>
+<head>
+	<style>
+		.calendar{ background:#fff; box-shadow:0px 1px 1px rgba(0,0,0,0.1);}
+		.body-list ul{ padding-left:0; margin: 0}
+		.body-list ul:after{ content:""; display:block; clear:both; }
+		.body-list ul>li{	width:14.28%;	padding:10px 0; list-style:none; display:block; box-sizing:border-box; float:left; text-align:center;}
+		.body-list ul>li:nth-child(7n+1){clear:left;}
+
+		.lightgrey{color:#a8a8a8;}
+		.darkgrey{color:#565656;}
+		.green{color:#6ac13c;}
+		.greenbox{border:1px solid #6ac13c; background:#e9f8df; font-weight:bold;}
+	</style>
+</head>
+
+<body>
+<div class="calendar">
+  <div class="title" style="text-align:center">
+    <h2>
+      <span class="green" id="calendar-title">Month</span>
+      <span class="green" id="calendar-year">Year</span>
+	</h2>
+	<p>
+		<button id="prev">Prev</button>
+		<button id="next">Next</button>
+	</p>
+  </div>
+  <div class="body">
+    <div class="lightgrey body-list">
+      <ul>
+		<li>SUN</li>
+        <li>MON</li>
+        <li>TUE</li>
+        <li>WED</li>
+        <li>THU</li>
+        <li>FRI</li>
+        <li>SAT</li>
+      </ul>
+    </div>
+    <div class="darkgrey body-list">
+      <ul id="days">
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script>
+
+function mycalendar(){
+	/* 自定義內容 */
+	var class_beforeDays = "lightgrey";
+	var class_today = "green greenbox";
+	var class_afterDays = "darkgrey";
+	var m_name_en = ["January","Febrary","March","April","May","June","July","Auguest","September","October","November","December"];
+	/* --- */
+	
+	var n_date = new Date();
+	var c_year = n_date.getFullYear();	//日曆的年，初始化是今天的年
+	var c_month = n_date.getMonth();	//日曆的月，初始化是今天的月
+	var c_day = n_date.getDate();	//日曆的日，初始化是今天的日
+
+	function dayStart(month, year) { //获取某年某月第一天是星期几
+		var tmpDate = new Date(year, month, 1);
+		return (tmpDate.getDay());
+	}
+
+	function daysMonth(month, year) { //计算某年是不是闰年，通过求年份除以4的余数
+		var m_leap = [31,29,31,30,31,30,31,31,30,31,30,31];
+		var m_normal = [31,28,31,30,31,30,31,31,30,31,30,31];
+		if (( year % 4 == 0 && year % 100 != 0 ) || ( year % 400 == 0 )) {
+			return (m_leap[month]);
+		}
+		return (m_normal[month]);
+	}
+
+	function refreshDate(){
+		var str = "";
+		var totalDay = daysMonth(c_month, c_year); //获取该月总天数
+		var firstDay = dayStart(c_month, c_year); //获取该月第一天是星期几
+		
+		for(var i=0; i<firstDay; i++){ 
+			str += "<li></li>"; //为起始日之前的日期创建空白节点
+		}
+		
+		for(var i=1; i<=totalDay; i++){
+			if((i<c_day && c_year==n_date.getFullYear() && c_month==n_date.getMonth()) || c_year<n_date.getFullYear() || ( c_year==n_date.getFullYear() && c_month<n_date.getMonth())){  //该日期在今天之前
+				str += '<li class="'+class_beforeDays+'">'+i+'</li>';
+			}else if (i==c_day && c_year==n_date.getFullYear() && c_month==n_date.getMonth()){ //当天日期
+				str += '<li class="'+class_today+'">'+i+'</li>';
+			}else{ //日期在今天之后
+				str += '<li class="'+class_afterDays+'">'+i+'</li>';
+			}
+		}
+		
+		document.getElementById("days").innerHTML = str; //设置日期显示
+		document.getElementById("calendar-title").innerHTML = m_name_en[c_month]; //设置英文月份显示
+		document.getElementById("calendar-year").innerHTML = c_year; //设置年份显示
+	}
+	refreshDate(); //执行该函数
+
+	document.getElementById("prev").onclick = function(e){
+		e.preventDefault();
+		c_month--;
+		if(c_month<0){
+			c_year--;
+			c_month = 11;
+		}
+		refreshDate();
+	}
+	document.getElementById("next").onclick = function(e){
+		e.preventDefault();
+		c_month++;
+		if(c_month>11){
+			c_year++;
+			c_month = 0;
+		}
+		refreshDate();
+	}
+}
+
+mycalendar();
+</script>
+</body>
+</html>

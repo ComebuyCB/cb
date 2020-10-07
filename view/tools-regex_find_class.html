@@ -1,63 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.css">
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 </head>
 <style>
-    body {background-color: #f5f5f5; line-height: 1.5; padding: 0 15px; font-family: "微軟正黑體"; }
-    .inpVal { background-color: rgba(255,255,0,.4);}
-    .inpVal.x { background-color: rgba(99,99,99,.4);}
-    .slc { user-select: all; margin-bottom: 10px; text-indent: 1em;}
+    body { background-color: #f5f5f5; line-height: 1.5; padding: 0 15px; font-family: "微軟正黑體"; }
+
+    .findVal { background-color: rgba(199,255,0,.4); }
+    .replaceVal { background-color: rgba(0,200,0,.4);}
     .p-start { text-indent: 1em; }
-    .mb-15 { margin-bottom: 15px; }
 </style>
 
 <body>
 
-    <h3>用正規表達式找尋想要的class</h3>
-    
-    <input id="input" name="aa" style="font-size:18px" placeholder="輸入要找的class">
-
-    <div id="output" style="margin-top:10px;">
-        <b>* 純 class:</b>
-        <div class="slc">class\s*=\s*["']([^"']*\s+)?<span class="inpVal"></span>(\s+[^"']*)?["']</div>
-        <b>* 純 jquery：</b>
-        <div class="slc">\(\s*["']\s*[\.]?([^"']*[^\w-])?<span class="inpVal"></span>([^\w-][^"']*)?\s*["']\s*\)</div>
-        <b>* class + jquery:</b>
-        <div class="slc">class\s*=\s*["']([^"']*\s+)?<span class="inpVal"></span>(\s+[^"']*)?["']|\(\s*["']\s*[\.]?([^"']*[^\w-])?<span class="inpVal"></span>([^\w-][^"']*)?\s*["']\s*\)</div>
+    <h5 class="my-3">在HTML或jQuery中，用正規表達式尋找className</h5>
+    <div class="mb-3">
+        <input id="findInput" name="aa" style="font-size: 18px" placeholder="find_CSS">
+        <input id="replaceInput" name="bb" style="font-size: 18px" placeholder="replace_CSS">
     </div>
 
-    <hr class="mb-15">
+    <div id="output" class="mt-10">
+        <div class="mb-3">
+            <b>純 class：</b>
+            <div class="p-start">
+                <div>
+                    <span class="mr-2">尋找：</span>
+                    <span class="user-select-all">class=(["'])([^"']*\s+)?(<span class="findVal"></span>)(\s+[^"']*)?(["'])</span>
+                </div>
+                <div>
+                    <span class="mr-2">取代：</span>
+                    <span class="user-select-all">class=$1$2<span class="replaceVal"></span>$4$5</span>
+                </div>
+            </div>
+        </div>
 
-    <div style="margin-top: 10px; color:#333">
-        <div style="margin-bottom:10px;"><b>匹配範例：</b></div>
-        <b>* class:</b>
-        <div class="p-start">能匹配：class="<span class="inpVal"></span>" | class="<span class="inpVal"></span> xxx" | class="xxx <span class="inpVal"></span>" | class="xxx <span class="inpVal"></span> yyy" | class  =  "  <span class="inpVal"></span>  "</div>
-        <div class="p-start mb-15">不匹配：class="__<span class="inpVal x"></span>" | class="<span class="inpVal x"></span>__" | class="x" type="<span class="inpVal x"></span>"</div>
-        <b>* jquery:</b>
-        <div class="p-start">能匹配：("<span class="inpVal"></span>") | (".<span class="inpVal"></span>") | (  "  <span class="inpVal"></span>  "  ) | ("{<span class="inpVal"></span>},[<span class="inpVal"></span>],<span class="inpVal"></span>") | ("xxx+.<span class="inpVal"></span>>yyy")</div>
-        <div class="p-start">不匹配：(".__<span class="inpVal x"></span>") | (".<span class="inpVal x"></span>__")</div>
+        <div class="mb-3">
+            <b>純 jquery：</b>
+            <div class="p-start">
+                <div>
+                    <span class="mr-2">尋找：</span>
+                    <span class="user-select-all">\((\s*["']\s*)([\.])?([^"']*[^\w-])?(<span class="findVal"></span>)([^\w-][^"']*)?(\s*["']\s*)\)</span>
+                </div>
+                <div>
+                    <span class="mr-2">取代：</span>
+                    <span class="user-select-all">($1$2$3<span class="replaceVal"></span>$5$6)</span>
+                </div>
+            </div>
+        </div>
+        <div class="mb-3">
+            <b>class + jquery：</b>
+            <div class="p-start">
+                <div>
+                    <span class="mr-2">尋找：</span>
+                    <span class="user-select-all">class=(["'])([^"']*\s+)?(<span class="findVal"></span>)(\s+[^"']*)?(["'])|\((\s*["']\s*)([\.])?([^"']*[^\w-])?(<span class="findVal"></span>)([^\w-][^"']*)?(\s*["']\s*)\)</span>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <hr class="mb-15">
+    <hr class="my-4">
 
-    <div>可至： <a href="https://regex101.com/r/XQGc5Q/2">https://regex101.com</a> 試試</div>
-    <div>正規表達式： <a href="https://wiki.jikexueyuan.com/project/python-crawler-guide/images/04.png">圖片連結</a></div>
+    <div>匹配範例： <a href="https://regex101.com/r/XQGc5Q/7" target="_blank">https://regex101.com</a> 試試</div>
+    <div>正規表達式： <a href="https://wiki.jikexueyuan.com/project/python-crawler-guide/images/04.png" target="_blank">圖片連結</a></div>
 
     <script>
-        $('#input').on('keyup',()=>{
-            let str = $('#input').val();
+        $('#findInput').on('keyup',()=>{
+            let str = $('#findInput').val();
             if (str !== ''){ 
-                $('.inpVal').text( $('#input').val() );
+                $('.findVal').text( $('#findInput').val() );
             }else{
-                $('.inpVal').text( $('#input').attr('placeholder') );
+                $('.findVal').text( $('#findInput').attr('placeholder') );
+            }
+        })
+
+        $('#replaceInput').on('keyup',()=>{
+            let str = $('#replaceInput').val();
+            if (str !== ''){ 
+                $('.replaceVal').text( $('#replaceInput').val() );
+            }else{
+                $('.replaceVal').text( $('#replaceInput').attr('placeholder') );
             }
         })
 
         $(function(){
-            $('#input').focus();
-            $('.inpVal').text( $('#input').attr('placeholder') );
+            $('#findInput').focus();
+            $('.findVal').text( $('#findInput').attr('placeholder') );
+            $('.replaceVal').text( $('#replaceInput').attr('placeholder') );
         })
     </script>
 </body>

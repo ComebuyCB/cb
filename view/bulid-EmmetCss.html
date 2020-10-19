@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <!-- shortcut -->
+    <link rel="Shortcut Icon" type="image/x-icon" href="../src/img/cb-logo.png">
+
+    <!-- jquery -->
+    <script src="../src/plugins/jquery/jquery.js"></script>
+
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="../src/plugins/bootstrap/bootstrap.css">
+    <script src="../src/plugins/bootstrap/popper.js"></script>
+    <script src="../src/plugins/bootstrap/bootstrap.js"></script>
+
+</head>
+
+<body style="background-color: #eee; color: #222; font-size: 12px; line-height: 14px; margin: 16px 8px">
+
+    <div id="output"></div>
+
+    <script>
+        /*=== 自訂編輯處: ===*/
+        const option = {
+            forward: "_", // CSS前墜
+            hyphen: "-", // CSS連字符
+            isRWD: true, // 是否要RWD
+            setRWD: [
+                { name: 'sm', min: '576px' },
+                { name: 'md', min: '768px' },
+                { name: 'lg', min: '992px' },
+                { name: 'xl', min: '1200px' },
+            ]
+        }
+
+        document.getElementById("output").innerHTML = buildCssLayout(option);
+
+        function buildCssLayout(option) {
+
+            const OP = { // 自訂編輯處理
+                forward: option.forward || '', // CSS前墜
+                hyphen: option.hyphen || '-', // CSS連字符
+                isRWD: option.isRWD || false, // 是否要RWD
+                setRWD: option.setRWD || [
+                    { name: 'sm', min: '576px' },
+                    { name: 'md', min: '768px' },
+                    { name: 'lg', min: '992px' },
+                    { name: 'xl', min: '1200px' },
+                ]
+            }
+
+            const hyphen = OP.hyphen;
+            const isRWD = OP.isRWD;
+            const RWD = OP.setRWD;
+
+            // 創建CSS
+            const IM = "!important";
+            const CSS = {
+                margin: function () {
+                    let STR = "/* === margin (0~100)(px) === */ <br>"
+
+                    for( let r=-1; r<RWD.length; r++ ){
+                        let _ = ( r!==-1 && isRWD===true ) ? hyphen + RWD[r].name + hyphen : hyphen;
+                        let media = ( r!==-1 && isRWD===true ) ? [ `@media( min-width: ${RWD[r].min} ){<br>` , `}<hr><hr>` ] : [ '', '<hr><hr>' ];
+                        STR += media[0];
+                            STR += `.m${_}auto{margin:auto${IM}} `
+                            for (let i = 0; i <= 100; i++) {
+                                STR += `.m${_}${i}{margin:${i}px${IM}} `
+                                STR += i % 10 === 0 ? "<br>" : ""
+                            }
+                            STR += "<hr>";
+                            STR += `.my${_}auto{margin-top:auto${IM}; margin-bottom:auto${IM};} `
+                            STR += `.mx${_}auto{margin-left:auto${IM}; margin-right:auto${IM};} `
+                            for (let i = 0; i <= 100; i++) {
+                                STR += `.my${_}${i}{margin-top:${i}px${IM}; margin-bottom:${i}px${IM};} `
+                                STR += `.mx${_}${i}{margin-left:${i}px${IM}; margin-right:${i}px${IM};} `
+                                STR += i % 10 === 0 ? "<br>" : ""
+                            }
+                            STR += "<hr>";
+                            STR += `.mt${_}auto{margin-top:auto${IM};} `
+                            STR += `.mb${_}auto{margin-bottom:auto${IM};} `
+                            STR += `.ml${_}auto{margin-left:auto${IM};} `
+                            STR += `.mr${_}auto{margin-right:auto${IM};} `
+                            for (let i = 0; i <= 100; i++) {
+                                STR += `.mt${_}${i}{margin-top:${i}px${IM};} `
+                                STR += `.mb${_}${i}{margin-bottom:${i}px${IM};} `
+                                STR += `.ml${_}${i}{margin-left:${i}px${IM};} `
+                                STR += `.mr${_}${i}{margin-right:${i}px${IM};} `
+                                STR += i % 10 === 0 ? "<br>" : ""
+                            }
+                        STR += media[1];
+                    }
+
+                    return STR + "<hr>"
+                },
+                padding: function () {
+                    let STR = "/* === padding (0~100)(px) === */ <br>"
+
+                    for( let r=-1; r<RWD.length; r++ ){
+                        let _ = ( r!==-1 && isRWD===true ) ? hyphen + RWD[r].name + hyphen : hyphen;
+                        let media = ( r!==-1 && isRWD===true ) ? [ `@media( min-width: ${RWD[r].min} ){<br>` , `}<hr><hr>` ] : [ '', '<hr><hr>' ];
+
+                        STR += media[0];
+                            for (i = 0; i <= 100; i++) {
+                                STR += `.p${_}${i}{padding:${i}px${IM};} `
+                            }
+                            STR += "<hr>"
+                            for (i = 0; i <= 100; i++) {
+                                STR += `.py${_}${i}{padding-top:${i}px${IM}; padding-bottom:${i}px${IM};} `
+                                STR += `.px${_}${i}{padding-left:${i}px${IM}; padding-right:${i}px${IM};} `
+                                STR += i % 10 === 0 ? "<br>" : ""
+                            }
+                            STR += "<hr>"
+                            for (i = 0; i <= 100; i++) {
+                                STR += `.pt${_}${i}{padding-top:${i}px${IM};} `
+                                STR += `.pb${_}${i}{padding-bottom:${i}px${IM};} `
+                                STR += `.pr${_}${i}{padding-right:${i}px${IM};} `
+                                STR += `.pl${_}${i}{padding-left:${i}px${IM};} `
+                                STR += i % 10 === 0 ? "<br>" : ""
+                            }
+                        STR += media[1];
+                    }
+                    return STR + "<hr>"
+                },
+                widthHeight: function () {
+                    let STR = "/* === width & height (0~100)(%) === */ <br>"
+
+                    for( let r=-1; r<RWD.length; r++ ){
+                        let _ = ( r!==-1 && isRWD===true ) ? hyphen + RWD[r].name + hyphen : hyphen;
+                        let media = ( r!==-1 && isRWD===true ) ? [ `@media( min-width: ${RWD[r].min} ){<br>` , `}` ] : [ '', '' ];
+
+                        STR += media[0];
+                            STR += `.w${_}auto{width:auto${IM};} .h${_}auto{height:auto${IM};}`
+                            for (let i = 0; i <= 100; i++) {
+                                STR += `.w${_}${i}{width:${i}%${IM};} `
+                                STR += `.h${_}${i}{height:${i}%${IM};} `
+                                STR += i % 10 === 0 ? "<br>" : ""
+                            }
+                        STR += media[1];
+                    }
+                    return STR + "<hr>"
+                },
+                borderRadius: function () {
+                    let STR = "/* === border-radius (0~100)(px) === */ <br>"
+
+                    for( let r=-1; r<RWD.length; r++ ){
+                        let _ = ( r!==-1 && isRWD===true ) ? hyphen + RWD[r].name + hyphen : hyphen;
+                        let media = ( r!==-1 && isRWD===true ) ? [ `@media( min-width: ${RWD[r].min} ){<br>` , `}` ] : [ '', '' ];
+
+                        STR += media[0];
+                            for (let i = 0; i <= 100; i++) {
+                                STR += `.bdrs${_}${i}{border-radius:${i}px${IM}} `
+                                STR += i % 10 === 0 ? "<br>" : ""
+                            }
+                        STR += media[1]; 
+                    }
+                    return STR + "<hr>"
+                },
+                fontSize: function () {
+                    let STR = "/* === font-size (0~100)(px) === */ <br>"
+
+                    for( let r=-1; r<RWD.length; r++ ){
+                        let _ = ( r!==-1 && isRWD===true ) ? hyphen + RWD[r].name + hyphen : hyphen;
+                        let media = ( r!==-1 && isRWD===true ) ? [ `@media( min-width: ${RWD[r].min} ){<br>` , `}` ] : [ '', '' ];
+
+                        STR += media[0];
+                            for (let i = 0; i <= 100; i++) {
+                                STR += `.fs${_}${i}{font-size:${i}px${IM}} `
+                                STR += i % 10 === 0 ? "<br>" : ""
+                            }
+                        STR += media[1]; 
+                    }
+                    return STR + "<hr>"
+                },
+                lineHeight: function () {
+                    let STR = "/* === line-height (0~100)(*0.1) === */<br>";
+                    for (let i = 0; i <= 100; i++) {
+                        STR += `.lh-${i}{line-height:${i / 10}${IM}} `;
+                        STR += i % 10 === 0 ? "<br>" : "";
+                    }
+                    STR += "<hr>";
+                    return STR
+                },
+                opacity: function () {
+                    let STR = "/* ===  opacity (0~100 (+5))(*0.01) === */<br>";
+                    for (let i = 0; i <= 100; i = i + 5) {
+                        STR += `op-${(i / 100).toString().split('.').join('')}{opacity:${i / 100}${IM}} `;
+                        STR += i % 20 === 0 ? "<br>" : "";
+                    }
+                    STR += "<hr>";
+                    return STR
+                },
+                bgcRGBA: function () {
+                    let STR = "/* === 黑白背景+半透明 (0~1 (+0.05)) (ex: 0,005,01,015,02,025...) === */<br>";
+                    for (let i = 0; i <= 100; i = i + 5) {
+                        STR += `.bgc-rgb0-a${(i / 100).toString().split('.').join('')}{background-color:rgba(0,0,0,${i / 100})${IM}} `;
+                        STR += `.bgc-rgb255-a${(i / 100).toString().split('.').join('')}{background-color:rgba(255,255,255,${i / 100})${IM}} `;
+                        STR += i % 20 === 0 ? "<br>" : "";
+                    }
+                    STR += "<hr>";
+                    return STR
+                },
+                equal: function () {
+                    let STR = "/* === 切等分 */<br>";
+                    OP.setRWD.forEach((e) => {
+                        STR += '@media(min-width:' + e.min + '){ <br>'
+                        STR += '[class*="_equal-"]>*:nth-child(n){clear:none;}<br>'
+                        for (let i = 1; i <= 16; i++) {
+                            STR += `._equal${e.name}-${i}>*{width:calc(100% / ${i});clear:left;} `
+                            STR += i % 2 === 0 ? "<br>" : ""
+                        }
+                        STR += '} <br>'
+                    })
+                    return STR
+                }
+            }
+
+
+            // 輸出CSS
+            let layout = ''
+            $.each(CSS, function (key, fn) {
+                layout += `<div style="user-select: all">${fn()}</div>`
+            })
+            return layout
+        }
+    </script>
+</body>
+
+</html>

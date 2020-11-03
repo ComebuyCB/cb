@@ -300,6 +300,7 @@
     .wob-n {word-break:normal;}
     .wob-k {word-break:keep-all;}
     .wob-ba {word-break:break-all;}
+    .wob-bw {word-break:break-word;} /* custom */
 
     .wow-nm {word-wrap:normal;}
     .wow-n {word-wrap:none;}

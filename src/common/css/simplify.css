@@ -5,7 +5,7 @@
  * .mx-15 { margin-left: 15px; margin-right: 15px; } 
  *
  * // 使位置置中：( 需搭配position: absolute/fixed 等 )
- * .pos-5 { top: 50%; left: 50%; transform: translate(-50%,-50%); -ms-transform: translate(-50%,-50%); }
+ * .loc-5 { top: 50%; left: 50%; transform: translate(-50%,-50%); -ms-transform: translate(-50%,-50%); }
  *
  * // 讓多餘的字以 ... 表示：
  * .dadada, .text-more { white-space: nowrap!important; overflow: hidden!important; text-overflow: ellipsis!important; }
@@ -287,22 +287,22 @@
 
 /*** --------- 自訂功能 --------- ***/
 /*** 位置 數字鍵盤1~9表示其位置 (1-9) ***/
-.pos-1 { left:0; bottom:0;}
-.pos-2 { left:50%; bottom:0; transform:translate(-50%,0%);}
-.pos-3 { right:0; bottom:0;}
-.pos-4 { left:0; top:50%; transform:translate(0%,-50%);}
-.pos-5 { left:50%; top:50%; transform:translate(-50%,-50%);}
-.pos-6 { right:0; top:50%; transform:translate(0%,-50%);}
-.pos-7 { left:0; top:0;}
-.pos-8 { left:50%; top:0; transform:translate(-50%,0%);}
-.pos-9 { right:0; top:0;}
+.loc-1 { left:0; bottom:0;}
+.loc-2 { left:50%; bottom:0; transform:translate(-50%,0%);}
+.loc-3 { right:0; bottom:0;}
+.loc-4 { left:0; top:50%; transform:translate(0%,-50%);}
+.loc-5 { left:50%; top:50%; transform:translate(-50%,-50%);}
+.loc-6 { right:0; top:50%; transform:translate(0%,-50%);}
+.loc-7 { left:0; top:0;}
+.loc-8 { left:50%; top:0; transform:translate(-50%,0%);}
+.loc-9 { right:0; top:0;}
 
-.pos-t { left:0; right:0; top:0;}
-.pos-b { left:0; right:0; bottom:0;}
-.pos-l { left:0; top:0; bottom:0;}
-.pos-r { right:0; top:0; bottom:0;}
+.loc-t { left:0; right:0; top:0;}
+.loc-b { left:0; right:0; bottom:0;}
+.loc-l { left:0; top:0; bottom:0;}
+.loc-r { right:0; top:0; bottom:0;}
 
-.pos-full { left:0; right:0; top:0; bottom:0; }
+.loc-full { left:0; right:0; top:0; bottom:0; }
 
 
 /*** 排版類 ***/
@@ -336,7 +336,7 @@
 .aspect-ratio-3-2, .ar-3-2 { position: relative; width: 100%; padding-top: 66.66%;}
 .aspect-ratio-4-3, .ar-4-3 { position: relative; width: 100%; padding-top: 75%;}
 .aspect-ratio-1-1, .ar-1-1 { position: relative; width: 100%; padding-top: 100%;}
-.aspect-ratio-content, .ar-cont { position: absolute; top: 0; left: 0; bottom: 0; right: 0;} /* 等同.abs .pos-full */
+.aspect-ratio-content, .ar-cont { position: absolute; top: 0; left: 0; bottom: 0; right: 0;} /* 等同.abs .loc-full */
     /* 用法範例:
         <div class="ar-3-2">
             <div class="ar-cont"></div>

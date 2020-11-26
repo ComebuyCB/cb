@@ -1,6 +1,6 @@
 ﻿    $(function(){
         $('body').append(`
-            <footer class="_rows sticky pos-b">
+            <footer class="_rows sticky loc-b">
                 <a class="f-l btn btn-sm btn-dark" href="https://comebuycb.github.io/cb" target="_self">Home</a>
                 <a class="f-r text-u" href="https://github.com/ComebuyCB/cb">https://github.com/ComebuyCB/cb</a>
             </footer>

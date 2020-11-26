@@ -138,7 +138,6 @@
     */
     .w-a {width:auto;}
     .h-a {height:auto;}
-    */
 
     /* 
     .maw-? {max-width:;}
@@ -148,6 +147,8 @@
     */
     .maw-n {max-width:none;}
     .mah-n {max-height:none;}
+
+
 
 /*=== Font ===*/
     .fw-n {font-weight:normal;}
@@ -245,10 +246,7 @@
     .th-t {text-height:text-size;}
     .th-m {text-height:max-size;}
 
-    /* 
-    ti:-
-    text-indent:-9999px; 
-    */
+    .ti-- {text-indent:-9999px;}
 
     .tj-a {text-justify:auto;}
     .tj-iw {text-justify:inter-word;}
@@ -273,14 +271,11 @@
     .tw-s {text-wrap:suppress;}
 
     /* 
-    tsh:r
-    text-shadow:h v blur rgb(0, 0, 0);
-    tsh:ra
-    text-shadow:h v blur rgba(0, 0, 0, .5);
-    tsh+
-    text-shadow:0 0 0 #000; 
+    .tsh-r {text-shadow:h v blur rgb(0, 0, 0);}
+    .tsh-ra {text-shadow:h v blur rgba(0, 0, 0, .5);}
     */
 
+    .tsh-0 {text-shadow:0 0 0 #000;} /* custom */
     .tsh-n {text-shadow:none;}
 
     .lts-n {letter-spacing:normal;}
@@ -346,24 +341,22 @@
 
 /*=== Color ===*/
     /*
-    c
-    color:#000; 
+    c-? {color:#;}
     */
     .c-r {color:rgb(0, 0, 0);}
     .c-ra {color:rgba(0, 0, 0, .5);}
     /*
-    op
-    opacity:; 
+    .op-? { opacity:;}
     */
 
 
 
 /*=== Generated content ===*/
-    .cnt-n, ct-n {content:normal;}
-    .cnt-oq, ct-oq {content:open-quote;}
-    .cnt-noq, ct-noq {content:no-open-quote;}
-    .cnt-cq, ct-cq {content:close-quote;}
-    .cnt-ncq, ct-ncq {content:no-close-quote;}
+    .cnt-n, .ct-n {content:normal;}
+    .cnt-oq, .ct-oq {content:open-quote;}
+    .cnt-noq, .ct-noq {content:no-open-quote;}
+    .cnt-cq, .ct-cq {content:close-quote;}
+    .cnt-ncq, .ct-ncq {content:no-close-quote;}
 
     .q-n {quotes:none;}
     .q-ru {quotes:'\00AB' '\00BB' '\201E' '\201C';}
@@ -463,58 +456,42 @@
 
 
 /*=== Lists ===*/
-    .lis:n {list-style:none;}
+    .lis-n {list-style:none;}
 
-    .lisp:i {list-style-position:inside;}
-    .lisp:o {list-style-position:outside;}
+    .lisp-i {list-style-position:inside;}
+    .lisp-o {list-style-position:outside;}
 
-    .list:n {list-style-type:none;}
-    .list:d {list-style-type:disc;}
-    .list:c {list-style-type:circle;}
-    .list:s {list-style-type:square;}
-    .list:dc {list-style-type:decimal;}
-    .list:dclz {list-style-type:decimal-leading-zero;}
-    .list:lr {list-style-type:lower-roman;}
-    .list:ur {list-style-type:upper-roman;}
+    .list-n {list-style-type:none;}
+    .list-d {list-style-type:disc;}
+    .list-c {list-style-type:circle;}
+    .list-s {list-style-type:square;}
+    .list-dc {list-style-type:decimal;}
+    .list-dclz {list-style-type:decimal-leading-zero;}
+    .list-lr {list-style-type:lower-roman;}
+    .list-ur {list-style-type:upper-roman;}
 
-    .lisi:n {list-style-image:none;}
+    .lisi-n {list-style-image:none;}
 
 
 
 /*=== Print ===*/
-    .pgbb:au {page-break-before:auto;}
-    .pgbb:al {page-break-before:always;}
-    .pgbb:l {page-break-before:left;}
-    .pgbb:r {page-break-before:right;}
+    .pgbb-au {page-break-before:auto;}
+    .pgbb-al {page-break-before:always;}
+    .pgbb-l {page-break-before:left;}
+    .pgbb-r {page-break-before:right;}
 
-    .pgbi:au {page-break-inside:auto;}
-    .pgbi:av {page-break-inside:avoid;}
+    .pgbi-au {page-break-inside:auto;}
+    .pgbi-av {page-break-inside:avoid;}
 
-    .pgba:au {page-break-after:auto;}
-    .pgba:al {page-break-after:always;}
-    .pgba:l {page-break-after:left;}
-    .pgba:r {page-break-after:right;}
+    .pgba-au {page-break-after:auto;}
+    .pgba-al {page-break-after:always;}
+    .pgba-l {page-break-after:left;}
+    .pgba-r {page-break-after:right;}
 
 
 
 /*=== Others ===*/
-    /*
-    @font-face {
-        font-family:;
-        src:url(|);
-    }
-    @font-face {
-        font-family: 'FontName';
-        src: url('FileName.eot');
-        src: url('FileName.eot?#iefix') format('embedded-opentype'),
-            url('FileName.woff') format('woff'),
-            url('FileName.ttf') format('truetype'),
-            url('FileName.svg#FontName') format('svg');
-        font-style: normal;
-        font-weight: normal;
-    }
-    */
-
+    /*=== flex ===*/
     .ac-c {align-content:center;}
     .ac-fe {align-content:flex-end;}
     .ac-fs {align-content:flex-start;}
@@ -528,6 +505,30 @@
     .ai-fs {align-items:flex-start;}
     .ai-s {align-items:stretch;}
 
+    .as-a {align-self:auto;}
+    .as-b {align-self:baseline;}
+    .as-c {align-self:center;}
+    .as-fe {align-self:flex-end;}
+    .as-fs {align-self:flex-start;}
+    .as-s {align-self:stretch;}
+
+    .fxw-n {flex-wrap:nowrap;}
+    .fxw-w {flex-wrap:wrap;}
+    .fxw-wr {flex-wrap:wrap-reverse;}
+
+    .fxd-c {flex-direction:column;}
+    .fxd-cr {flex-direction:column-reverse;}
+    .fxd-r {flex-direction:row;}
+    .fxd-rr {flex-direction:row-reverse;}
+
+    .jc-c {justify-content:center;}
+    .jc-fe {justify-content:flex-end;}
+    .jc-fs {justify-content:flex-start;}
+    .jc-sa {justify-content:space-around;}
+    .jc-sb {justify-content:space-between;}
+
+
+    /*=== animation ===*/
     .animdir-a {animation-direction:alternate;}
     .animdir-ar {animation-direction:alternate-reverse;}
     .animdir-n {animation-direction:normal;}
@@ -551,43 +552,17 @@
     .animtf-eo {animation-timing-function:ease-out;}
     .animtf-l {animation-timing-function:linear;}
 
-    .as-a {align-self:auto;}
-    .as-b {align-self:baseline;}
-    .as-c {align-self:center;}
-    .as-fe {align-self:flex-end;}
-    .as-fs {align-self:flex-start;}
-    .as-s {align-self:stretch;}
 
+    /*=== others ===*/
     .bfv-h {backface-visibility:hidden;}
     .bfv-v {backface-visibility:visible;}
-
-    .fxd-c {flex-direction:column;}
-    .fxd-cr {flex-direction:column-reverse;}
-    .fxd-r {flex-direction:row;}
-    .fxd-rr {flex-direction:row-reverse;}
-
-    .fxw-n {flex-wrap:nowrap;}
-    .fxw-w {flex-wrap:wrap;}
-    .fxw-wr {flex-wrap:wrap-reverse;}
-
-    .jc-c {justify-content:center;}
-    .jc-fe {justify-content:flex-end;}
-    .jc-fs {justify-content:flex-start;}
-    .jc-sa {justify-content:space-around;}
-    .jc-sb {justify-content:space-between;}
 
     .ori-l {orientation:landscape;}
     .ori-p {orientation:portrait;}
 
-    /*
-    trfs
-    transform-style:preserve-3d; 
-    */
+    .trfs {transform-style:preserve-3d;}
 
-    /*
-    us
-    user-select:${none}; 
-    */
+    .us-n {user-select:none;-moz-user-select:none;-webkit-user-select:none;} /* custom */
 
     .wfsm-a {-webkit-font-smoothing:antialiased;}
     .wfsm-n {-webkit-font-smoothing:none;}
@@ -601,7 +576,3 @@
     .wm-rlt {writing-mode:rl-tb;}
     .wm-tbl {writing-mode:tb-lr;}
     .wm-tbr {writing-mode:tb-rl;}
-
-
-
-/*===  ===*/

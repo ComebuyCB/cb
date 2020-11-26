@@ -2,36 +2,32 @@
 <html>
 <head>
 	<meta charset="utf-8">
-
 	<!-- shortcut -->
-	<link rel="Shortcut Icon" type="image/x-icon" href="cb-logo.png">
+	<link rel="Shortcut Icon" type="image/x-icon" href="/src/common/img/cb-logo.png">
 
 	<!-- jquery -->
-	<script src="src/plugins/jquery/jquery.js"></script>
+	<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 
 	<!-- bootstrap -->
-	<link rel="stylesheet" href="src/plugins/bootstrap/bootstrap.css">
-	<script src="src/plugins/bootstrap/popper.js"></script>
-	<script src="src/plugins/bootstrap/bootstrap.js"></script>
-
-    <!-- main_simplify -->
-	<link rel="stylesheet" href="src/css/main_simplify.css">
-	<script src="src/js/main_simplify.js"></script>
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.css" rel="stylesheet">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.js"></script>
 
 	<!-- jquery-confirm -->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
 
-	<!-- jquery-table -->
-	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
-	<script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+    <!-- simplify -->
+	<link href="src/common/css/simplify.css" rel="stylesheet">
+	<script src="src/common/js/simplify.js"></script>
 
 	<!-- web style -->
-	<link rel="stylesheet" href="src/css/cb.css">
-	<script src="src/js/cb.js"></script>
+	<link href="src/common/css/main.css" rel="stylesheet">
+	<script src="src/common/js/main.js"></script>
 
 	<!-- <base target="_blank"> -->
 	<style>
+		html,body{height: 100vh;}
 		a,span {font-size: 16px; line-height: 2; color:skyblue}
 		a,span,p {white-space:nowrap}
 		p {font-size: 16px; line-height: 2; color:deepskyblue; margin:0}
@@ -50,128 +46,44 @@
 
 <body>
 	<div id="container">
-
 		<span id="pra"></span>
-
 		<div class="mb-30">
-			<div id="knowledgeContent" js-tab-group="knowledge" class="mb-10 row"></div>
+			<div id="knowledgeContent" class="mb-10 row"></div>
 		</div>
-
 		<hr class="bc-e">
-
-		<table id="asd" class="" style="width:100%">
-			<thead>
-				<tr>
-					<th>連結</th>
-					<th>tag</th>
-				</tr>
-			</thead>
-			<tbody id="dataTabletbody">
-				
-			</tbody>
-		</table>
+		<button class="btn btn-success" onclick="jsScreen()">jsScreen</button>
 	</div>
 
 	<script>
-		$(function(){
-			// jsScreen('c');
-
-			$('#dataTabletbody').html( layout_dataTable_Content( pattern_Ajax_Data() ) )
-    		$('#asd').DataTable({
-				"pageLength": 100,
-				"order": [[ 1, "asc" ]]
-			});
-
-		})
-
-
-
-		$('body').on('mousemove', function(){
-			myF();
-		})
-
-
-		function myF() {
-			var x = event.clientX;
-			var y = event.clientY;
-			var str = `
-				亂數20~100: ${(Math.random()*(100-20+1)+20).toFixed(5)};
-				<d></d>X,Y座標: ${x}, ${y}
-			`
-			$('#pra').html( str );
-		}
-
-
-
-		function layout_dataTable_Content(dataObj){
-			let str = "";
-
-			$.each( dataObj, function(i1,v1){
-				$.each( v1.content, function(i2,v2){
-					str += `
-						<tr>
-							<td><a href="${v2.href}">${v2.value}</a></td>
-							<td>${v2.tag}</td>
-						</tr>
-					`
-				})
-			})
-
-			return str;
-		}
-
-
-
-
-		function jsScreen(){
-			// 載入jquery.comfirm時，換行請用<br>
-			var t= "";
-			t += "***document.***<br>";
-			t += " 網頁可見區域寬(body.clientWidth)："+ document.body.clientWidth +"<br>";
-			t += " 網頁可見區域高(body.clientHeight)："+ document.body.clientHeight +"<br>";
-			t += " 網頁可見區域寬(body.offsetWidth)："+ document.body.offsetWidth + " (包括邊線和捲軸的寬)<br>";
-			t += " 網頁可見區域高(body.offsetHeight)："+ document.body.offsetHeight + " (包括邊線的寬)<br>";
-			t += " 網頁正文全文寬(body.scrollWidth)："+ document.body.scrollWidth +"<br>";
-			t += " 網頁正文全文高(body.scrollHeight)："+ document.body.scrollHeight +"<br>";
-			t += " 網頁被卷去的高(ff)(body.scrollTop)："+ document.body.scrollTop +"<br>";
-			t += " 網頁被卷去的高(ie)(documentElement.scrollTop)："+ document.documentElement.scrollTop +"<br>";
-			t += " 網頁被卷去的左(body.scrollLeft)："+ document.body.scrollLeft +"<br>";
-			t += "***window.***<br>";
-			t += " 網頁正文部分上(screenTop)："+ window.screenTop +"<br>";
-			t += " 網頁正文部分左(screenLeft)："+ window.screenLeft +"<br>";
-			t += " 螢幕解析度的高(screen.height)："+ window.screen.height +"<br>";
-			t += " 螢幕解析度的寬(screen.width)："+ window.screen.width +"<br>";
-			t += " 螢幕可用工作區高度(screen.availHeight)："+ window.screen.availHeight +"<br>";
-			t += " 螢幕可用工作區寬度(screen.availWidth)："+ window.screen.availWidth +"<br>";
-			t += " 你的螢幕設置是(screen.colorDepth)："+ window.screen.colorDepth +" 位彩色<br>";
-			t += " 你的螢幕設置(screen.deviceXDPI)："+ window.screen.deviceXDPI +" 像素/英寸<br>";
-			t += " 你的螢幕是(screen.deviceXDPI)："+ window.screen.pixelDepth +" 吋<br>";
-
-
-			/* 參考: https://craftpip.github.io/jquery-confirm */
-			$.dialog({
-				title:'JS螢幕顯示用法',
-				content: t,
-				draggable: true,
-				columnClass: '',
-				boxWidth: '80%',
-				theme: 'dark',
-			})
-		}
-
-
-		function pattern_Ajax_Data(){
-			let data = [
+		var data = {
+			jsScreen: `
+			*** document. ***<br>
+				網頁可見區域寬 (body.clientWidth)：${document.body.clientWidth}<br>
+				網頁可見區域高 (body.clientHeight)：${document.body.clientHeight}<br>
+				網頁可見區域寬 (body.offsetWidth)：${document.body.offsetWidth}<br>
+				網頁可見區域高 (body.offsetHeight)：${document.body.offsetHeight}<br>
+				網頁正文全文寬 (body.scrollWidth)：${document.body.scrollWidth}<br>
+				網頁正文全文高 (body.scrollHeight)：${document.body.scrollHeight}<br>
+				網頁被卷去的高ff (body.scrollTop)：${document.body.scrollTop}<br>
+				網頁被卷去的高ie (documentElement.scrollTop)：${document.documentElement.scrollTop}<br>
+				網頁被卷去的左 (body.scrollLeft)：${document.body.scrollLeft}<br>
+			*** window. ***<br>
+				網頁正文部分上 (screenTop)：${window.screenTop}<br>
+				網頁正文部分左 (screenLeft)：${window.screenLeft}<br>
+				螢幕解析度的高 (screen.height)：${window.screen.height}<br>
+				螢幕解析度的寬 (screen.width)：${window.screen.width}<br>
+				螢幕可用工作區高 (screen.availHeight)：${window.screen.availHeight}<br>
+				螢幕可用工作區寬 (screen.availWidth)：${window.screen.availWidth}<br>
+				你的螢幕設置是 (screen.colorDepth)：${window.screen.colorDepth} 位彩色<br>
+				你的螢幕設置 (screen.deviceXDPI)：${window.screen.deviceXDPI} 像素/英寸<br>
+				你的螢幕是 (screen.pixelDepth)：${window.screen.pixelDepth} 吋<br>
+			`,
+			list: [
 				{
 					title: 'HTML',
 					content: [
 						{
-							value: ':link :visited :hover :active',
-							href: 'https://www.w3schools.com/html/tryit.asp?filename=tryhtml_links_colors',
-							tag: 'html',
-						},
-						{
-							value: '_blank _self _parent _top',
+							value: 'base target="_blank"',
 							href: 'https://www.w3schools.com/html/tryit.asp?filename=tryhtml_head_base',
 							tag: 'html',
 						},
@@ -190,15 +102,10 @@
 							href: 'https://www.w3schools.com/html/tryit.asp?filename=tryhtml_iframe_target',
 							tag: 'html',
 						},
-						{
-							value: '←|→拉 終於找到這功能了 (不支援HTML5)',
-							href: 'https://www.w3schools.com/tags/tag_frame.asp',
-							tag: 'html',
-						},
 					]
 				},
 				{
-					title: 'css',
+					title: 'CSS',
 					content: [
 						{
 							value: '文方伸縮 type="text" 口 → |二二二|',
@@ -225,18 +132,13 @@
 							href: 'https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_snackbar',
 							tag: 'css',
 						},
-						{
-							value: '::selection 螢光筆',
-							href: 'https://www.w3schools.com/cssref/tryit.asp?filename=trycss3_selection',
-							tag: 'css',
-						},
 					]
 				},			
 				{
 					title: 'JS',
 					content: [
 						{
-							value: '存取現在位置',
+							value: '存取經緯度',
 							href: 'https://www.w3schools.com/html/html5_geolocation.asp',
 							tag: 'js',
 						},
@@ -263,10 +165,10 @@
 					]
 				},
 				{
-					title: 'Learn',
+					title: 'LEARN',
 					content: [
 						{
-							value: 'PJCHENder 那些沒告訴你的小細節',
+							value: 'PJCHENder沒告訴你的小細節',
 							href: 'https://pjchender.blogspot.tw/',
 							tag: 'html css js other',
 						},
@@ -283,82 +185,79 @@
 					]
 				},
 				{
-					title: 'Tools',
+					title: 'TOOLS',
 					content: [
 						{
-							value: '用正規表達式找尋想要的class',
+							value: '用正規表達式找尋class',
 							href: 'view/tools-regex_find_class.html',
 							tag: 'tool',
 						},
-						{
-							value: '貝茲曲線 transition: 1s cubic-bezier(...)',
-							href: 'http://yisibl.github.io/cubic-bezier',
-							tag: 'tool',
-						},
-						{
-							value: 'My codePens',
-							href: 'view/my_tools.html',
-							tag: 'tool',
-						},
-					]
-				},
-				{
-					title: 'My Notes',
-					content: [
 						{
 							value: 'JS 螢幕',
 							href: 'view/js_screen_Info.html',
 							tag: 'tool js',
 						},
 						{
-							value: '前端常忘語法',
-							href: 'https://hackmd.io/z5DP_vkyTC-TMWoZpB6U7Q',
-							tag: 'js html css',
+							value: 'bulid-emmetCss',
+							href: 'view/bulid-emmetCss.html',
+							tag: 'tool',
 						},
 						{
-							value: 'CSS筆記',
-							href: 'https://hackmd.io/wBujYPoSQE--zrRr7sJM3w',
-							tag: 'cb css',
-						},
-						{
-							value: 'SQL筆記',
-							href: 'https://hackmd.io/C0Go2T2IRT6ZMGHZ8v7WiA',
-							tag: 'cb sql',
-						},
-						{
-							value: 'RWD筆記',
-							href: 'https://hackmd.io/_3TpADaKTiS-65lCR-ErAw',
-							tag: 'cb css',
-						},
+							value: 'HackMD',
+							href: 'https://hackmd.io/@W9cCzYCCQ2yGnao3bFxHQg',
+							tag: 'tool',
+						}
 					]
 				},
 			]
-			return data;
+		}
+
+		function moveFunc() {
+			var x = event.clientX;
+			var y = event.clientY;
+			var str = `
+				亂數20~100: ${(Math.random()*(100-20+1)+20).toFixed(5)};
+				<d></d>X,Y座標: ${x}, ${y}
+			`
+			$('#pra').html( str );
+		}
+
+		function jsScreen(){
+			/* 參考: https://craftpip.github.io/jquery-confirm */
+			$.dialog({
+				title:'JS螢幕顯示用法',
+				content: data.jsScreen,
+				draggable: true,
+				columnClass: '',
+				boxWidth: '80%',
+				theme: 'dark',
+			})
 		}
 
 		function layout_Tab_Content(dataObj){
 			let str = "";
-
 			$.each( dataObj, function(i1,v1){
-
-				let alist = "";
+				let li = "";
 				$.each( v1.content, function(i2,v2){
-					alist += `
+					li += `
 						<li><a href="${v2.href}">${v2.value}</a></li>
 					`
 				})
-
 				str += `
-					<div id="knowledge_${v1.title}" class="js-tab-content col">
+					<div id="knowledge_${v1.title}" class="col">
 						<h3>${v1.title}</h3>
-						<ul class="pl-20">${alist}</ul>
+						<ul class="pl-20">${li}</ul>
 					</div>
 				`
 			})
-
 			return str;
 		}
-		$('#knowledgeContent').html( layout_Tab_Content( pattern_Ajax_Data() ) );
+
+		$('#knowledgeContent').html( layout_Tab_Content( data.list ) );
+
+		$('body').on('mousemove', function(){
+			moveFunc();
+		})
 	</script>
 </body>
 </html>

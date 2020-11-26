@@ -2,31 +2,28 @@
 <html>
 <head>
     <meta charset="utf-8">
-	
-
     <!-- shortcut -->
-    <link rel="Shortcut Icon" type="image/x-icon" href="../src/img/cb-logo.png">
+    <link rel="Shortcut Icon" type="image/x-icon" href="../src/common/img/cb-logo.png">
 
-    <!-- jquery -->
-    <script src="../src/plugins/jquery/jquery.js"></script>
+	<!-- jquery -->
+	<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 
-    <!-- bootstrap -->
-    <link rel="stylesheet" href="../src/plugins/bootstrap/bootstrap.css">
-    <script src="../src/plugins/bootstrap/popper.js"></script>
-    <script src="../src/plugins/bootstrap/bootstrap.js"></script>
-
-    <!-- main_simplify -->
-    <link rel="stylesheet" href="../src/css/main_simplify.css">
-    <script src="../src/js/main_simplify.js"></script>
+	<!-- bootstrap -->
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.css" rel="stylesheet">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.js"></script>
 
     <!-- jquery-confirm -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
-    
-    <!-- web style -->
-    <link rel="stylesheet" href="../src/css/cb.css">
-	<script src="../src/js/cb.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css" rel="stylesheet">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
 	
+    <!-- simplify -->
+	<link href="../src/common/css/simplify.css" rel="stylesheet">
+	<script src="../src/common/js/simplify.js"></script>
+
+    <!-- web style -->
+    <link href="../src/common/css/main.css" rel="stylesheet">
+	<script src="../src/common/js/main.js"></script>
 </head>
 <body>
 
@@ -59,7 +56,7 @@
 
 	<div id="wrap">
 
-		<div id="quick_Tab_Block" class="fixed pos-9"></div>
+		<div id="quick_Tab_Block" class="fixed loc-9"></div>
 
 		<div id="ch_1" class="section">
 			<h2 class="title">1. 螢幕寬高一覽</h2>
@@ -81,23 +78,23 @@
 			<h2 class="title">2. 元素寬高一覽</h2>
 			
 			<div class="ch_2_box_container">
-				<div id="ch_2_offsetWidth" class="rulerX pos-8" style="transform: translate(-50%,-100%)"></div>
-				<div id="ch_2_offsetHeight" class="rulerY pos-4" style="transform: translate(-100%,-50%) rotate(180deg); writing-mode: vertical-rl;"></div>
+				<div id="ch_2_offsetWidth" class="rulerX loc-8" style="transform: translate(-50%,-100%)"></div>
+				<div id="ch_2_offsetHeight" class="rulerY loc-4" style="transform: translate(-100%,-50%) rotate(180deg); writing-mode: vertical-rl;"></div>
 
-				<div id="ch_2_clientWidth" class="rulerX pos-8" style="top: 50px;"></div>
-				<div id="ch_2_clientHeight" class="rulerY pos-4" style="transform: translate(0%,-50%) rotate(180deg); writing-mode: vertical-rl; left: 50px;"></div>
+				<div id="ch_2_clientWidth" class="rulerX loc-8" style="top: 50px;"></div>
+				<div id="ch_2_clientHeight" class="rulerY loc-4" style="transform: translate(0%,-50%) rotate(180deg); writing-mode: vertical-rl; left: 50px;"></div>
 
-				<div id="ch_2_scroll" class="absolute pos-5"></div>
+				<div id="ch_2_scroll" class="absolute loc-5"></div>
 
-				<div class="absolute pos-7 c-5">border:50px</div>
-				<div class="absolute pos-7 c-5" style="top: 50px; left: 50px;">padding:50px</div>
+				<div class="absolute loc-7 c-5">border:50px</div>
+				<div class="absolute loc-7 c-5" style="top: 50px; left: 50px;">padding:50px</div>
 
 				<div id="ch_2_box">
 					<div class="ch_2_boxchild">
 						content (600,300)
 					</div>
 				</div>
-				<button class="btn btn-dark btn-md absolute pos-2 mb-4" onclick="$('#ch_2_box').toggleClass('no_scrollbar');">click me to toggle scrollbar</button>
+				<button class="btn btn-dark btn-md absolute loc-2 mb-4" onclick="$('#ch_2_box').toggleClass('no_scrollbar');">click me to toggle scrollbar</button>
 			</div>
 
 
@@ -147,25 +144,25 @@
 				<tbody>
 					<tr>
 						<td>裝置螢幕</td>
-						<td>event.screen (X,Y)</td>
+						<td>event.screenX, event.screenY</td>
 						<td></td>
 						<td></td>
 					</tr>
 					<tr>
 						<td>視窗可視</td>
-						<td>event.client (X,Y)</td>
+						<td>event.clientX, event.clientY</td>
 						<td></td>
 						<td></td>
 					</tr>
 					<tr>
 						<td>頁面捲動</td>
-						<td>event.page (X,Y)</td>
+						<td>event.pageX, event.pageY</td>
 						<td></td>
 						<td></td>
 					</tr>
 					<tr>
 						<td>內容元素</td>
-						<td>event.offset (X,Y)</td>
+						<td>event.offsetX, event.offsetY</td>
 						<td></td>
 						<td></td>
 					</tr>
@@ -193,6 +190,22 @@
 			</table>
 		</div>
 
+		<div id="ch_5" class="section">
+			<h2 class="title">5. 鍵盤事件</h2>
+			<input>
+			<table id="ch_5-table" class="table table_w">
+				<thead>
+					<tr>
+						<th>事件</th>
+						<th>輸出</th>
+						<th>差異說明</th>
+						<th>輸入框影響</th>
+					</tr>
+				</thead>
+				<tbody></tbody>
+			</table>
+		</div>
+
 	</div>
 
 	<script>
@@ -202,6 +215,7 @@
 			ch_2_fn();
 			ch_3_fn();
 			ch_4_fn();
+			ch_5_fn();
 		})
 
 		function quick_Tab_Block(){
@@ -229,12 +243,12 @@
 						"window.screen.availHeight": window.screen.availHeight,
 					},
 					{
-						"desc": '網頁正文區域 (左,上)',
+						"desc": '瀏覽器起始位置 (左,上)',
 						"window.screenLeft": window.screenLeft,
 						"window.screenTop": window.screenTop,
 					},
 					{
-						"desc": '網頁正文被卷去 (左,上)',
+						"desc": '網頁正文被卷去 (X,Y)',
 						"window.pageXOffset": window.pageXOffset,
 						"window.pageYOffset": window.pageYOffset,
 					},
@@ -278,7 +292,7 @@
 				$('#ch_2_scroll').html( `
 					scroll size - (${$(element_div).get(0).scrollWidth},${$(element_div).get(0).scrollHeight})<br>
 					scroll scrolled - (${$(element_div).get(0).scrollLeft},${$(element_div).get(0).scrollTop})
-					`);
+				`);
 
 				let arr = [
 					{
@@ -289,13 +303,13 @@
 					},
 					{
 						"title": 'client',
-						"desc": '元素區域 (含padding之下) (寬,高)',
+						"desc": '元素區域 (含padding之下) (受卷軸影響) (寬,高)',
 						"element.clientWidth" : $(element_div).get(0).clientWidth,
 						"element.clientHeight" : $(element_div).get(0).clientHeight,
 					},
 					{
 						"title": 'scroll',
-						"desc": '元素捲動 (寬,高)',
+						"desc": '元素捲動區域 (寬,高)',
 						"element.scrollWidth" : $(element_div).get(0).scrollWidth,
 						"element.scrollHeight" : $(element_div).get(0).scrollHeight,
 					},
@@ -309,7 +323,6 @@
 
 				let tbody_content = "";
 				$.each( arr, function( idx, obj ){
-
 					let td1 = obj['title'];
 					let td2 = obj['desc'];
 					let td3 = "";
@@ -371,7 +384,6 @@
 		}
 
 		function ch_4_fn(){
-
 			let arr = {
 				"window.location.href": window.location.href,
 				"window.location.origin": window.location.origin,
@@ -394,6 +406,18 @@
 			})
 
 			$('#ch_4-table > tbody').html(tbody_content);
+		}
+
+		function ch_5_fn(){
+			window.onkeydown = function(event){
+				console.log(event)
+				let tbody_content = `
+					<tr><td>event.code</td><td>${event.code}</td><td>[按下的按鈕] 只管當下按下什麼 (會分辨左右shift等...) (唯一不變值)</td><td>否</td></tr>
+					<tr><td>event.key</td><td>${event.key}</td><td>[輸出的文字] 受大小寫等等影響 (輸入shift+/試試)</td><td>是</td></tr>
+					<tr><td>event.keyCode</td><td>${event.keyCode}</td><td>[輸出的代碼] 會受輸入框影響 </td><td>是</td></tr>
+				`
+				$('#ch_5-table > tbody').html(tbody_content);
+			}
 		}
 	</script>
 </body>

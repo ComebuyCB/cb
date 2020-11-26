@@ -1,6 +1,6 @@
 [Home-Link](https://comebuycb.github.io/cb/)
 
-![Picture](src/img/game.png)
+![Picture](src/common/img/game.png)
 
 ---
 

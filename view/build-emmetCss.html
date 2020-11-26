@@ -14,28 +14,38 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.js"></script>
 </head>
 <body style="background-color: #eee; color: #222; font-size: 12px; line-height: 14px; margin: 16px 8px">
+    <form class="d-flex">
+        <div class="mr-2">是否RWD? <input id="isRWD" name="isRWD" value="" style="width: 30px"></div>
+        <div class="mr-2">連接符: <input id="hyphen" name="hyphen" value="-" style="width: 30px"></div>
+        <button class="btn btn-dark btn-sm p-0">送出</button>
+    </form>
+    <br>
     <div id="output"></div>
-
     <script>
-        /*=== 自訂編輯處: ===*/
-        const option = {
-            forward: "_", // CSS前墜
-            hyphen: "-", // CSS連字符
-            isRWD: true, // 是否要RWD
-            setRWD: [
-                { name: 'sm', min: '576px' },
-                { name: 'md', min: '768px' },
-                { name: 'lg', min: '992px' },
-                { name: 'xl', min: '1200px' },
-            ]
-        }
+        var opt = {}
+        var url = new URL(window.location.href)
+        url.searchParams.forEach(function(val,key){
+            opt[key]=val
+            $('#'+key).val(val)
+        })
 
-        document.getElementById("output").innerHTML = buildCssLayout(option);
+        /*=== 自訂編輯處: ===*/
+        // const option = {
+        //     hyphen: "-", // CSS連字符
+        //     isRWD: true, // 是否要RWD
+        //     setRWD: [
+        //         { name: 'sm', min: '576px' },
+        //         { name: 'md', min: '768px' },
+        //         { name: 'lg', min: '992px' },
+        //         { name: 'xl', min: '1200px' },
+        //     ]
+        // }
+
+        document.getElementById("output").innerHTML = buildCssLayout(opt);
 
         function buildCssLayout(option) {
 
             const OP = { // 自訂編輯處理
-                forward: option.forward || '', // CSS前墜
                 hyphen: option.hyphen || '-', // CSS連字符
                 isRWD: option.isRWD || false, // 是否要RWD
                 setRWD: option.setRWD || [
@@ -47,7 +57,7 @@
             }
 
             const hyphen = OP.hyphen;
-            const isRWD = OP.isRWD;
+            const isRWD = OP.isRWD ? true : false;
             const RWD = OP.setRWD;
 
             // 創建CSS
@@ -86,6 +96,7 @@
                                 STR += i % 10 === 0 ? "<br>" : ""
                             }
                         STR += media[1];
+                        if (isRWD===false){ break }
                     }
 
                     return STR + "<hr>"
@@ -116,6 +127,7 @@
                                 STR += i % 10 === 0 ? "<br>" : ""
                             }
                         STR += media[1];
+                        if (isRWD===false){ break }
                     }
                     return STR + "<hr>"
                 },
@@ -134,6 +146,7 @@
                                 STR += i % 10 === 0 ? "<br>" : ""
                             }
                         STR += media[1];
+                        if (isRWD===false){ break }
                     }
                     return STR + "<hr>"
                 },
@@ -149,7 +162,8 @@
                                 STR += `.bdrs${_}${i}{border-radius:${i}px${IM}} `
                                 STR += i % 10 === 0 ? "<br>" : ""
                             }
-                        STR += media[1]; 
+                        STR += media[1];
+                        if (isRWD===false){ break }
                     }
                     return STR + "<hr>"
                 },
@@ -166,6 +180,7 @@
                                 STR += i % 10 === 0 ? "<br>" : ""
                             }
                         STR += media[1]; 
+                        if (isRWD===false){ break }
                     }
                     return STR + "<hr>"
                 },
@@ -183,6 +198,7 @@
                             STR += i % 20 === 0 ? "<br>" : "";
                         }
                         STR += media[1]; 
+                        if (isRWD===false){ break }
                     }
                     return STR + "<hr>"
                 },
@@ -200,6 +216,7 @@
                             STR += i % 2 === 0 ? "<br>" : ""
                         }
                         STR += media[1];
+                        if (isRWD===false){ break }
                     }
                     return STR + "<hr>"
                 }

@@ -3,13 +3,10 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- shortcut -->
     <link rel="Shortcut Icon" type="image/x-icon" href="../src/common/img/cb-logo.png">
 
-	<!-- jquery -->
+	<!-- core -->
 	<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-
-	<!-- bootstrap -->
 	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.css" rel="stylesheet">
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.js"></script>
@@ -25,188 +22,184 @@
     <!-- web style -->
     <link href="../src/common/css/main.css" rel="stylesheet">
 	<script src="../src/common/js/main.js"></script>
-</head>
-<body>
 
 	<style>
 		html{ scroll-behavior: smooth; }
-		#wrap { margin: auto; max-width: 1200px; position: relative;}
-		#wrap::after { content: ""; display: block; height: 300px;}
-		@media (min-width: 1200px){ #quick_Tab_Block { position: fixed; margin-right: calc( ( 100% - 1200px ) / 2 )} }
-
+		#quick_Tab_Block { position: fixed; top: 60px; right: 10px; }
 
 		.section { padding: 30px 15px 30px 3rem; border-bottom: 4px double #666; }
 		.section > * { margin-bottom: 10px; }
 		.title { font-weight: bold; margin: 0 0 1em -1em; }
 
-		#ch_2_box { overflow: auto; width: 700px; height: 400px; border: 50px solid #320; background-color: #030; padding: 50px; resize: both;}
+		#ch_2_box { overflow: auto; width: 700px; height: 400px; border: 50px solid #320; background-color: #050; padding: 50px; resize: both;}
 		#ch_2_box::-webkit-scrollbar { width: 30px; height: 30px; background-color: #ccc; }
 		#ch_2_box::-webkit-scrollbar-thumb { background: #999; border: 2px solid #ccc; }
 		#ch_2_box.no_scrollbar::-webkit-scrollbar { width: 0px; height: 0px; }
-		#ch_2_box > .ch_2_boxchild{ width: 600px; height: 300px; background-color: #114; color: #003; font-size: 56px; display: inline-flex; align-items: center; justify-content: center;}
+		#ch_2_box > .ch_2_boxchild{ width: 600px; height: 300px; background-color: #025; color: #666; font-size: 56px; display: inline-flex; align-items: center; justify-content: center;}
 
 		.ch_2_box_container { position: relative; display: inline-block;}
 		.ch_2_box_container .rulerX { position: absolute; text-align: center; }
 		.ch_2_box_container .rulerY { position: absolute; text-align: center; }
 
-		.box { display: inline-flex; justify-content: center; align-items: center; border: 30px solid MidnightBlue; padding: 30px; margin-right: 10px; text-align: center; }
+		.box { display: inline-flex; justify-content: center; align-items: center; border: 30px solid #025; padding: 30px; margin-right: 10px; text-align: center; }
 		#ch_3-box1 { width: 200px; height: 200px; background-color: #050; }
 		#ch_3-box2 { width: 200px; height: 200px; background-color: #500; }
 		.table_w { margin-bottom: 30px; white-space: nowrap; color:#ccc; width: 0; }
 	</style>
+</head>
+<body>
+	<div id="app">
+		<main class="container-fluid">
+			<div id="quick_Tab_Block" class="fixed loc-9"></div>
 
-	<div id="wrap">
+			<div id="ch_1" class="section">
+				<h2 class="title">1. 螢幕寬高</h2>
 
-		<div id="quick_Tab_Block" class="fixed loc-9"></div>
+				<table id="ch_1_table" class="table table_w" border="1">
+					<thead>
+						<tr>
+							<th>說明</th>
+							<th>事件</th>
+							<th>數值</th>
+						</tr>
+					</thead>
+					<tbody>
+					</tbody>
+				</table>
+			</div>
 
-		<div id="ch_1" class="section">
-			<h2 class="title">1. 螢幕寬高一覽</h2>
+			<div id="ch_2" class="section">
+				<h2 class="title">2. 元素寬高</h2>
+				
+				<div class="ch_2_box_container">
+					<div id="ch_2_offsetWidth" class="rulerX loc-8" style="top: 0px"></div>
+					<div id="ch_2_offsetHeight" class="rulerY loc-4" style="left: 24px; transform: translate(-100%,-50%) rotate(180deg); writing-mode: vertical-rl;"></div>
 
-			<table id="ch_1_table" class="table table_w" border="1">
-				<thead>
-					<tr>
-						<th>說明</th>
-						<th>事件</th>
-						<th>數值</th>
-					</tr>
-				</thead>
-				<tbody>
-				</tbody>
-			</table>
-		</div>
+					<div id="ch_2_clientWidth" class="rulerX loc-8" style="top: 50px;"></div>
+					<div id="ch_2_clientHeight" class="rulerY loc-4" style="left: 50px; transform: translate(0%,-50%) rotate(180deg); writing-mode: vertical-rl;"></div>
 
-		<div id="ch_2" class="section">
-			<h2 class="title">2. 元素寬高一覽</h2>
-			
-			<div class="ch_2_box_container">
-				<div id="ch_2_offsetWidth" class="rulerX loc-8" style="transform: translate(-50%,-100%)"></div>
-				<div id="ch_2_offsetHeight" class="rulerY loc-4" style="transform: translate(-100%,-50%) rotate(180deg); writing-mode: vertical-rl;"></div>
+					<div id="ch_2_scroll" class="absolute loc-5"></div>
 
-				<div id="ch_2_clientWidth" class="rulerX loc-8" style="top: 50px;"></div>
-				<div id="ch_2_clientHeight" class="rulerY loc-4" style="transform: translate(0%,-50%) rotate(180deg); writing-mode: vertical-rl; left: 50px;"></div>
+					<i class="absolute loc-7">border: 50px</i>
+					<i class="absolute loc-7" style="top: 50px; left: 50px;">padding: 50px</i>
 
-				<div id="ch_2_scroll" class="absolute loc-5"></div>
+					<div id="ch_2_box">
+						<div class="ch_2_boxchild">
+							content (600,300)
+						</div>
+					</div>
+					<button class="btn btn-dark btn-md absolute loc-2 mb-4" onclick="$('#ch_2_box').toggleClass('no_scrollbar');">click me to toggle scrollbar</button>
+				</div>
 
-				<div class="absolute loc-7 c-5">border:50px</div>
-				<div class="absolute loc-7 c-5" style="top: 50px; left: 50px;">padding:50px</div>
 
-				<div id="ch_2_box">
-					<div class="ch_2_boxchild">
-						content (600,300)
+				<table id="ch_2_table" class="table table_w">
+					<thead>
+						<tr>
+							<th>主題</th>
+							<th>說明</th>
+							<th>事件</th>
+							<th>數值</th>
+						</tr>
+					</thead>
+					<tbody>
+					</tbody>
+				</table>
+
+				<div>
+					* 踩坑注意: <br>
+					1. scrollHeight - offsetHeight = scrollTop。<br>
+					2. clientHeight 不會計算 scrollbar。<br>
+				</div>
+
+			</div>
+
+			<div id="ch_3" class="section">
+				<h2 class="title">3. 鼠標位置</h2>
+
+				<div class="d-flex">
+					<div id="ch_3-box1" class="box">
+						<div>200px</div>
+					</div>
+					
+					<div id="ch_3-box2" class="box">
+						<iframe style="width: 100%; height: 100%;" src="nothing.html"></iframe>
 					</div>
 				</div>
-				<button class="btn btn-dark btn-md absolute loc-2 mb-4" onclick="$('#ch_2_box').toggleClass('no_scrollbar');">click me to toggle scrollbar</button>
-			</div>
-
-
-			<table id="ch_2_table" class="table table_w">
-				<thead>
-					<tr>
-						<th>主題</th>
-						<th>說明</th>
-						<th>事件</th>
-						<th>數值</th>
-					</tr>
-				</thead>
-				<tbody>
-				</tbody>
-			</table>
-
-			<div>
-				* 踩坑注意: <br>
-				1. scrollHeight - offsetHeight = scrollTop。<br>
-				2. clientHeight 不會計算 scrollbar。<br>
-			</div>
-
-		</div>
-
-		<div id="ch_3" class="section">
-			<h2 class="title">3. 鼠標位置一覽</h2>
-
-			<div class="d-flex">
-				<div id="ch_3-box1" class="box">
-					<div>200px</div>
-				</div>
 				
-				<div id="ch_3-box2" class="box">
-					<iframe style="width: 100%; height: 100%;" src="nothing.html"></iframe>
+				<table id="ch_3-table" class="table table_w">
+					<thead>
+						<tr>
+							<th>說明</th>
+							<th>事件</th>
+							<th>window <button onclick="$(this).toggleClass('hover_console');">cl</button><br>mouseover</th>
+							<th>window click</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>裝置螢幕</td>
+							<td>event.screenX, event.screenY</td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>視窗可視</td>
+							<td>event.clientX, event.clientY</td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>頁面捲動</td>
+							<td>event.pageX, event.pageY</td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>內容元素</td>
+							<td>event.offsetX, event.offsetY</td>
+							<td></td>
+							<td></td>
+						</tr>
+					</tbody>
+				</table>
+
+				<div>
+					* 踩坑注意: <br>
+					1. 使用offset時，會從padding開始計算，起始border會為負值。<br>
+					2. 使用iframe時，不會將其iframe計算進去。<br>
 				</div>
 			</div>
-			
-			<table id="ch_3-table" class="table table_w">
-				<thead>
-					<tr>
-						<th>說明</th>
-						<th>事件</th>
-						<th>window <button onclick="$(this).toggleClass('hover_console');">cl</button><br>mouseover</th>
-						<th>window click</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>裝置螢幕</td>
-						<td>event.screenX, event.screenY</td>
-						<td></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td>視窗可視</td>
-						<td>event.clientX, event.clientY</td>
-						<td></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td>頁面捲動</td>
-						<td>event.pageX, event.pageY</td>
-						<td></td>
-						<td></td>
-					</tr>
-					<tr>
-						<td>內容元素</td>
-						<td>event.offsetX, event.offsetY</td>
-						<td></td>
-						<td></td>
-					</tr>
-				</tbody>
-			</table>
 
-			<div>
-				* 踩坑注意: <br>
-				1. 使用offset時，會從padding開始計算，起始border會為負值。<br>
-				2. 使用iframe時，不會將其iframe計算進去。<br>
+			<div id="ch_4" class="section">
+				<h2 class="title">4. 連結URL</h2>
+
+				<table id="ch_4-table" class="table table_w">
+					<thead>
+						<tr>
+							<th>事件</th>
+							<th>輸出</th>
+						</tr>
+					</thead>
+					<tbody></tbody>
+				</table>
 			</div>
-		</div>
 
-		<div id="ch_4" class="section">
-			<h2 class="title">4. 瀏覽器URL資訊一覽</h2>
-
-			<table id="ch_4-table" class="table table_w">
-				<thead>
-					<tr>
-						<th>事件</th>
-						<th>輸出</th>
-					</tr>
-				</thead>
-				<tbody></tbody>
-			</table>
-		</div>
-
-		<div id="ch_5" class="section">
-			<h2 class="title">5. 鍵盤事件</h2>
-			<input>
-			<table id="ch_5-table" class="table table_w">
-				<thead>
-					<tr>
-						<th>事件</th>
-						<th>輸出</th>
-						<th>差異說明</th>
-						<th>輸入框影響</th>
-					</tr>
-				</thead>
-				<tbody></tbody>
-			</table>
-		</div>
-
+			<div id="ch_5" class="section">
+				<h2 class="title">5. 鍵盤事件</h2>
+				<input>
+				<table id="ch_5-table" class="table table_w">
+					<thead>
+						<tr>
+							<th>事件</th>
+							<th>輸出</th>
+							<th>差異說明</th>
+							<th>輸入框影響</th>
+						</tr>
+					</thead>
+					<tbody></tbody>
+				</table>
+			</div>
+		</main>
 	</div>
 
 	<script>
@@ -220,7 +213,7 @@
 		})
 
 		function quick_Tab_Block(){
-			let tab_layout = '<ul class="bgc-2 pl-25 pr-10">';
+			let tab_layout = '<ul class="bgc-3 py-10 px-15 list-unstyled">';
 			$.each( $('.section > .title'), function(idx,ele){
 				tab_layout += `<li> <a href="#ch_${idx+1}" style="color: #2BF"> ${$(ele).text()} </a> </li>`;
 			})
@@ -284,11 +277,11 @@
 			let element_div = $('#ch_2_box');
 			$(element_div).on('mousedown mousemove mouseleave scroll load', function(){
 
-				$('#ch_2_offsetWidth').text( 'offset - ' + $(element_div).get(0).offsetWidth );
-				$('#ch_2_offsetHeight').text( 'offset - ' + $(element_div).get(0).offsetHeight );
+				$('#ch_2_offsetWidth').text( 'offsetWidth - ' + $(element_div).get(0).offsetWidth );
+				$('#ch_2_offsetHeight').text( 'offsetHeight - ' + $(element_div).get(0).offsetHeight );
 
-				$('#ch_2_clientWidth').text( 'client - ' + $(element_div).get(0).clientWidth );
-				$('#ch_2_clientHeight').text( 'client - ' + $(element_div).get(0).clientHeight );
+				$('#ch_2_clientWidth').text( 'clientWidth - ' + $(element_div).get(0).clientWidth );
+				$('#ch_2_clientHeight').text( 'clientHeight - ' + $(element_div).get(0).clientHeight );
 
 				$('#ch_2_scroll').html( `
 					scroll size - (${$(element_div).get(0).scrollWidth},${$(element_div).get(0).scrollHeight})<br>

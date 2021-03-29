@@ -1,7 +1,18 @@
-html, body{ 
-    min-height: 100%; 
+html, body { 
+    min-height: 100vh; 
     background-color: #111; 
     color: #ccc;
+}
+
+#app {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+    padding: 15px;
 }
 
 table {
@@ -15,18 +26,26 @@ table {
     color: #ccc;
 }
 
-
-#container{
-    padding: 0 15px 30px 15px;
+#container {
+    padding: 15px;
     background-color: #122;
     color: lightgray;
 }
 
-footer{
-    display: block;
-    padding: 10px 15px;
-    text-align: right;
-    border-top: 4px solid #292929;
-    background-color:#222;
-    color: lightgray;
+header {
+    height: 50px;
+}
+
+.header {
+    height: 50px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color:#000;
+    box-shadow: inset 0 0 4px 2px #444;
 }

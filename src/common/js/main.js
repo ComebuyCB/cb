@@ -1,9 +1,20 @@
 ﻿    $(function(){
-        $('body').append(`
-            <footer class="_rows sticky loc-b">
-                <a class="f-l btn btn-sm btn-dark" href="https://comebuycb.github.io/cb" target="_self">Home</a>
-                <a class="f-r text-u" href="https://github.com/ComebuyCB/cb">https://github.com/ComebuyCB/cb</a>
-            </footer>
+        let cbPageLink = 'https://comebuycb.github.io/cb'
+        if (window.location.host.indexOf('127.0.0.1') > -1 ){
+            cbPageLink = '/'
+        }
+        $('#app').prepend(`
+            <header>
+                <div class="header container-fluid">
+                    <a href="${cbPageLink}">
+                        <img src="../src/common/img/cb-logo.png" width="40">
+                    </a>
+                    <div>
+                        <a class="btn btn-secondary" href="https://comebuycb.github.io/cb">Home</a>
+                        <a class="btn btn-secondary" href="https://github.com/ComebuyCB/cb">Github</a>
+                    </div>
+                </div>
+            </header>
         `)
     })
     

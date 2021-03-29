@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="Shortcut Icon" type="image/x-icon" href="/src/common/img/cb-logo.png">
+
+	<!-- core -->
+	<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.css" rel="stylesheet">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.js"></script>
+
+	<!-- plugins -->
+    <link href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.css" rel="stylesheet">
+    <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.js"></script>
+
+    <!-- simplify -->
+	<script src="../src/common/js/simplify.js"></script>
+
+	<!-- web style -->
+	<link href="../src/common/css/main.css" rel="stylesheet">
+	<script src="../src/common/js/main.js"></script>
+</head>
+<body>
+    <div id="app">
+        <main>
+            <table id="dataTable" class="display">
+                <thead>
+                    <tr>
+                        <th>Column 1</th>
+                        <th>Column 2</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Row 1 Data 1</td>
+                        <td>Row 1 Data 2</td>
+                    </tr>
+                    <tr>
+                        <td>Row 2 Data 1</td>
+                        <td>Row 2 Data 2</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+        </main>
+    </div>
+    <script>
+        $(function(){
+            $('#dataTable').DataTable();
+        })
+    </script>
+</body>
+</html>

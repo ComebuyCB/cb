@@ -13,8 +13,13 @@
 </head>
 <body style="background-color: #eee; color: #222; font-size: 12px; line-height: 14px; margin: 16px 8px">
     <form class="d-flex">
-        <div class="mr-2">是否RWD? <input id="isRWD" name="isRWD" value="" style="width: 30px"></div>
-        <div class="mr-2">連接符: <input id="hyphen" name="hyphen" value="-" style="width: 30px"></div>
+        <div class="mr-2">是否RWD?
+            <select id="isRWD" name="isRWD" style="width: 44px">
+                <option value="">No</option>
+                <option value="y">Yes</option>
+            </select>
+        </div>
+        <div class="mr-2">連接符: <input id="hyphen" name="hyphen" value="-" style="width: 22px"></div>
         <button class="btn btn-dark btn-sm p-0">送出</button>
     </form>
     <br>
@@ -62,86 +67,105 @@
             const IM = "!important";
             const CSS = {
                 margin: function () {
-                    let STR = "/* === margin (0~100)(px) === */ <br>"
+                    let STR = "/* === margin (0~120)(px)  {[0-20]:跳1(1,2,3...)，[20-60]:跳2(20,22,24...)，[60-100]:跳4(60,64,68...)，[0-200]:跳5(75,80,85...,135,140,145...)} === */ <br>"
 
                     for( let r=-1; r<RWD.length; r++ ){
                         let _ = ( r!==-1 && isRWD===true ) ? hyphen + RWD[r].name + hyphen : hyphen;
-                        let media = ( r!==-1 && isRWD===true ) ? [ `@media( min-width: ${RWD[r].min} ){<br>` , `}<hr><hr>` ] : [ '', '<hr><hr>' ];
+                        let media = ( r!==-1 && isRWD===true ) ? [ `<hr class="my-1">@media( min-width: ${RWD[r].min} ){<br>` , `<br>}` ] : [ '', '' ];
                         STR += media[0];
-                            STR += `.m${_}auto{margin:auto${IM}} `
-                            for (let i = 0; i <= 100; i++) {
-                                STR += `.m${_}${i}{margin:${i}px${IM}} `
-                                STR += i % 10 === 0 ? "<br>" : ""
+                            STR += `.m${_}auto{margin:auto${IM};} ` + '<br>'
+                            for (let i = 0; i <= 201; i++) {
+                                if ( ( i >= 0 && i <= 20 ) || ( i >= 20 && i <= 60 && i % 2 == 0 ) || ( i >= 60 && i <= 100 && i % 4 == 0 ) || (i % 5 == 0) ){
+                                    STR += ( i == 20 || i == 60 || i == 100 || i == 201 ) ? '<br>' : ''
+                                    STR += `.m${_}${i}{margin:${i}px${IM};} `
+                                }
                             }
-                            STR += "<hr>";
-                            STR += `.my${_}auto{margin-top:auto${IM}; margin-bottom:auto${IM};} `
-                            STR += `.mx${_}auto{margin-left:auto${IM}; margin-right:auto${IM};} `
-                            for (let i = 0; i <= 100; i++) {
-                                STR += `.my${_}${i}{margin-top:${i}px${IM}; margin-bottom:${i}px${IM};} `
-                                STR += `.mx${_}${i}{margin-left:${i}px${IM}; margin-right:${i}px${IM};} `
-                                STR += i % 10 === 0 ? "<br>" : ""
+                            STR += '<br>'
+
+                            STR += `.my${_}auto{margin-top:auto${IM};margin-bottom:auto${IM};} `
+                            STR += `.mx${_}auto{margin-left:auto${IM};margin-right:auto${IM};} ` + '<br>'
+                            for (let i = 0; i <= 201; i++) {
+                                if ( ( i >= 0 && i <= 20 ) || ( i >= 20 && i <= 60 && i % 2 == 0 ) || ( i >= 60 && i <= 100 && i % 4 == 0 ) || (i % 5 == 0) ){
+                                    STR += ( i == 20 || i == 60 || i == 100 || i == 201 ) ? '<br>' : ''
+                                    STR += `.my${_}${i}{margin-top:${i}px${IM};margin-bottom:${i}px${IM};} `
+                                    STR += `.mx${_}${i}{margin-left:${i}px${IM};margin-right:${i}px${IM};} `
+                                }
                             }
-                            STR += "<hr>";
+                            STR += '<br>'
+
                             STR += `.mt${_}auto{margin-top:auto${IM};} `
                             STR += `.mr${_}auto{margin-right:auto${IM};} `
                             STR += `.mb${_}auto{margin-bottom:auto${IM};} `
-                            STR += `.ml${_}auto{margin-left:auto${IM};} `
-                            for (let i = 0; i <= 100; i++) {
-                                STR += `.mt${_}${i}{margin-top:${i}px${IM};} `
-                                STR += `.mr${_}${i}{margin-right:${i}px${IM};} `
-                                STR += `.mb${_}${i}{margin-bottom:${i}px${IM};} `
-                                STR += `.ml${_}${i}{margin-left:${i}px${IM};} `
-                                STR += i % 10 === 0 ? "<br>" : ""
+                            STR += `.ml${_}auto{margin-left:auto${IM};} ` + '<br>'
+                            for (let i = 0; i <= 201; i++) {
+                                if ( ( i >= 0 && i <= 20 ) || ( i >= 20 && i <= 60 && i % 2 == 0 ) || ( i >= 60 && i <= 100 && i % 4 == 0 ) || (i % 5 == 0) ){
+                                    STR += ( i == 20 || i == 60 || i == 100 || i == 201 ) ? "<br>" : ""
+                                    STR += `.mt${_}${i}{margin-top:${i}px${IM};} `
+                                    STR += `.mr${_}${i}{margin-right:${i}px${IM};} `
+                                    STR += `.mb${_}${i}{margin-bottom:${i}px${IM};} `
+                                    STR += `.ml${_}${i}{margin-left:${i}px${IM};} `
+                                }
                             }
+
                         STR += media[1];
                         if (isRWD===false){ break }
                     }
 
-                    return STR + "<hr>"
+                    return STR + "<hr><hr>"
                 },
                 padding: function () {
-                    let STR = "/* === padding (0~100)(px) === */ <br>"
+                    let STR = "/* === padding (0~200)(px)  {[0-20]:跳1(1,2,3...)，[20-60]:跳2(20,22,24...)，[60-100]:跳4(60,64,68...)，[0-200]:跳5(75,80,85...,135,140,145...)} === */ <br>"
 
                     for( let r=-1; r<RWD.length; r++ ){
                         let _ = ( r!==-1 && isRWD===true ) ? hyphen + RWD[r].name + hyphen : hyphen;
-                        let media = ( r!==-1 && isRWD===true ) ? [ `@media( min-width: ${RWD[r].min} ){<br>` , `}<hr><hr>` ] : [ '', '<hr><hr>' ];
+                        let media = ( r!==-1 && isRWD===true ) ? [ `<hr class="my-1">@media( min-width: ${RWD[r].min} ){<br>` , `<br>}` ] : [ '', '' ];
 
                         STR += media[0];
-                            for (i = 0; i <= 100; i++) {
-                                STR += `.p${_}${i}{padding:${i}px${IM};} `
+                            for (let i = 0; i <= 201; i++) {
+                                if ( ( i >= 0 && i <= 20 ) || ( i >= 20 && i <= 60 && i % 2 == 0 ) || ( i >= 60 && i <= 100 && i % 4 == 0 ) || (i % 5 == 0) ){
+                                    STR += ( i == 20 || i == 60 || i == 100 || i == 201 ) ? '<br>' : ''
+                                    STR += `.p${_}${i}{padding:${i}px${IM};} `
+                                }
                             }
-                            STR += "<hr>"
-                            for (i = 0; i <= 100; i++) {
-                                STR += `.py${_}${i}{padding-top:${i}px${IM}; padding-bottom:${i}px${IM};} `
-                                STR += `.px${_}${i}{padding-left:${i}px${IM}; padding-right:${i}px${IM};} `
-                                STR += i % 10 === 0 ? "<br>" : ""
+                            STR += '<br>'
+
+                            for (let i = 0; i <= 201; i++) {
+                                if ( ( i >= 0 && i <= 20 ) || ( i >= 20 && i <= 60 && i % 2 == 0 ) || ( i >= 60 && i <= 100 && i % 4 == 0 ) || (i % 5 == 0) ){
+                                    STR += ( i == 20 || i == 60 || i == 100 || i == 201 ) ? '<br>' : ''
+                                    STR += `.py${_}${i}{padding-top:${i}px${IM};padding-bottom:${i}px${IM};} `
+                                    STR += `.px${_}${i}{padding-left:${i}px${IM};padding-right:${i}px${IM};} `
+                                }
                             }
-                            STR += "<hr>"
-                            for (i = 0; i <= 100; i++) {
-                                STR += `.pt${_}${i}{padding-top:${i}px${IM};} `
-                                STR += `.pr${_}${i}{padding-right:${i}px${IM};} `
-                                STR += `.pb${_}${i}{padding-bottom:${i}px${IM};} `
-                                STR += `.pl${_}${i}{padding-left:${i}px${IM};} `
-                                STR += i % 10 === 0 ? "<br>" : ""
+                            STR += '<br>'
+
+                            for (let i = 0; i <= 201; i++) {
+                                if ( ( i >= 0 && i <= 20 ) || ( i >= 20 && i <= 60 && i % 2 == 0 ) || ( i >= 60 && i <= 100 && i % 4 == 0 ) || (i % 5 == 0) ){
+                                    STR += ( i == 20 || i == 60 || i == 100 || i == 201 ) ? '<br>' : ''
+                                    STR += `.pt${_}${i}{padding-top:${i}px${IM};} `
+                                    STR += `.pr${_}${i}{padding-right:${i}px${IM};} `
+                                    STR += `.pb${_}${i}{padding-bottom:${i}px${IM};} `
+                                    STR += `.pl${_}${i}{padding-left:${i}px${IM};} `
+                                }
                             }
+
                         STR += media[1];
                         if (isRWD===false){ break }
                     }
-                    return STR + "<hr>"
+                    return STR + "<hr><hr>"
                 },
                 widthHeight: function () {
                     let STR = "/* === width & height (0~100)(%) === */ <br>"
 
                     for( let r=-1; r<RWD.length; r++ ){
                         let _ = ( r!==-1 && isRWD===true ) ? hyphen + RWD[r].name + hyphen : hyphen;
-                        let media = ( r!==-1 && isRWD===true ) ? [ `@media( min-width: ${RWD[r].min} ){<br>` , `}<hr><hr>` ] : [ '', '<hr><hr>' ];
+                        let media = ( r!==-1 && isRWD===true ) ? [ `@media( min-width: ${RWD[r].min} ){<br>` , `}<hr>` ] : [ '', '<hr>' ];
 
                         STR += media[0];
                             STR += `.w${_}auto{width:auto${IM};} .h${_}auto{height:auto${IM};}`
                             for (let i = 0; i <= 100; i++) {
                                 STR += `.w${_}${i}{width:${i}%${IM};} `
                                 STR += `.h${_}${i}{height:${i}%${IM};} `
-                                STR += i % 10 === 0 ? "<br>" : ""
+                                STR += i % 10 === 0 ? '<br>' : ''
                             }
                         STR += media[1];
                         if (isRWD===false){ break }
@@ -153,12 +177,12 @@
 
                     for( let r=-1; r<RWD.length; r++ ){
                         let _ = ( r!==-1 && isRWD===true ) ? hyphen + RWD[r].name + hyphen : hyphen;
-                        let media = ( r!==-1 && isRWD===true ) ? [ `@media( min-width: ${RWD[r].min} ){<br>` , `}<hr><hr>` ] : [ '', '<hr><hr>' ];
+                        let media = ( r!==-1 && isRWD===true ) ? [ `@media( min-width: ${RWD[r].min} ){<br>` , `}<hr>` ] : [ '', '<hr>' ];
 
                         STR += media[0];
                             for (let i = 0; i <= 100; i++) {
                                 STR += `.bdrs${_}${i}{border-radius:${i}px${IM}} `
-                                STR += i % 10 === 0 ? "<br>" : ""
+                                STR += i % 10 === 0 ? '<br>' : ''
                             }
                         STR += media[1];
                         if (isRWD===false){ break }
@@ -170,12 +194,12 @@
 
                     for( let r=-1; r<RWD.length; r++ ){
                         let _ = ( r!==-1 && isRWD===true ) ? hyphen + RWD[r].name + hyphen : hyphen;
-                        let media = ( r!==-1 && isRWD===true ) ? [ `@media( min-width: ${RWD[r].min} ){<br>` , `}<hr><hr>` ] : [ '', '<hr><hr>' ];
+                        let media = ( r!==-1 && isRWD===true ) ? [ `@media( min-width: ${RWD[r].min} ){<br>` , `}<hr>` ] : [ '', '<hr>' ];
 
                         STR += media[0];
                             for (let i = 0; i <= 100; i++) {
                                 STR += `.fz${_}${i}{font-size:${i}px${IM}} `
-                                STR += i % 10 === 0 ? "<br>" : ""
+                                STR += i % 10 === 0 ? '<br>' : ''
                             }
                         STR += media[1]; 
                         if (isRWD===false){ break }
@@ -187,13 +211,13 @@
 
                     for( let r=-1; r<RWD.length; r++ ){
                         let _ = ( r!==-1 && isRWD===true ) ? hyphen + RWD[r].name + hyphen : hyphen;
-                        let media = ( r!==-1 && isRWD===true ) ? [ `@media( min-width: ${RWD[r].min} ){<br>` , `}<hr><hr>` ] : [ '', '<hr><hr>' ];
+                        let media = ( r!==-1 && isRWD===true ) ? [ `@media( min-width: ${RWD[r].min} ){<br>` , `}<hr>` ] : [ '', '<hr>' ];
 
                         STR += media[0];
                         for (let i = 0; i <= 100; i = i + 5) {
                             STR += `.bgc0${_}a${(i / 100).toString().split('.').join('')}{background-color:rgba(0,0,0,${i / 100})${IM}} `;
                             STR += `.bgc255${_}a${(i / 100).toString().split('.').join('')}{background-color:rgba(255,255,255,${i / 100})${IM}} `;
-                            STR += i % 20 === 0 ? "<br>" : "";
+                            STR += i % 20 === 0 ? '<br>' : '';
                         }
                         STR += media[1]; 
                         if (isRWD===false){ break }
@@ -205,13 +229,13 @@
 
                     for( let r=-1; r<RWD.length; r++ ){
                         let _ = ( r!==-1 && isRWD===true ) ? hyphen + RWD[r].name + hyphen : hyphen;
-                        let media = ( r!==-1 && isRWD===true ) ? [ `@media( min-width: ${RWD[r].min} ){<br>` , `}<hr><hr>` ] : [ '', '<hr><hr>' ];
+                        let media = ( r!==-1 && isRWD===true ) ? [ `@media( min-width: ${RWD[r].min} ){<br>` , `}<hr>` ] : [ '', '<hr>' ];
 
                         STR += media[0];
                         STR += `[class*="_equal${_}"]>*:nth-child(n){clear:none;}<br>`
                         for (let i = 1; i <= 16; i++) {
                             STR += `._equal${_}${i}>*{width:calc(100% / ${i});clear:left;} `
-                            STR += i % 2 === 0 ? "<br>" : ""
+                            STR += i % 2 === 0 ? '<br>' : ''
                         }
                         STR += media[1];
                         if (isRWD===false){ break }
@@ -223,7 +247,7 @@
             // 輸出CSS
             let layout = ''
             $.each(CSS, function (key, fn) {
-                layout += `<div style="user-select: all">${fn()}</div>`
+                layout += `<div style="user-select: all; white-space: nowrap;">${fn()}</div>`
             })
             return layout
         }

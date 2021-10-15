@@ -63,6 +63,17 @@
             const isRWD = OP.isRWD ? true : false;
             const RWD = OP.setRWD;
 
+            function forModel( max, callBack ){
+                let str = ''
+                for (let i = 0; i <= max+1; i++) {
+                    if ( ( i >= 0 && i <= 20 ) || ( i >= 20 && i <= 60 && i % 2 == 0 ) || ( i >= 60 && i <= 100 && i % 4 == 0 ) || (i % 5 == 0) ){
+                        str += ( i == 20 || i == 60 || i == 100 || i == max+1 ) ? '<br>' : ''
+                        str += callBack(i)
+                    }
+                }
+                return str
+            }
+
             // 創建CSS
             const IM = "!important";
             const CSS = {
@@ -74,39 +85,31 @@
                         let media = ( r!==-1 && isRWD===true ) ? [ `<hr class="my-1">@media( min-width: ${RWD[r].min} ){<br>` , `<br>}` ] : [ '', '' ];
                         STR += media[0];
                             STR += `.m${_}auto{margin:auto${IM};} ` + '<br>'
-                            for (let i = 0; i <= 201; i++) {
-                                if ( ( i >= 0 && i <= 20 ) || ( i >= 20 && i <= 60 && i % 2 == 0 ) || ( i >= 60 && i <= 100 && i % 4 == 0 ) || (i % 5 == 0) ){
-                                    STR += ( i == 20 || i == 60 || i == 100 || i == 201 ) ? '<br>' : ''
-                                    STR += `.m${_}${i}{margin:${i}px${IM};} `
-                                }
-                            }
+                            STR += forModel( 200, (i)=>{
+                                return `
+                                    .m${_}${i}{margin:${i}px${IM};}
+                                `
+                            })
                             STR += '<br>'
 
-                            STR += `.my${_}auto{margin-top:auto${IM};margin-bottom:auto${IM};} `
-                            STR += `.mx${_}auto{margin-left:auto${IM};margin-right:auto${IM};} ` + '<br>'
-                            for (let i = 0; i <= 201; i++) {
-                                if ( ( i >= 0 && i <= 20 ) || ( i >= 20 && i <= 60 && i % 2 == 0 ) || ( i >= 60 && i <= 100 && i % 4 == 0 ) || (i % 5 == 0) ){
-                                    STR += ( i == 20 || i == 60 || i == 100 || i == 201 ) ? '<br>' : ''
-                                    STR += `.my${_}${i}{margin-top:${i}px${IM};margin-bottom:${i}px${IM};} `
-                                    STR += `.mx${_}${i}{margin-left:${i}px${IM};margin-right:${i}px${IM};} `
-                                }
-                            }
+                            STR += `.my${_}auto{margin-top:auto${IM};margin-bottom:auto${IM};} .mx${_}auto{margin-left:auto${IM};margin-right:auto${IM};} ` + '<br>'
+                            STR += forModel( 200, (i)=>{
+                                return `
+                                    .mx${_}${i}{margin-left:${i}px${IM};margin-right:${i}px${IM};} 
+                                    .my${_}${i}{margin-top:${i}px${IM};margin-bottom:${i}px${IM};} 
+                                `
+                            })
                             STR += '<br>'
 
-                            STR += `.mt${_}auto{margin-top:auto${IM};} `
-                            STR += `.mr${_}auto{margin-right:auto${IM};} `
-                            STR += `.mb${_}auto{margin-bottom:auto${IM};} `
-                            STR += `.ml${_}auto{margin-left:auto${IM};} ` + '<br>'
-                            for (let i = 0; i <= 201; i++) {
-                                if ( ( i >= 0 && i <= 20 ) || ( i >= 20 && i <= 60 && i % 2 == 0 ) || ( i >= 60 && i <= 100 && i % 4 == 0 ) || (i % 5 == 0) ){
-                                    STR += ( i == 20 || i == 60 || i == 100 || i == 201 ) ? "<br>" : ""
-                                    STR += `.mt${_}${i}{margin-top:${i}px${IM};} `
-                                    STR += `.mr${_}${i}{margin-right:${i}px${IM};} `
-                                    STR += `.mb${_}${i}{margin-bottom:${i}px${IM};} `
-                                    STR += `.ml${_}${i}{margin-left:${i}px${IM};} `
-                                }
-                            }
-
+                            STR += `.mt${_}auto{margin-top:auto${IM};} .mr${_}auto{margin-right:auto${IM};} .mb${_}auto{margin-bottom:auto${IM};} .ml${_}auto{margin-left:auto${IM};} ` + '<br>'
+                            STR += forModel( 200, (i)=>{
+                                return `
+                                    .mt${_}${i}{margin-top:${i}px${IM};} 
+                                    .mr${_}${i}{margin-right:${i}px${IM};} 
+                                    .mb${_}${i}{margin-bottom:${i}px${IM};} 
+                                    .ml${_}${i}{margin-left:${i}px${IM};} 
+                                `
+                            })
                         STR += media[1];
                         if (isRWD===false){ break }
                     }
@@ -121,33 +124,29 @@
                         let media = ( r!==-1 && isRWD===true ) ? [ `<hr class="my-1">@media( min-width: ${RWD[r].min} ){<br>` , `<br>}` ] : [ '', '' ];
 
                         STR += media[0];
-                            for (let i = 0; i <= 201; i++) {
-                                if ( ( i >= 0 && i <= 20 ) || ( i >= 20 && i <= 60 && i % 2 == 0 ) || ( i >= 60 && i <= 100 && i % 4 == 0 ) || (i % 5 == 0) ){
-                                    STR += ( i == 20 || i == 60 || i == 100 || i == 201 ) ? '<br>' : ''
-                                    STR += `.p${_}${i}{padding:${i}px${IM};} `
-                                }
-                            }
+                            STR += forModel( 200, (i)=>{
+                                return `
+                                    .p${_}${i}{padding:${i}px${IM};} 
+                                `
+                            })
                             STR += '<br>'
 
-                            for (let i = 0; i <= 201; i++) {
-                                if ( ( i >= 0 && i <= 20 ) || ( i >= 20 && i <= 60 && i % 2 == 0 ) || ( i >= 60 && i <= 100 && i % 4 == 0 ) || (i % 5 == 0) ){
-                                    STR += ( i == 20 || i == 60 || i == 100 || i == 201 ) ? '<br>' : ''
-                                    STR += `.py${_}${i}{padding-top:${i}px${IM};padding-bottom:${i}px${IM};} `
-                                    STR += `.px${_}${i}{padding-left:${i}px${IM};padding-right:${i}px${IM};} `
-                                }
-                            }
+                            STR += forModel( 200, (i)=>{
+                                return `
+                                    .py${_}${i}{padding-top:${i}px${IM};padding-bottom:${i}px${IM};} 
+                                    .px${_}${i}{padding-left:${i}px${IM};padding-right:${i}px${IM};} 
+                                `
+                            })
                             STR += '<br>'
 
-                            for (let i = 0; i <= 201; i++) {
-                                if ( ( i >= 0 && i <= 20 ) || ( i >= 20 && i <= 60 && i % 2 == 0 ) || ( i >= 60 && i <= 100 && i % 4 == 0 ) || (i % 5 == 0) ){
-                                    STR += ( i == 20 || i == 60 || i == 100 || i == 201 ) ? '<br>' : ''
-                                    STR += `.pt${_}${i}{padding-top:${i}px${IM};} `
-                                    STR += `.pr${_}${i}{padding-right:${i}px${IM};} `
-                                    STR += `.pb${_}${i}{padding-bottom:${i}px${IM};} `
-                                    STR += `.pl${_}${i}{padding-left:${i}px${IM};} `
-                                }
-                            }
-
+                            STR += forModel( 200, (i)=>{
+                                return `
+                                    .pt${_}${i}{padding-top:${i}px${IM};} 
+                                    .pr${_}${i}{padding-right:${i}px${IM};} 
+                                    .pb${_}${i}{padding-bottom:${i}px${IM};} 
+                                    .pl${_}${i}{padding-left:${i}px${IM};} 
+                                `
+                            })
                         STR += media[1];
                         if (isRWD===false){ break }
                     }
@@ -172,6 +171,40 @@
                     }
                     return STR + "<hr>"
                 },
+                fontSize: function () {
+                    let STR = "/* === font-size (0~120)(px) === */ <br>"
+
+                    for( let r=-1; r<RWD.length; r++ ){
+                        let _ = ( r!==-1 && isRWD===true ) ? hyphen + RWD[r].name + hyphen : hyphen;
+                        let media = ( r!==-1 && isRWD===true ) ? [ `@media( min-width: ${RWD[r].min} ){<br>` , `}<hr>` ] : [ '', '<hr>' ];
+
+                        STR += media[0];
+                            STR += forModel( 120, (i)=>{
+                                return `.fz${_}${i}{font-size:${i}px${IM}} `
+                            })
+                        STR += media[1]; 
+                        if (isRWD===false){ break }
+                    }
+                    return STR + "<hr>"
+                },
+                lineHeight: function () {
+                    let STR = "/* === line-height (0.0~3.0)(%) === */ <br>"
+
+                    for( let r=-1; r<RWD.length; r++ ){
+                        let _ = ( r!==-1 && isRWD===true ) ? hyphen + RWD[r].name + hyphen : hyphen;
+                        let media = ( r!==-1 && isRWD===true ) ? [ `@media( min-width: ${RWD[r].min} ){<br>` , `}<hr>` ] : [ '', '<hr>' ];
+
+                        STR += media[0];
+                        STR += `.lh-n{line-height:normal${IM}} `
+                            for (let i = 0; i <= 30; i++ ) {
+                                STR += `.lh${_}${((i/10)+'').replace('.','\\.')}{line-height:${i/10}${IM}} `
+                                STR += i % 10 === 0 ? '<br>' : ''
+                            }
+                        STR += media[1];
+                        if (isRWD===false){ break }
+                    }
+                    return STR + "<hr>"
+                },
                 borderRadius: function () {
                     let STR = "/* === border-radius (0~100)(px) === */ <br>"
 
@@ -185,23 +218,6 @@
                                 STR += i % 10 === 0 ? '<br>' : ''
                             }
                         STR += media[1];
-                        if (isRWD===false){ break }
-                    }
-                    return STR + "<hr>"
-                },
-                fontSize: function () {
-                    let STR = "/* === font-size (0~100)(px) === */ <br>"
-
-                    for( let r=-1; r<RWD.length; r++ ){
-                        let _ = ( r!==-1 && isRWD===true ) ? hyphen + RWD[r].name + hyphen : hyphen;
-                        let media = ( r!==-1 && isRWD===true ) ? [ `@media( min-width: ${RWD[r].min} ){<br>` , `}<hr>` ] : [ '', '<hr>' ];
-
-                        STR += media[0];
-                            for (let i = 0; i <= 100; i++) {
-                                STR += `.fz${_}${i}{font-size:${i}px${IM}} `
-                                STR += i % 10 === 0 ? '<br>' : ''
-                            }
-                        STR += media[1]; 
                         if (isRWD===false){ break }
                     }
                     return STR + "<hr>"
